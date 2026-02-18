@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ПрофОдежда — Пошив спецодежды на заказ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #0f1318;
+    --steel: #1c2330;
+    --amber: #d4922a;
+    --amber-light: #f0b84a;
+    --cream: #f4efe8;
+    --muted: #8a9ab0;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--ink);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(15,19,24,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212,146,42,0.15);
+    transition: padding 0.3s;
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 3px;
+    color: var(--amber);
+    text-decoration: none;
+  }
+  .logo span { color: var(--white); }
+
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted);
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 500; transition: color 0.25s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--amber);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--amber); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--amber); color: var(--ink) !important;
+    padding: 10px 24px; border-radius: 2px;
+    font-weight: 500 !important; letter-spacing: 1.5px !important;
+    transition: background 0.25s !important;
+  }
+  .nav-cta:hover { background: var(--amber-light) !important; color: var(--ink) !important; }
+  .nav-cta::after { display: none !important; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 140px 60px 80px;
+    position: relative; z-index: 2;
+  }
+
+  .hero-label {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 30px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero-label::before {
+    content: ''; display: block; width: 40px; height: 1px; background: var(--amber);
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 8vw, 110px);
+    line-height: 0.92;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+  .hero-title .accent { color: var(--amber); }
+
+  .hero-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; line-height: 1.7;
+    color: var(--muted); max-width: 420px;
+    margin-bottom: 50px;
+  }
+
+  .hero-actions { display: flex; gap: 20px; align-items: center; }
+
+  .btn-primary {
+    background: var(--amber); color: var(--ink);
+    padding: 16px 36px; border: none; border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--amber-light); transform: translateY(-2px); }
+
+  .btn-ghost {
+    color: var(--white); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    display: flex; align-items: center; gap: 10px;
+    transition: color 0.25s;
+  }
+  .btn-ghost:hover { color: var(--amber); }
+  .btn-ghost .arrow {
+    width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 16px; transition: border-color 0.25s;
+  }
+  .btn-ghost:hover .arrow { border-color: var(--amber); }
+
+  .hero-stats {
+    display: flex; gap: 50px; margin-top: 70px;
+    padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px; color: var(--amber); line-height: 1;
+  }
+  .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 1px; margin-top: 4px; }
+
+  /* Hero right — visual panel */
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: var(--steel);
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(212,146,42,0.08) 0%, transparent 60%),
+      repeating-linear-gradient(
+        45deg,
+        transparent, transparent 40px,
+        rgba(255,255,255,0.015) 40px,
+        rgba(255,255,255,0.015) 41px
+      );
+  }
+
+  .hero-visual {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .fabric-pattern {
+    width: 360px; height: 480px;
+    position: relative;
+  }
+
+  /* Jacket SVG illustration */
+  .jacket-svg {
+    width: 100%; height: 100%;
+    opacity: 0.9;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .hero-badge {
+    position: absolute; bottom: 60px; right: 40px;
+    background: var(--amber); color: var(--ink);
+    padding: 20px 24px; border-radius: 4px;
+    text-align: center;
+    animation: pulse-badge 3s ease-in-out infinite;
+  }
+  @keyframes pulse-badge {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212,146,42,0.4); }
+    50% { box-shadow: 0 0 0 12px rgba(212,146,42,0); }
+  }
+  .hero-badge .big { font-family: 'Bebas Neue', sans-serif; font-size: 36px; line-height: 1; }
+  .hero-badge .small { font-size: 11px; font-weight: 600; letter-spacing: 1px; }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 120px 60px; }
+
+  .section-tag {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-tag::before {
+    content: ''; display: block; width: 30px; height: 1px; background: var(--amber);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 5vw, 72px);
+    letter-spacing: 2px; line-height: 1.05;
+    margin-bottom: 24px;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--steel); }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    margin-top: 70px;
+  }
+
+  .service-card {
+    background: var(--ink); padding: 48px 40px;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--amber);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .service-card:hover { transform: translateY(-4px); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon { font-size: 40px; margin-bottom: 24px; display: block; }
+  .service-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 1px; margin-bottom: 16px;
+    color: var(--white);
+  }
+  .service-desc { font-size: 15px; color: var(--muted); line-height: 1.7; }
+  .service-price {
+    margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.07);
+    font-size: 13px; color: var(--amber); letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 100px;
+    align-items: center;
+  }
+
+  .about-image {
+    position: relative;
+    height: 540px;
+  }
+
+  .about-img-main {
+    width: 100%; height: 100%;
+    background: var(--steel);
+    border-radius: 4px;
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-img-main::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(212,146,42,0.12), transparent);
+  }
+
+  /* Workshop SVG */
+  .workshop-svg { width: 280px; opacity: 0.7; }
+
+  .about-badge {
+    position: absolute; bottom: -24px; right: -24px;
+    background: var(--amber); color: var(--ink);
+    padding: 30px; border-radius: 4px; text-align: center;
+  }
+  .about-badge .num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 52px; line-height: 1;
+  }
+  .about-badge .label { font-size: 12px; font-weight: 600; letter-spacing: 1px; }
+
+  .about-content { padding: 20px 0; }
+
+  .about-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; line-height: 1.75;
+    color: var(--muted); margin-bottom: 32px;
+  }
+
+  .values {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px;
+  }
+  .value-item {
+    padding: 24px; background: var(--steel); border-radius: 4px;
+    border-left: 3px solid var(--amber);
+  }
+  .value-title { font-weight: 600; font-size: 15px; margin-bottom: 8px; }
+  .value-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── PROCESS / PRICING ── */
+  #pricing { background: var(--steel); }
+
+  .pricing-intro {
+    max-width: 640px; margin-bottom: 80px;
+  }
+  .pricing-intro p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; color: var(--muted); line-height: 1.7;
+  }
+
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .pricing-card {
+    background: var(--ink); border-radius: 4px; padding: 48px 36px;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .pricing-card.featured {
+    background: var(--amber); color: var(--ink);
+  }
+  .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+
+  .pricing-tier {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px; letter-spacing: 4px; text-transform: uppercase;
+    margin-bottom: 20px; opacity: 0.7;
+  }
+  .pricing-card.featured .pricing-tier { opacity: 1; }
+
+  .pricing-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px; line-height: 1;
+    margin-bottom: 6px;
+  }
+  .pricing-unit { font-size: 13px; opacity: 0.6; margin-bottom: 32px; }
+  .pricing-card.featured .pricing-unit { opacity: 0.8; }
+
+  .pricing-features { list-style: none; }
+  .pricing-features li {
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 14px; color: var(--muted); display: flex; gap: 10px;
+  }
+  .pricing-card.featured .pricing-features li {
+    border-bottom-color: rgba(15,19,24,0.15); color: var(--ink);
+  }
+  .pricing-features li::before { content: '✓'; color: var(--amber); font-weight: 700; }
+  .pricing-card.featured .pricing-features li::before { color: var(--ink); }
+
+  .pricing-deadline {
+    margin-top: 32px; padding: 16px; background: rgba(212,146,42,0.1);
+    border-radius: 2px; font-size: 13px; color: var(--amber);
+    font-weight: 600; letter-spacing: 1px; text-align: center;
+  }
+  .pricing-card.featured .pricing-deadline {
+    background: rgba(15,19,24,0.15); color: var(--ink);
+  }
+
+  .pricing-cta {
+    display: block; margin-top: 32px; text-align: center;
+    padding: 14px; border: 1px solid rgba(255,255,255,0.15);
+    color: var(--white); text-decoration: none; border-radius: 2px;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
+    transition: all 0.25s;
+  }
+  .pricing-cta:hover { border-color: var(--amber); color: var(--amber); }
+  .pricing-card.featured .pricing-cta {
+    background: var(--ink); color: var(--white); border-color: var(--ink);
+  }
+  .pricing-card.featured .pricing-cta:hover { background: var(--steel); }
+
+  .featured-badge {
+    position: absolute; top: 20px; right: 20px;
+    background: var(--ink); color: var(--amber);
+    font-size: 10px; letter-spacing: 2px; padding: 6px 12px;
+    border-radius: 2px; font-weight: 700; text-transform: uppercase;
+  }
+
+  /* ── PORTFOLIO ── */
+  #portfolio {}
+
+  .portfolio-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 60px;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 280px 280px;
+    gap: 16px;
+  }
+
+  .port-item {
+    position: relative; overflow: hidden; border-radius: 4px;
+    cursor: pointer; background: var(--steel);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .port-item:first-child { grid-row: span 2; }
+
+  .port-inner {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .port-emoji {
+    font-size: 80px;
+    transition: transform 0.5s;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+  }
+  .port-item:hover .port-emoji { transform: scale(1.1); }
+
+  .port-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(15,19,24,0.92) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.35s;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 28px;
+  }
+  .port-item:hover .port-overlay { opacity: 1; }
+
+  .port-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px; letter-spacing: 1px; margin-bottom: 4px;
+  }
+  .port-meta { font-size: 12px; color: var(--amber); letter-spacing: 2px; }
+
+  .port-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--steel), rgba(28,35,48,0.4));
+  }
+
+  /* ── CONTACTS ── */
+  #contacts { background: var(--steel); }
+
+  .contacts-wrap {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    margin-top: 70px;
+  }
+
+  .contact-info { }
+  .contact-block {
+    margin-bottom: 48px;
+  }
+  .contact-label {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 12px;
+  }
+  .contact-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; color: var(--white); line-height: 1.3;
+    text-decoration: none; display: block;
+    transition: color 0.25s;
+  }
+  .contact-value:hover { color: var(--amber); }
+  .contact-sub { font-size: 14px; color: var(--muted); margin-top: 6px; }
+
+  .working-hours {
+    margin-top: 48px; padding: 32px;
+    background: var(--ink); border-radius: 4px;
+    border-left: 3px solid var(--amber);
+  }
+  .wh-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 14px;
+  }
+  .wh-row:last-child { border-bottom: none; }
+  .wh-day { color: var(--muted); }
+  .wh-time { color: var(--white); font-weight: 500; }
+  .wh-time.open { color: var(--amber); }
+
+  /* Form */
+  .contact-form { }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+  .form-group label { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--ink); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px; padding: 14px 18px;
+    color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 15px;
+    transition: border-color 0.25s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--amber); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group select option { background: var(--ink); }
+
+  .form-submit {
+    width: 100%; padding: 18px;
+    background: var(--amber); color: var(--ink);
+    border: none; border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer; transition: background 0.25s, transform 0.2s;
+    margin-top: 8px;
+  }
+  .form-submit:hover { background: var(--amber-light); transform: translateY(-2px); }
+
+  .form-note { font-size: 12px; color: var(--muted); margin-top: 14px; text-align: center; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); padding: 60px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; letter-spacing: 3px; color: var(--amber);
+  }
+  .footer-logo span { color: var(--white); }
+
+  .footer-copy { font-size: 13px; color: var(--muted); }
+
+  .footer-links { display: flex; gap: 32px; }
+  .footer-links a {
+    font-size: 12px; color: var(--muted); text-decoration: none;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    transition: color 0.25s;
+  }
+  .footer-links a:hover { color: var(--amber); }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE MENU ── */
+  .burger { display: none; background: none; border: none; cursor: pointer; }
+  .burger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--white); margin: 5px 0; transition: all 0.3s;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav { padding: 18px 30px; }
+    #home { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    section { padding: 80px 30px; }
+    #about { grid-template-columns: 1fr; }
+    .about-image { height: 340px; }
+    .contacts-wrap { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr 1fr; }
+    .port-item:first-child { grid-row: auto; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 440px; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .burger { display: block; }
+    .services-grid { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .values { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: column; gap: 24px; }
+    .portfolio-header { flex-direction: column; gap: 20px; }
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 30px; right: 30px; z-index: 999;
+    background: var(--amber); color: var(--ink);
+    padding: 16px 28px; border-radius: 4px;
+    font-weight: 700; font-size: 14px; letter-spacing: 1px;
+    transform: translateY(80px); opacity: 0;
+    transition: all 0.35s;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a class="logo" href="#home">ПРОФ<span>ОДЕЖДА</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Главная</a></li>
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#about">О нас</a></li>
+    <li><a href="#portfolio">Портфолио</a></li>
+    <li><a href="#pricing">Цены</a></li>
+    <li><a href="#contacts" class="nav-cta">Заказать</a></li>
+  </ul>
+  <button class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="home">
+  <div class="hero-left">
+    <p class="hero-label">Производство спецодежды</p>
+    <h1 class="hero-title">
+      ЗАЩИТА.<br><span class="accent">КАЧЕСТВО.</span><br>СТИЛЬ.
+    </h1>
+    <p class="hero-desc">
+      Пошив корпоративной и защитной одежды на заказ. От эскиза до готовой партии — точно в срок.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacts" class="btn-primary">Получить расчёт</a>
+      <a href="#portfolio" class="btn-ghost">
+        <span class="arrow">→</span> Портфолио
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">850+</div>
+        <div class="stat-label">Клиентов</div>
+      </div>
+      <div>
+        <div class="stat-num">12</div>
+        <div class="stat-label">Лет опыта</div>
+      </div>
+      <div>
+        <div class="stat-num">48ч</div>
+        <div class="stat-label">Срок изготовления образца</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="fabric-pattern">
+        <!-- Jacket SVG -->
+        <svg class="jacket-svg" viewBox="0 0 320 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Body -->
+          <path d="M60 120 L40 380 L280 380 L260 120 Z" fill="#1c2330" stroke="rgba(212,146,42,0.4)" stroke-width="1.5"/>
+          <!-- Left panel -->
+          <path d="M60 120 L40 380 L160 380 L160 120 Z" fill="#232d3f" stroke="rgba(212,146,42,0.3)" stroke-width="1"/>
+          <!-- Right panel -->
+          <path d="M160 120 L160 380 L280 380 L260 120 Z" fill="#1c2330" stroke="rgba(212,146,42,0.3)" stroke-width="1"/>
+          <!-- Left sleeve -->
+          <path d="M60 120 L20 100 L0 260 L50 270 L40 380 L60 380 Z" fill="#1c2330" stroke="rgba(212,146,42,0.4)" stroke-width="1.5"/>
+          <!-- Right sleeve -->
+          <path d="M260 120 L300 100 L320 260 L270 270 L280 380 L260 380 Z" fill="#1c2330" stroke="rgba(212,146,42,0.4)" stroke-width="1.5"/>
+          <!-- Collar left -->
+          <path d="M100 80 L60 120 L130 130 Z" fill="#2a3548" stroke="rgba(212,146,42,0.5)" stroke-width="1"/>
+          <!-- Collar right -->
+          <path d="M220 80 L260 120 L190 130 Z" fill="#2a3548" stroke="rgba(212,146,42,0.5)" stroke-width="1"/>
+          <!-- Center line -->
+          <line x1="160" y1="130" x2="160" y2="380" stroke="rgba(212,146,42,0.6)" stroke-width="2"/>
+          <!-- Buttons -->
+          <circle cx="160" cy="180" r="5" fill="rgba(212,146,42,0.8)"/>
+          <circle cx="160" cy="230" r="5" fill="rgba(212,146,42,0.8)"/>
+          <circle cx="160" cy="280" r="5" fill="rgba(212,146,42,0.8)"/>
+          <circle cx="160" cy="330" r="5" fill="rgba(212,146,42,0.8)"/>
+          <!-- Chest pocket -->
+          <rect x="180" y="160" width="55" height="40" rx="2" fill="none" stroke="rgba(212,146,42,0.5)" stroke-width="1.5"/>
+          <!-- Reflective strip -->
+          <rect x="40" y="290" width="100" height="12" rx="2" fill="rgba(212,146,42,0.25)" stroke="rgba(212,146,42,0.6)" stroke-width="1"/>
+          <rect x="180" y="290" width="100" height="12" rx="2" fill="rgba(212,146,42,0.25)" stroke="rgba(212,146,42,0.6)" stroke-width="1"/>
+          <!-- Logo area -->
+          <rect x="60" y="160" width="70" height="50" rx="2" fill="rgba(212,146,42,0.1)" stroke="rgba(212,146,42,0.4)" stroke-width="1"/>
+          <text x="95" y="190" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(212,146,42,0.9)" letter-spacing="1">ЛОГОТИП</text>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="big">ГОСТ</div>
+      <div class="small">Сертифицировано</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="reveal">
+    <p class="section-tag">Наши услуги</p>
+    <h2 class="section-title">ЧТО МЫ<br>ПРОИЗВОДИМ</h2>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">🦺</span>
+      <div class="service-name">Рабочая одежда</div>
+      <p class="service-desc">Костюмы, комбинезоны, жилеты для производственных предприятий и строительства. Износостойкие ткани, усиленные швы.</p>
+      <div class="service-price">от 1 200 ₽ / изделие</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">👔</span>
+      <div class="service-name">Корпоративная форма</div>
+      <p class="service-desc">Деловые костюмы, рубашки и блузы с вышивкой логотипа. Единый стиль для вашей команды.</p>
+      <div class="service-price">от 2 500 ₽ / изделие</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🔥</span>
+      <div class="service-name">Защитная одежда</div>
+      <p class="service-desc">Спецодежда от огня, химикатов и экстремальных температур. Сертифицировано по ГОСТ и EN ISO.</p>
+      <div class="service-price">от 4 800 ₽ / изделие</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🏥</span>
+      <div class="service-name">Медицинская одежда</div>
+      <p class="service-desc">Халаты, костюмы хирурга, медсестёр. Антибактериальные ткани, удобный крой, долговечность.</p>
+      <div class="service-price">от 900 ₽ / изделие</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🍽️</span>
+      <div class="service-name">Форма для HoReCa</div>
+      <p class="service-desc">Кухонные куртки, фартуки, форма официантов. Термостойкие и лёгкие в уходе материалы.</p>
+      <div class="service-price">от 1 800 ₽ / изделие</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">✏️</span>
+      <div class="service-name">Дизайн и брендинг</div>
+      <p class="service-desc">Разработка фирменного стиля одежды, вышивка и термотрансфер логотипа, разработка технических спецификаций.</p>
+      <div class="service-price">от 5 000 ₽ / проект</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="about-image reveal">
+    <div class="about-img-main">
+      <!-- Workshop SVG -->
+      <svg class="workshop-svg" viewBox="0 0 280 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sewing machine -->
+        <rect x="40" y="120" width="200" height="80" rx="6" fill="#2a3548" stroke="rgba(212,146,42,0.4)" stroke-width="1.5"/>
+        <rect x="60" y="100" width="140" height="30" rx="4" fill="#1c2330" stroke="rgba(212,146,42,0.4)" stroke-width="1.5"/>
+        <circle cx="160" cy="115" r="12" fill="#232d3f" stroke="rgba(212,146,42,0.6)" stroke-width="2"/>
+        <circle cx="160" cy="115" r="5" fill="rgba(212,146,42,0.7)"/>
+        <!-- Arm -->
+        <path d="M100 100 L100 40 L200 40 L200 100" stroke="rgba(212,146,42,0.5)" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <!-- Needle -->
+        <line x1="200" y1="60" x2="200" y2="140" stroke="rgba(212,146,42,0.9)" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Thread spool -->
+        <ellipse cx="90" cy="50" rx="20" ry="26" fill="#2a3548" stroke="rgba(212,146,42,0.5)" stroke-width="1.5"/>
+        <ellipse cx="90" cy="50" rx="12" ry="18" fill="rgba(212,146,42,0.15)" stroke="rgba(212,146,42,0.4)" stroke-width="1"/>
+        <!-- Fabric -->
+        <path d="M40 155 Q70 148 100 155 Q130 162 160 155 Q190 148 240 155" stroke="rgba(212,146,42,0.6)" stroke-width="2.5" fill="none"/>
+        <!-- Controls -->
+        <circle cx="70" cy="150" r="8" fill="#1c2330" stroke="rgba(212,146,42,0.4)" stroke-width="1"/>
+        <circle cx="100" cy="150" r="8" fill="#1c2330" stroke="rgba(212,146,42,0.4)" stroke-width="1"/>
+        <!-- Table legs -->
+        <rect x="55" y="200" width="12" height="40" rx="3" fill="#1c2330"/>
+        <rect x="215" y="200" width="12" height="40" rx="3" fill="#1c2330"/>
+      </svg>
+    </div>
+    <div class="about-badge">
+      <div class="num">12</div>
+      <div class="label">ЛЕТ<br>НА РЫНКЕ</div>
+    </div>
+  </div>
+
+  <div class="about-content reveal">
+    <p class="section-tag">О компании</p>
+    <h2 class="section-title">МЫ ШЬЁМ<br>БУДУЩЕЕ</h2>
+    <p class="about-text">
+      ПрофОдежда — российский производитель спецодежды с собственным цехом площадью 2 400 м². 
+      Работаем с малым бизнесом и крупными корпорациями, исполняем заказы от 10 до 100 000 единиц.
+    </p>
+    <p class="about-text">
+      Наши технологи и конструкторы разрабатывают лекала с нуля под ваши требования. 
+      Все ткани проходят входной контроль качества и имеют сертификаты соответствия.
+    </p>
+
+    <div class="values">
+      <div class="value-item">
+        <div class="value-title">Собственное производство</div>
+        <div class="value-desc">Полный цикл: от раскроя до контроля качества — всё под одной крышей</div>
+      </div>
+      <div class="value-item">
+        <div class="value-title">Сертифицированные ткани</div>
+        <div class="value-desc">Только проверенные поставщики, ГОСТ и европейские стандарты</div>
+      </div>
+      <div class="value-item">
+        <div class="value-title">Гарантия 12 месяцев</div>
+        <div class="value-desc">На каждое изделие распространяется полная гарантийная поддержка</div>
+      </div>
+      <div class="value-item">
+        <div class="value-title">Точно в срок</div>
+        <div class="value-desc">98% заказов сдаётся в оговорённые сроки без переплат</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO ── -->
+<section id="portfolio">
+  <div class="portfolio-header reveal">
+    <div>
+      <p class="section-tag">Портфолио</p>
+      <h2 class="section-title">НАШИ<br>РАБОТЫ</h2>
+    </div>
+    <a href="#contacts" class="btn-ghost" style="margin-bottom: 10px;">
+      <span class="arrow">→</span> Все проекты
+    </a>
+  </div>
+
+  <div class="portfolio-grid">
+    <div class="port-item reveal">
+      <div class="port-bg" style="background: linear-gradient(135deg,#1c2f3f,#0f1a25);"></div>
+      <div class="port-inner"><div class="port-emoji">🏗️</div></div>
+      <div class="port-overlay">
+        <div class="port-name">СтройГрупп</div>
+        <div class="port-meta">1 200 ед. · Строительная отрасль</div>
+      </div>
+    </div>
+    <div class="port-item reveal">
+      <div class="port-bg" style="background: linear-gradient(135deg,#2f1c3f,#1a0f25);"></div>
+      <div class="port-inner"><div class="port-emoji">🍕</div></div>
+      <div class="port-overlay">
+        <div class="port-name">FoodChain</div>
+        <div class="port-meta">350 ед. · Ресторанная сеть</div>
+      </div>
+    </div>
+    <div class="port-item reveal">
+      <div class="port-bg" style="background: linear-gradient(135deg,#1c3f2a,#0f2515);"></div>
+      <div class="port-inner"><div class="port-emoji">⚙️</div></div>
+      <div class="port-overlay">
+        <div class="port-name">МашПром</div>
+        <div class="port-meta">5 400 ед. · Машиностроение</div>
+      </div>
+    </div>
+    <div class="port-item reveal">
+      <div class="port-bg" style="background: linear-gradient(135deg,#3f2a1c,#251a0f);"></div>
+      <div class="port-inner"><div class="port-emoji">🏥</div></div>
+      <div class="port-overlay">
+        <div class="port-name">Медклиника</div>
+        <div class="port-meta">800 ед. · Здравоохранение</div>
+      </div>
+    </div>
+    <div class="port-item reveal">
+      <div class="port-bg" style="background: linear-gradient(135deg,#1c2a3f,#0f1525);"></div>
+      <div class="port-inner"><div class="port-emoji">✈️</div></div>
+      <div class="port-overlay">
+        <div class="port-name">АвиаСервис</div>
+        <div class="port-meta">2 100 ед. · Авиация</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section id="pricing">
+  <div class="pricing-intro reveal">
+    <p class="section-tag">Условия и сроки</p>
+    <h2 class="section-title">ПРОЗРАЧНЫЕ<br>ЦЕНЫ</h2>
+    <p>Мы работаем по трём форматам сотрудничества. Выберите подходящий или свяжитесь с нами для индивидуального предложения.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="pricing-card reveal">
+      <div class="pricing-tier">Старт</div>
+      <div class="pricing-price">от 1 500 ₽</div>
+      <div class="pricing-unit">за изделие · партия от 50 ед.</div>
+      <ul class="pricing-features">
+        <li>Стандартный крой из готовых лекал</li>
+        <li>1 цветовое исполнение</li>
+        <li>Нанесение логотипа (термотрансфер)</li>
+        <li>Сдача партии: 14–21 рабочий день</li>
+        <li>Гарантия 6 месяцев</li>
+      </ul>
+      <div class="pricing-deadline">⏱ Срок: 14–21 рабочих дней</div>
+      <a href="#contacts" class="pricing-cta">Заказать</a>
+    </div>
+
+    <div class="pricing-card featured reveal">
+      <div class="featured-badge">Популярное</div>
+      <div class="pricing-tier">Бизнес</div>
+      <div class="pricing-price">от 2 900 ₽</div>
+      <div class="pricing-unit">за изделие · партия от 100 ед.</div>
+      <ul class="pricing-features">
+        <li>Разработка индивидуальных лекал</li>
+        <li>До 3 цветов и фасонов</li>
+        <li>Вышивка логотипа + нашивки</li>
+        <li>Образец за 48 часов</li>
+        <li>Гарантия 12 месяцев</li>
+        <li>Личный менеджер</li>
+      </ul>
+      <div class="pricing-deadline">⏱ Срок: 10–14 рабочих дней</div>
+      <a href="#contacts" class="pricing-cta">Заказать</a>
+    </div>
+
+    <div class="pricing-card reveal">
+      <div class="pricing-tier">Корпорация</div>
+      <div class="pricing-price">Запрос</div>
+      <div class="pricing-unit">партия от 500 ед. · договорная цена</div>
+      <ul class="pricing-features">
+        <li>Полная разработка коллекции</li>
+        <li>Неограниченные варианты фасонов</li>
+        <li>Любые методы нанесения</li>
+        <li>Приоритетное производство</li>
+        <li>Гарантия 18 месяцев</li>
+        <li>Выезд технолога на объект</li>
+      </ul>
+      <div class="pricing-deadline">⏱ Срок: 7–10 рабочих дней</div>
+      <a href="#contacts" class="pricing-cta">Получить КП</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACTS ── -->
+<section id="contacts">
+  <div class="reveal">
+    <p class="section-tag">Связаться с нами</p>
+    <h2 class="section-title">НАЧНЁМ<br>ВМЕСТЕ</h2>
+  </div>
+
+  <div class="contacts-wrap">
+    <div class="contact-info reveal">
+      <div class="contact-block">
+        <div class="contact-label">Телефон</div>
+        <a href="tel:+74951234567" class="contact-value">+7 (495) 123-45-67</a>
+        <div class="contact-sub">Бесплатный звонок по России</div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-label">Email</div>
+        <a href="mailto:zakaz@profordejda.ru" class="contact-value">zakaz@profordejda.ru</a>
+        <div class="contact-sub">Отвечаем в течение 2 часов</div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-label">Адрес производства</div>
+        <span class="contact-value" style="font-size: 20px;">г. Москва, ул. Производственная, 14, стр. 3</span>
+        <div class="contact-sub">Показываем цех по предварительной записи</div>
+      </div>
+
+      <div class="working-hours">
+        <div class="wh-row"><span class="wh-day">Понедельник – Пятница</span><span class="wh-time open">09:00 – 19:00</span></div>
+        <div class="wh-row"><span class="wh-day">Суббота</span><span class="wh-time open">10:00 – 16:00</span></div>
+        <div class="wh-row"><span class="wh-day">Воскресенье</span><span class="wh-time">Выходной</span></div>
+      </div>
+    </div>
+
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Ваше имя</label>
+          <input type="text" placeholder="Иван Иванов" id="f-name">
+        </div>
+        <div class="form-group">
+          <label>Компания</label>
+          <input type="text" placeholder="ООО «Пример»" id="f-company">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Телефон</label>
+          <input type="tel" placeholder="+7 (___) ___-__-__" id="f-phone">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="email@company.ru" id="f-email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Тип одежды</label>
+        <select id="f-type">
+          <option value="">Выберите категорию...</option>
+          <option>Рабочая / защитная одежда</option>
+          <option>Корпоративная форма</option>
+          <option>Медицинская одежда</option>
+          <option>Форма для HoReCa</option>
+          <option>Другое</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Количество (ед.)</label>
+          <input type="number" placeholder="100" id="f-qty">
+        </div>
+        <div class="form-group">
+          <label>Желаемый срок</label>
+          <input type="text" placeholder="например, 3 недели" id="f-deadline">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Комментарий</label>
+        <textarea placeholder="Опишите ваши требования, прикрепите ТЗ или ссылку на референс..." id="f-comment"></textarea>
+      </div>
+      <button class="form-submit" onclick="submitForm()">Отправить заявку →</button>
+      <p class="form-note">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Отвечаем в течение 2 рабочих часов.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">ПРОФ<span>ОДЕЖДА</span></div>
+  <div class="footer-copy">© 2025 ПрофОдежда. Все права защищены.</div>
+  <div class="footer-links">
+    <a href="#home">Главная</a>
+    <a href="#about">О нас</a>
+    <a href="#portfolio">Портфолио</a>
+    <a href="#contacts">Контакты</a>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast">✓ Заявка отправлена! Свяжемся с вами в течение 2 часов.</div>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+
+  // Form submit
+  function submitForm() {
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    if (!name || !phone) {
+      alert('Пожалуйста, заполните имя и телефон.');
+      return;
+    }
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+    // Reset fields
+    ['f-name','f-company','f-phone','f-email','f-qty','f-deadline','f-comment'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+    document.getElementById('f-type').selectedIndex = 0;
+  }
+
+  // Mobile menu toggle
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    if (links.style.display === 'flex') {
+      links.style.display = 'none';
+    } else {
+      links.style.cssText = 'display:flex; flex-direction:column; position:fixed; top:70px; left:0; right:0; background:rgba(15,19,24,0.98); padding:30px; gap:20px; z-index:99;';
+    }
+  }
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      const links = document.querySelector('.nav-links');
+      if (window.innerWidth < 768) links.style.display = 'none';
+    });
+  });
+</script>
+</body>
+</html>

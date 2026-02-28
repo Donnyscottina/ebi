@@ -3,1070 +3,2039 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ПрофОдежда — Пошив спецодежды на заказ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Франшиза ЁбиСан — Доставка суши и роллов | Открой свой бизнес</title>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Unbounded:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --ink: #0f1318;
-    --steel: #1c2330;
-    --amber: #d4922a;
-    --amber-light: #f0b84a;
-    --cream: #f4efe8;
-    --muted: #8a9ab0;
-    --white: #ffffff;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--ink);
-    color: var(--white);
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 60px;
-    background: rgba(15,19,24,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(212,146,42,0.15);
-    transition: padding 0.3s;
-  }
-
-  .logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 3px;
-    color: var(--amber);
-    text-decoration: none;
-  }
-  .logo span { color: var(--white); }
-
-  .nav-links { display: flex; gap: 40px; list-style: none; }
-  .nav-links a {
-    text-decoration: none; color: var(--muted);
-    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
-    font-weight: 500; transition: color 0.25s;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: ''; position: absolute; bottom: -4px; left: 0;
-    width: 0; height: 1px; background: var(--amber);
-    transition: width 0.3s;
-  }
-  .nav-links a:hover { color: var(--amber); }
-  .nav-links a:hover::after { width: 100%; }
-
-  .nav-cta {
-    background: var(--amber); color: var(--ink) !important;
-    padding: 10px 24px; border-radius: 2px;
-    font-weight: 500 !important; letter-spacing: 1.5px !important;
-    transition: background 0.25s !important;
-  }
-  .nav-cta:hover { background: var(--amber-light) !important; color: var(--ink) !important; }
-  .nav-cta::after { display: none !important; }
-
-  /* ── HERO ── */
-  #home {
-    min-height: 100vh;
-    display: grid; grid-template-columns: 1fr 1fr;
-    position: relative; overflow: hidden;
-  }
-
-  .hero-left {
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 140px 60px 80px;
-    position: relative; z-index: 2;
-  }
-
-  .hero-label {
-    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
-    color: var(--amber); margin-bottom: 30px;
-    display: flex; align-items: center; gap: 14px;
-  }
-  .hero-label::before {
-    content: ''; display: block; width: 40px; height: 1px; background: var(--amber);
-  }
-
-  .hero-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(64px, 8vw, 110px);
-    line-height: 0.92;
-    letter-spacing: 2px;
-    color: var(--white);
-    margin-bottom: 32px;
-  }
-  .hero-title .accent { color: var(--amber); }
-
-  .hero-desc {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; line-height: 1.7;
-    color: var(--muted); max-width: 420px;
-    margin-bottom: 50px;
-  }
-
-  .hero-actions { display: flex; gap: 20px; align-items: center; }
-
-  .btn-primary {
-    background: var(--amber); color: var(--ink);
-    padding: 16px 36px; border: none; border-radius: 2px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px; font-weight: 600;
-    letter-spacing: 2px; text-transform: uppercase;
-    cursor: pointer; text-decoration: none;
-    transition: background 0.25s, transform 0.2s;
-    display: inline-block;
-  }
-  .btn-primary:hover { background: var(--amber-light); transform: translateY(-2px); }
-
-  .btn-ghost {
-    color: var(--white); text-decoration: none;
-    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
-    display: flex; align-items: center; gap: 10px;
-    transition: color 0.25s;
-  }
-  .btn-ghost:hover { color: var(--amber); }
-  .btn-ghost .arrow {
-    width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 16px; transition: border-color 0.25s;
-  }
-  .btn-ghost:hover .arrow { border-color: var(--amber); }
-
-  .hero-stats {
-    display: flex; gap: 50px; margin-top: 70px;
-    padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.08);
-  }
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px; color: var(--amber); line-height: 1;
-  }
-  .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 1px; margin-top: 4px; }
-
-  /* Hero right — visual panel */
-  .hero-right {
-    position: relative; overflow: hidden;
-    background: var(--steel);
-  }
-  .hero-right::before {
-    content: '';
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(135deg, rgba(212,146,42,0.08) 0%, transparent 60%),
-      repeating-linear-gradient(
-        45deg,
-        transparent, transparent 40px,
-        rgba(255,255,255,0.015) 40px,
-        rgba(255,255,255,0.015) 41px
-      );
-  }
-
-  .hero-visual {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  .fabric-pattern {
-    width: 360px; height: 480px;
-    position: relative;
-  }
-
-  /* Jacket SVG illustration */
-  .jacket-svg {
-    width: 100%; height: 100%;
-    opacity: 0.9;
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-  }
-
-  .hero-badge {
-    position: absolute; bottom: 60px; right: 40px;
-    background: var(--amber); color: var(--ink);
-    padding: 20px 24px; border-radius: 4px;
-    text-align: center;
-    animation: pulse-badge 3s ease-in-out infinite;
-  }
-  @keyframes pulse-badge {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(212,146,42,0.4); }
-    50% { box-shadow: 0 0 0 12px rgba(212,146,42,0); }
-  }
-  .hero-badge .big { font-family: 'Bebas Neue', sans-serif; font-size: 36px; line-height: 1; }
-  .hero-badge .small { font-size: 11px; font-weight: 600; letter-spacing: 1px; }
-
-  /* ── SECTION COMMON ── */
-  section { padding: 120px 60px; }
-
-  .section-tag {
-    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
-    color: var(--amber); margin-bottom: 20px;
-    display: flex; align-items: center; gap: 14px;
-  }
-  .section-tag::before {
-    content: ''; display: block; width: 30px; height: 1px; background: var(--amber);
-  }
-
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(42px, 5vw, 72px);
-    letter-spacing: 2px; line-height: 1.05;
-    margin-bottom: 24px;
-  }
-
-  /* ── SERVICES ── */
-  #services { background: var(--steel); }
-
-  .services-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
-    margin-top: 70px;
-  }
-
-  .service-card {
-    background: var(--ink); padding: 48px 40px;
-    position: relative; overflow: hidden;
-    transition: transform 0.3s;
-  }
-  .service-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: var(--amber);
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.4s;
-  }
-  .service-card:hover { transform: translateY(-4px); }
-  .service-card:hover::before { transform: scaleX(1); }
-
-  .service-icon { font-size: 40px; margin-bottom: 24px; display: block; }
-  .service-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px; letter-spacing: 1px; margin-bottom: 16px;
-    color: var(--white);
-  }
-  .service-desc { font-size: 15px; color: var(--muted); line-height: 1.7; }
-  .service-price {
-    margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.07);
-    font-size: 13px; color: var(--amber); letter-spacing: 1px;
-    font-weight: 600;
-  }
-
-  /* ── ABOUT ── */
-  #about {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 100px;
-    align-items: center;
-  }
-
-  .about-image {
-    position: relative;
-    height: 540px;
-  }
-
-  .about-img-main {
-    width: 100%; height: 100%;
-    background: var(--steel);
-    border-radius: 4px;
-    position: relative; overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .about-img-main::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(212,146,42,0.12), transparent);
-  }
-
-  /* Workshop SVG */
-  .workshop-svg { width: 280px; opacity: 0.7; }
-
-  .about-badge {
-    position: absolute; bottom: -24px; right: -24px;
-    background: var(--amber); color: var(--ink);
-    padding: 30px; border-radius: 4px; text-align: center;
-  }
-  .about-badge .num {
-    font-family: 'Bebas Neue', sans-serif; font-size: 52px; line-height: 1;
-  }
-  .about-badge .label { font-size: 12px; font-weight: 600; letter-spacing: 1px; }
-
-  .about-content { padding: 20px 0; }
-
-  .about-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; line-height: 1.75;
-    color: var(--muted); margin-bottom: 32px;
-  }
-
-  .values {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px;
-  }
-  .value-item {
-    padding: 24px; background: var(--steel); border-radius: 4px;
-    border-left: 3px solid var(--amber);
-  }
-  .value-title { font-weight: 600; font-size: 15px; margin-bottom: 8px; }
-  .value-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
-  /* ── PROCESS / PRICING ── */
-  #pricing { background: var(--steel); }
-
-  .pricing-intro {
-    max-width: 640px; margin-bottom: 80px;
-  }
-  .pricing-intro p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; color: var(--muted); line-height: 1.7;
-  }
-
-  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-
-  .pricing-card {
-    background: var(--ink); border-radius: 4px; padding: 48px 36px;
-    position: relative; overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .pricing-card.featured {
-    background: var(--amber); color: var(--ink);
-  }
-  .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
-
-  .pricing-tier {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 14px; letter-spacing: 4px; text-transform: uppercase;
-    margin-bottom: 20px; opacity: 0.7;
-  }
-  .pricing-card.featured .pricing-tier { opacity: 1; }
-
-  .pricing-price {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 56px; line-height: 1;
-    margin-bottom: 6px;
-  }
-  .pricing-unit { font-size: 13px; opacity: 0.6; margin-bottom: 32px; }
-  .pricing-card.featured .pricing-unit { opacity: 0.8; }
-
-  .pricing-features { list-style: none; }
-  .pricing-features li {
-    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
-    font-size: 14px; color: var(--muted); display: flex; gap: 10px;
-  }
-  .pricing-card.featured .pricing-features li {
-    border-bottom-color: rgba(15,19,24,0.15); color: var(--ink);
-  }
-  .pricing-features li::before { content: '✓'; color: var(--amber); font-weight: 700; }
-  .pricing-card.featured .pricing-features li::before { color: var(--ink); }
-
-  .pricing-deadline {
-    margin-top: 32px; padding: 16px; background: rgba(212,146,42,0.1);
-    border-radius: 2px; font-size: 13px; color: var(--amber);
-    font-weight: 600; letter-spacing: 1px; text-align: center;
-  }
-  .pricing-card.featured .pricing-deadline {
-    background: rgba(15,19,24,0.15); color: var(--ink);
-  }
-
-  .pricing-cta {
-    display: block; margin-top: 32px; text-align: center;
-    padding: 14px; border: 1px solid rgba(255,255,255,0.15);
-    color: var(--white); text-decoration: none; border-radius: 2px;
-    font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
-    transition: all 0.25s;
-  }
-  .pricing-cta:hover { border-color: var(--amber); color: var(--amber); }
-  .pricing-card.featured .pricing-cta {
-    background: var(--ink); color: var(--white); border-color: var(--ink);
-  }
-  .pricing-card.featured .pricing-cta:hover { background: var(--steel); }
-
-  .featured-badge {
-    position: absolute; top: 20px; right: 20px;
-    background: var(--ink); color: var(--amber);
-    font-size: 10px; letter-spacing: 2px; padding: 6px 12px;
-    border-radius: 2px; font-weight: 700; text-transform: uppercase;
-  }
-
-  /* ── PORTFOLIO ── */
-  #portfolio {}
-
-  .portfolio-header {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    margin-bottom: 60px;
-  }
-
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 280px 280px;
-    gap: 16px;
-  }
-
-  .port-item {
-    position: relative; overflow: hidden; border-radius: 4px;
-    cursor: pointer; background: var(--steel);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .port-item:first-child { grid-row: span 2; }
-
-  .port-inner {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-  }
-
-  .port-emoji {
-    font-size: 80px;
-    transition: transform 0.5s;
-    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
-  }
-  .port-item:hover .port-emoji { transform: scale(1.1); }
-
-  .port-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(15,19,24,0.92) 0%, transparent 60%);
-    opacity: 0; transition: opacity 0.35s;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 28px;
-  }
-  .port-item:hover .port-overlay { opacity: 1; }
-
-  .port-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 24px; letter-spacing: 1px; margin-bottom: 4px;
-  }
-  .port-meta { font-size: 12px; color: var(--amber); letter-spacing: 2px; }
-
-  .port-bg {
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, var(--steel), rgba(28,35,48,0.4));
-  }
-
-  /* ── CONTACTS ── */
-  #contacts { background: var(--steel); }
-
-  .contacts-wrap {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-    margin-top: 70px;
-  }
-
-  .contact-info { }
-  .contact-block {
-    margin-bottom: 48px;
-  }
-  .contact-label {
-    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--amber); margin-bottom: 12px;
-  }
-  .contact-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px; color: var(--white); line-height: 1.3;
-    text-decoration: none; display: block;
-    transition: color 0.25s;
-  }
-  .contact-value:hover { color: var(--amber); }
-  .contact-sub { font-size: 14px; color: var(--muted); margin-top: 6px; }
-
-  .working-hours {
-    margin-top: 48px; padding: 32px;
-    background: var(--ink); border-radius: 4px;
-    border-left: 3px solid var(--amber);
-  }
-  .wh-row {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
-    font-size: 14px;
-  }
-  .wh-row:last-child { border-bottom: none; }
-  .wh-day { color: var(--muted); }
-  .wh-time { color: var(--white); font-weight: 500; }
-  .wh-time.open { color: var(--amber); }
-
-  /* Form */
-  .contact-form { }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-  .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-  .form-group label { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    background: var(--ink); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 2px; padding: 14px 18px;
-    color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 15px;
-    transition: border-color 0.25s;
-    outline: none;
-  }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus { border-color: var(--amber); }
-  .form-group textarea { resize: vertical; min-height: 120px; }
-  .form-group select option { background: var(--ink); }
-
-  .form-submit {
-    width: 100%; padding: 18px;
-    background: var(--amber); color: var(--ink);
-    border: none; border-radius: 2px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase;
-    cursor: pointer; transition: background 0.25s, transform 0.2s;
-    margin-top: 8px;
-  }
-  .form-submit:hover { background: var(--amber-light); transform: translateY(-2px); }
-
-  .form-note { font-size: 12px; color: var(--muted); margin-top: 14px; text-align: center; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--ink); padding: 60px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    display: flex; justify-content: space-between; align-items: center;
-  }
-
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px; letter-spacing: 3px; color: var(--amber);
-  }
-  .footer-logo span { color: var(--white); }
-
-  .footer-copy { font-size: 13px; color: var(--muted); }
-
-  .footer-links { display: flex; gap: 32px; }
-  .footer-links a {
-    font-size: 12px; color: var(--muted); text-decoration: none;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    transition: color 0.25s;
-  }
-  .footer-links a:hover { color: var(--amber); }
-
-  /* ── SCROLL ANIMATIONS ── */
-  .reveal {
-    opacity: 0; transform: translateY(32px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* ── MOBILE MENU ── */
-  .burger { display: none; background: none; border: none; cursor: pointer; }
-  .burger span {
-    display: block; width: 24px; height: 2px;
-    background: var(--white); margin: 5px 0; transition: all 0.3s;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 1024px) {
-    nav { padding: 18px 30px; }
-    #home { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    section { padding: 80px 30px; }
-    #about { grid-template-columns: 1fr; }
-    .about-image { height: 340px; }
-    .contacts-wrap { grid-template-columns: 1fr; }
-    .portfolio-grid { grid-template-columns: 1fr 1fr; }
-    .port-item:first-child { grid-row: auto; }
-    .pricing-grid { grid-template-columns: 1fr; max-width: 440px; }
-    footer { flex-direction: column; gap: 24px; text-align: center; }
-  }
-
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .burger { display: block; }
-    .services-grid { grid-template-columns: 1fr; }
-    .portfolio-grid { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .values { grid-template-columns: 1fr; }
-    .hero-stats { flex-direction: column; gap: 24px; }
-    .portfolio-header { flex-direction: column; gap: 20px; }
-  }
-
-  /* Toast */
-  .toast {
-    position: fixed; bottom: 30px; right: 30px; z-index: 999;
-    background: var(--amber); color: var(--ink);
-    padding: 16px 28px; border-radius: 4px;
-    font-weight: 700; font-size: 14px; letter-spacing: 1px;
-    transform: translateY(80px); opacity: 0;
-    transition: all 0.35s;
-  }
-  .toast.show { transform: translateY(0); opacity: 1; }
+:root {
+  --black: #0a0a0a;
+  --white: #f5f0eb;
+  --red: #e63946;
+  --red-dark: #c1121f;
+  --gold: #f4a261;
+  --cream: #fdf6ec;
+  --dark-bg: #111111;
+  --card-bg: #1a1a1a;
+  --card-bg2: #141414;
+  --accent-glow: rgba(230, 57, 70, 0.3);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+img { max-width: 100%; display: block; }
+
+.heading-xl {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.heading-lg {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+.heading-md {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  line-height: 1.2;
+}
+.jp-text {
+  font-family: 'Dela Gothic One', sans-serif;
+  color: rgba(255,255,255,0.04);
+  font-size: clamp(4rem, 12vw, 10rem);
+  position: absolute;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+}
+.section-tag {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-tag::before {
+  content: '';
+  width: 2rem;
+  height: 2px;
+  background: var(--red);
+}
+.wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+/* ===== NAV ===== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,10,10,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: padding 0.4s;
+}
+.nav.scrolled { padding: 0.6rem 3rem; }
+.nav-logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+.nav-logo img { height: 40px; }
+.nav-logo-text {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  color: var(--white);
+}
+.nav-logo-text span { color: var(--red); }
+.nav-links { display: flex; gap: 1.8rem; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--red); }
+.nav-cta {
+  background: var(--red);
+  color: white;
+  border: none;
+  padding: 0.65rem 1.6rem;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.nav-cta:hover { background: var(--red-dark); transform: scale(1.05); }
+.nav-phone {
+  color: var(--gold);
+  text-decoration: none;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  background: var(--red);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px var(--accent-glow); }
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 1rem 2.5rem;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.btn-outline:hover { border-color: var(--red); color: var(--red); }
+.btn-gold {
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  padding: 1rem 2.5rem;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-gold:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 7rem 3rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 75% 20%, rgba(230,57,70,0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 25% 80%, rgba(244,162,97,0.08) 0%, transparent 50%),
+    var(--black);
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+}
+.hero-left h1 .hl { color: var(--red); }
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.65);
+  margin-top: 1.5rem;
+  max-width: 520px;
+  line-height: 1.7;
+}
+.hero-stats { display: flex; gap: 2.5rem; margin-top: 2rem; }
+.hero-stat { border-left: 2px solid var(--red); padding-left: 1rem; }
+.hero-stat-val {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--gold);
+}
+.hero-stat-lbl {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.hero-cta { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; }
+
+/* Hero form card */
+.hero-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 2.2rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--red), var(--gold));
+}
+.hero-card h3 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+.fg { margin-bottom: 0.8rem; }
+.fg input, .fg select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.fg input::placeholder { color: rgba(255,255,255,0.3); }
+.fg input:focus, .fg select:focus { border-color: var(--red); }
+.fg select { appearance: none; cursor: pointer; }
+.fg select option { background: var(--card-bg); }
+.form-note {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.25);
+  margin-top: 0.6rem;
+  text-align: center;
+}
+
+/* ===== MARQUEE ===== */
+.marquee {
+  overflow: hidden;
+  padding: 1.2rem 0;
+  background: var(--red);
+  position: relative;
+  z-index: 5;
+}
+.marquee-track {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+.marquee-item {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.marquee-item::after {
+  content: '寿司';
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 0.85rem;
+  opacity: 0.5;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ===== COUNTER BAR ===== */
+.counter-bar {
+  background: var(--dark-bg);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 3rem;
+}
+.counter-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+.counter-item .cv {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: var(--gold);
+}
+.counter-item .cl {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 0.2rem;
+}
+
+/* ===== VIDEO SECTION ===== */
+.video-section {
+  padding: 6rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.video-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.video-placeholder {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.08);
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.video-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+.play-btn {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  transition: transform 0.3s;
+  z-index: 2;
+}
+.video-placeholder:hover .play-btn { transform: scale(1.15); }
+.video-text p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.8;
+  margin-top: 1rem;
+}
+
+/* ===== PRODUCT SHOWCASE ===== */
+.products-section {
+  background: var(--dark-bg);
+  padding: 6rem 0;
+  overflow: hidden;
+}
+.products-header {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3rem 3rem;
+}
+.products-scroll {
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: auto;
+  padding: 0 3rem 2rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.products-scroll::-webkit-scrollbar { height: 4px; }
+.products-scroll::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+.product-card {
+  min-width: 260px;
+  max-width: 260px;
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.05);
+  scroll-snap-align: start;
+  transition: all 0.4s;
+  flex-shrink: 0;
+}
+.product-card:hover { border-color: rgba(230,57,70,0.3); transform: translateY(-4px); }
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.product-card-body { padding: 1.2rem; }
+.product-card-body h4 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+.product-card-body .price {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--gold);
+}
+.product-card-body .desc {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.3rem;
+  line-height: 1.4;
+}
+
+/* ===== WHY SECTION ===== */
+.why-section { background: var(--black); padding: 6rem 3rem; }
+.why-grid {
+  max-width: 1400px;
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.why-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 2rem;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.why-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--red);
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+.why-card:hover::after { transform: scaleX(1); }
+.why-card:hover { transform: translateY(-4px); border-color: rgba(230,57,70,0.2); }
+.why-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(230,57,70,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.why-card h3 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.7rem;
+}
+.why-card p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+.why-card .big-num {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+/* ===== FOUNDER ===== */
+.founder-section {
+  padding: 6rem 3rem;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 80% 50%, rgba(244,162,97,0.06) 0%, transparent 50%), var(--dark-bg);
+}
+.founder-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.founder-quote {
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1.8;
+  font-style: italic;
+  color: rgba(255,255,255,0.8);
+  padding-left: 2rem;
+  border-left: 3px solid var(--red);
+}
+.founder-name {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-top: 1.5rem;
+  color: var(--gold);
+}
+.founder-title {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
+  margin-top: 0.2rem;
+}
+.founder-img-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.founder-img-wrap img {
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.founder-img-decor {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  border: 2px solid var(--red);
+  opacity: 0.3;
+}
+.founder-kanji {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 6rem;
+  color: rgba(230,57,70,0.1);
+}
+
+/* ===== ADVANTAGES ===== */
+.advantages-section {
+  padding: 6rem 3rem;
+  background: radial-gradient(ellipse at 0% 50%, rgba(230,57,70,0.06) 0%, transparent 50%), var(--black);
+}
+.adv-grid {
+  max-width: 1400px;
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.adv-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 2.2rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  transition: all 0.4s;
+}
+.adv-card:hover { border-color: rgba(230,57,70,0.3); transform: translateX(4px); }
+.adv-num {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: rgba(230,57,70,0.2);
+  line-height: 1;
+}
+.adv-card h3 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.adv-card p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+/* ===== BANNERS GALLERY ===== */
+.banners-section {
+  padding: 0;
+  background: var(--dark-bg);
+}
+.banners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.banners-grid img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: all 0.5s;
+  filter: brightness(0.7);
+}
+.banners-grid img:hover { filter: brightness(1); transform: scale(1.02); }
+
+/* ===== PAYBACK ===== */
+.payback-section { padding: 6rem 3rem; text-align: center; }
+.payback-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+.pb-block {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 2rem 2.5rem;
+  text-align: center;
+  min-width: 180px;
+}
+.pb-block .v {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--gold);
+}
+.pb-block .l {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.2rem;
+}
+.pb-op {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--red);
+}
+.pb-result {
+  margin-top: 3rem;
+  padding: 2.5rem 4rem;
+  background: linear-gradient(135deg, rgba(230,57,70,0.15), rgba(244,162,97,0.1));
+  border: 1px solid rgba(230,57,70,0.2);
+  display: inline-block;
+}
+.pb-result .v {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 2.8rem;
+  color: var(--red);
+}
+.pb-result .l { font-size: 0.85rem; color: rgba(255,255,255,0.65); margin-top: 0.3rem; }
+.payback-expenses {
+  max-width: 700px;
+  margin: 2.5rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.expense-item {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 1.2rem;
+  text-align: center;
+}
+.expense-item .v {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--gold);
+}
+.expense-item .l {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.2rem;
+}
+
+/* ===== WHAT YOU GET ===== */
+.get-section {
+  background: var(--dark-bg);
+  padding: 6rem 3rem;
+}
+.get-grid {
+  max-width: 1400px;
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+.get-item {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 1.5rem;
+  transition: all 0.4s;
+}
+.get-item:hover { border-color: rgba(230,57,70,0.2); transform: translateY(-3px); }
+.get-icon { font-size: 1.8rem; margin-bottom: 0.7rem; }
+.get-item h4 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  margin-bottom: 0.3rem;
+}
+.get-item p { font-size: 0.72rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+/* ===== PACKAGES ===== */
+.packages-section { padding: 6rem 3rem; }
+.packages-grid {
+  max-width: 1400px;
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.pkg {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 2.5rem;
+  position: relative;
+  transition: all 0.4s;
+}
+.pkg.feat { border-color: var(--red); transform: scale(1.02); }
+.pkg.feat::before {
+  content: 'ПОПУЛЯРНЫЙ';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: var(--red);
+  text-align: center;
+  padding: 0.35rem;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+}
+.pkg:hover { border-color: rgba(230,57,70,0.4); transform: translateY(-5px); }
+.pkg.feat:hover { transform: scale(1.02) translateY(-5px); }
+.pkg-name {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+.pkg-desc { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+.pkg-price {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--gold);
+  margin: 1rem 0;
+}
+.pkg-price span { font-size: 0.85rem; color: rgba(255,255,255,0.35); font-weight: 400; }
+.pkg-features { list-style: none; margin: 1.2rem 0; }
+.pkg-features li {
+  padding: 0.45rem 0;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.65);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.pkg-features li::before { content: '✓'; color: var(--red); font-weight: 700; }
+
+/* ===== PICKUP FORMAT ===== */
+.pickup-section {
+  background: var(--dark-bg);
+  padding: 6rem 3rem;
+  overflow: hidden;
+}
+.pickup-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.pickup-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+.pickup-images img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.4s;
+}
+.pickup-images img:hover { border-color: var(--red); }
+.pickup-text p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.8;
+  margin-top: 1rem;
+}
+.pickup-stat {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background: rgba(230,57,70,0.1);
+  border: 1px solid rgba(230,57,70,0.2);
+  padding: 1.2rem 2rem;
+}
+.pickup-stat .v {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: var(--red);
+}
+.pickup-stat .l { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+
+/* ===== NASTAVNIK ===== */
+.mentors-section { padding: 6rem 3rem; }
+.mentors-grid {
+  max-width: 1400px;
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.mentor-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.4s;
+}
+.mentor-card:hover { border-color: rgba(230,57,70,0.2); }
+.mentor-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--red), var(--gold));
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+.mentor-card h4 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+.mentor-card .role { font-size: 0.75rem; color: var(--gold); margin-bottom: 0.7rem; }
+.mentor-card p { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+/* ===== REVIEWS ===== */
+.reviews-section {
+  background: var(--dark-bg);
+  padding: 6rem 3rem;
+}
+.reviews-grid {
+  max-width: 1400px;
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.review-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 2rem;
+  transition: all 0.4s;
+}
+.review-card:hover { border-color: rgba(230,57,70,0.2); }
+.review-qm {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 3.5rem;
+  color: var(--red);
+  opacity: 0.3;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.review-card .text {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+.review-card .author {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+.review-card .city { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-top: 0.15rem; }
+
+/* ===== GUARANTEE ===== */
+.guarantee-section {
+  padding: 6rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 50%, rgba(244,162,97,0.08) 0%, transparent 50%), var(--black);
+}
+.guarantee-badge {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto 2rem;
+}
+.guarantee-badge .pct {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 2.8rem;
+  color: var(--gold);
+  line-height: 1;
+}
+.guarantee-badge .txt {
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+}
+
+/* ===== TEAM ===== */
+.team-section {
+  background: var(--dark-bg);
+  padding: 6rem 3rem;
+}
+.team-grid {
+  max-width: 1400px;
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+.team-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: all 0.3s;
+}
+.team-card:hover { border-color: rgba(230,57,70,0.2); }
+.team-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.team-card h5 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.65rem;
+  line-height: 1.3;
+}
+.team-card p { font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-top: 0.2rem; }
+
+/* ===== STEPS ===== */
+.steps-section { padding: 6rem 3rem; }
+.steps-grid {
+  max-width: 1400px;
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  position: relative;
+}
+.steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 35px;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--red), var(--gold));
+  opacity: 0.25;
+}
+.step { text-align: center; position: relative; padding: 0 0.8rem; }
+.step-num {
+  width: 70px;
+  height: 70px;
+  background: var(--card-bg);
+  border: 2px solid var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: var(--red);
+  position: relative;
+  z-index: 2;
+}
+.step h4 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  margin-bottom: 0.3rem;
+}
+.step p { font-size: 0.72rem; color: rgba(255,255,255,0.45); line-height: 1.4; }
+
+/* ===== TRAINING ===== */
+.training-section {
+  background: var(--dark-bg);
+  padding: 6rem 3rem;
+}
+.training-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.training-day {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 2rem;
+}
+.training-day h3 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--red);
+  margin-bottom: 1.5rem;
+}
+.schedule-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  align-items: start;
+}
+.schedule-item .time {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.schedule-item .topic {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.65);
+}
+
+/* ===== SMALL CITIES ===== */
+.small-cities {
+  padding: 5rem 3rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(230,57,70,0.08), rgba(244,162,97,0.05));
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.small-cities p {
+  max-width: 600px;
+  margin: 1rem auto 0;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+}
+
+/* ===== HARD WORK ===== */
+.hardwork-section {
+  padding: 6rem 3rem;
+  position: relative;
+}
+.hardwork-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.hw-block {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+.hw-block h4 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+  color: var(--gold);
+}
+.hw-block p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+/* ===== CTA ===== */
+.cta-section {
+  padding: 8rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(230,57,70,0.2) 0%, transparent 60%),
+    var(--black);
+}
+.cta-content { max-width: 650px; margin: 0 auto; position: relative; z-index: 2; }
+.cta-section p { color: rgba(255,255,255,0.55); margin-bottom: 2.5rem; }
+.cta-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.cta-form input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.cta-form input::placeholder { color: rgba(255,255,255,0.25); }
+.cta-form input:focus { border-color: var(--red); }
+.cta-form .full { grid-column: 1 / -1; }
+
+/* ===== PARTNERS BAR ===== */
+.partners-bar {
+  background: var(--dark-bg);
+  padding: 4rem 3rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.partners-logos {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+.partner-logo {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.15);
+  letter-spacing: 0.05em;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 3rem;
+}
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 3rem;
+  align-items: start;
+}
+.footer-logo {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+}
+.footer-logo span { color: var(--red); }
+.footer-motto { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-top: 0.3rem; }
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+.footer-links a {
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  font-size: 0.78rem;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--red); }
+.footer-contact .phone {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--gold);
+  text-decoration: none;
+}
+.footer-contact .email {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 0.3rem;
+}
+.footer-bottom {
+  max-width: 1400px;
+  margin: 2rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(10px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+.modal {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 3rem;
+  max-width: 450px;
+  width: 90%;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.4s;
+}
+.modal-overlay.active .modal { transform: translateY(0); }
+.modal-close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal-close:hover { color: var(--red); }
+.modal h3 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-in.vis { opacity: 1; transform: translateY(0); }
+.slide-l {
+  opacity: 0;
+  transform: translateX(-35px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.slide-l.vis { opacity: 1; transform: translateX(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero-content { grid-template-columns: 1fr; }
+  .why-grid, .mentors-grid, .reviews-grid, .packages-grid { grid-template-columns: repeat(2, 1fr); }
+  .get-grid, .team-grid { grid-template-columns: repeat(3, 1fr); }
+  .counter-grid { grid-template-columns: repeat(3, 1fr); }
+  .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .steps-grid::before { display: none; }
+  .founder-content, .video-content, .pickup-content, .training-content, .hardwork-content { grid-template-columns: 1fr; }
+  .banners-grid { grid-template-columns: repeat(2, 1fr); }
+  .pkg.feat { transform: none; }
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-phone { display: none; }
+  .nav { padding: 0.8rem 1.5rem; }
+  .hero { padding: 5rem 1.5rem 2rem; }
+  .hero-stats { flex-direction: column; gap: 1rem; }
+  .hero-cta { flex-direction: column; }
+  .wrap, [class*="-section"] { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+  .why-grid, .adv-grid, .reviews-grid, .packages-grid, .mentors-grid { grid-template-columns: 1fr; }
+  .get-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .counter-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: 1fr; }
+  .banners-grid { grid-template-columns: 1fr; }
+  .banners-grid img { height: 220px; }
+  .cta-form { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; text-align: center; }
+  .footer-links { justify-content: center; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .payback-expenses { grid-template-columns: 1fr; }
+  .pickup-images { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
-<!-- ── NAVIGATION ── -->
-<nav>
-  <a class="logo" href="#home">ПРОФ<span>ОДЕЖДА</span></a>
+<!-- ========== NAV ========== -->
+<nav class="nav" id="mainNav">
+  <a href="#" class="nav-logo">
+    <img src="https://ebisan.ru/upload/datakit.food/b96/y03dk26ao8otmgiqz90qqldvkv4vt70j.png" alt="ЁбиСан" onerror="this.style.display='none'">
+    <span class="nav-logo-text">ЁБИ<span>САН</span></span>
+  </a>
   <ul class="nav-links">
-    <li><a href="#home">Главная</a></li>
-    <li><a href="#services">Услуги</a></li>
-    <li><a href="#about">О нас</a></li>
-    <li><a href="#portfolio">Портфолио</a></li>
-    <li><a href="#pricing">Цены</a></li>
-    <li><a href="#contacts" class="nav-cta">Заказать</a></li>
+    <li><a href="#why">О франшизе</a></li>
+    <li><a href="#adv">Преимущества</a></li>
+    <li><a href="#packages">Пакеты</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+    <li><a href="#steps">Как начать</a></li>
+    <li><a href="#training">Обучение</a></li>
   </ul>
-  <button class="burger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </button>
+  <a href="tel:+73422600300" class="nav-phone">+7 342 2 600 300</a>
+  <a href="#cta" class="nav-cta">Оставить заявку</a>
 </nav>
 
-<!-- ── HERO ── -->
-<section id="home">
-  <div class="hero-left">
-    <p class="hero-label">Производство спецодежды</p>
-    <h1 class="hero-title">
-      ЗАЩИТА.<br><span class="accent">КАЧЕСТВО.</span><br>СТИЛЬ.
-    </h1>
-    <p class="hero-desc">
-      Пошив корпоративной и защитной одежды на заказ. От эскиза до готовой партии — точно в срок.
-    </p>
-    <div class="hero-actions">
-      <a href="#contacts" class="btn-primary">Получить расчёт</a>
-      <a href="#portfolio" class="btn-ghost">
-        <span class="arrow">→</span> Портфолио
-      </a>
-    </div>
-    <div class="hero-stats">
-      <div>
-        <div class="stat-num">850+</div>
-        <div class="stat-label">Клиентов</div>
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="jp-text" style="top:12%;left:-3%;transform:rotate(-4deg);">寿司配達フランチャイズ</div>
+  <div class="jp-text" style="bottom:8%;right:-5%;transform:rotate(3deg);">ヨビサン美味しい</div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="section-tag">Франшиза доставки суши и роллов из Перми</div>
+      <h1 class="heading-xl">
+        Зарабатывай<br><span class="hl">от 350 000 ₽</span><br>в месяц вместе<br>с ЁбиСан
+      </h1>
+      <p class="hero-subtitle">
+        150+ позиций в меню. Огромные порции из премиальных ингредиентов по доступной цене.
+        Суммарные инвестиции от 1,2 млн рублей. Окупаемость от 4 месяцев.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-val">150+</div>
+          <div class="hero-stat-lbl">Позиций в меню</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">30 дней</div>
+          <div class="hero-stat-lbl">До первого заказа</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">98%</div>
+          <div class="hero-stat-lbl">Позитивных отзывов</div>
+        </div>
       </div>
-      <div>
-        <div class="stat-num">12</div>
-        <div class="stat-label">Лет опыта</div>
-      </div>
-      <div>
-        <div class="stat-num">48ч</div>
-        <div class="stat-label">Срок изготовления образца</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-right">
-    <div class="hero-visual">
-      <div class="fabric-pattern">
-        <!-- Jacket SVG -->
-        <svg class="jacket-svg" viewBox="0 0 320 420" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Body -->
-          <path d="M60 120 L40 380 L280 380 L260 120 Z" fill="#1c2330" stroke="rgba(212,146,42,0.4)" stroke-width="1.5"/>
-          <!-- Left panel -->
-          <path d="M60 120 L40 380 L160 380 L160 120 Z" fill="#232d3f" stroke="rgba(212,146,42,0.3)" stroke-width="1"/>
-          <!-- Right panel -->
-          <path d="M160 120 L160 380 L280 380 L260 120 Z" fill="#1c2330" stroke="rgba(212,146,42,0.3)" stroke-width="1"/>
-          <!-- Left sleeve -->
-          <path d="M60 120 L20 100 L0 260 L50 270 L40 380 L60 380 Z" fill="#1c2330" stroke="rgba(212,146,42,0.4)" stroke-width="1.5"/>
-          <!-- Right sleeve -->
-          <path d="M260 120 L300 100 L320 260 L270 270 L280 380 L260 380 Z" fill="#1c2330" stroke="rgba(212,146,42,0.4)" stroke-width="1.5"/>
-          <!-- Collar left -->
-          <path d="M100 80 L60 120 L130 130 Z" fill="#2a3548" stroke="rgba(212,146,42,0.5)" stroke-width="1"/>
-          <!-- Collar right -->
-          <path d="M220 80 L260 120 L190 130 Z" fill="#2a3548" stroke="rgba(212,146,42,0.5)" stroke-width="1"/>
-          <!-- Center line -->
-          <line x1="160" y1="130" x2="160" y2="380" stroke="rgba(212,146,42,0.6)" stroke-width="2"/>
-          <!-- Buttons -->
-          <circle cx="160" cy="180" r="5" fill="rgba(212,146,42,0.8)"/>
-          <circle cx="160" cy="230" r="5" fill="rgba(212,146,42,0.8)"/>
-          <circle cx="160" cy="280" r="5" fill="rgba(212,146,42,0.8)"/>
-          <circle cx="160" cy="330" r="5" fill="rgba(212,146,42,0.8)"/>
-          <!-- Chest pocket -->
-          <rect x="180" y="160" width="55" height="40" rx="2" fill="none" stroke="rgba(212,146,42,0.5)" stroke-width="1.5"/>
-          <!-- Reflective strip -->
-          <rect x="40" y="290" width="100" height="12" rx="2" fill="rgba(212,146,42,0.25)" stroke="rgba(212,146,42,0.6)" stroke-width="1"/>
-          <rect x="180" y="290" width="100" height="12" rx="2" fill="rgba(212,146,42,0.25)" stroke="rgba(212,146,42,0.6)" stroke-width="1"/>
-          <!-- Logo area -->
-          <rect x="60" y="160" width="70" height="50" rx="2" fill="rgba(212,146,42,0.1)" stroke="rgba(212,146,42,0.4)" stroke-width="1"/>
-          <text x="95" y="190" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(212,146,42,0.9)" letter-spacing="1">ЛОГОТИП</text>
-        </svg>
+      <div class="hero-cta">
+        <a href="#cta" class="btn-primary">Получить бизнес-план →</a>
+        <a href="#why" class="btn-outline">Узнать подробнее</a>
       </div>
     </div>
-    <div class="hero-badge">
-      <div class="big">ГОСТ</div>
-      <div class="small">Сертифицировано</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── SERVICES ── -->
-<section id="services">
-  <div class="reveal">
-    <p class="section-tag">Наши услуги</p>
-    <h2 class="section-title">ЧТО МЫ<br>ПРОИЗВОДИМ</h2>
-  </div>
-
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <span class="service-icon">🦺</span>
-      <div class="service-name">Рабочая одежда</div>
-      <p class="service-desc">Костюмы, комбинезоны, жилеты для производственных предприятий и строительства. Износостойкие ткани, усиленные швы.</p>
-      <div class="service-price">от 1 200 ₽ / изделие</div>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-icon">👔</span>
-      <div class="service-name">Корпоративная форма</div>
-      <p class="service-desc">Деловые костюмы, рубашки и блузы с вышивкой логотипа. Единый стиль для вашей команды.</p>
-      <div class="service-price">от 2 500 ₽ / изделие</div>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-icon">🔥</span>
-      <div class="service-name">Защитная одежда</div>
-      <p class="service-desc">Спецодежда от огня, химикатов и экстремальных температур. Сертифицировано по ГОСТ и EN ISO.</p>
-      <div class="service-price">от 4 800 ₽ / изделие</div>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-icon">🏥</span>
-      <div class="service-name">Медицинская одежда</div>
-      <p class="service-desc">Халаты, костюмы хирурга, медсестёр. Антибактериальные ткани, удобный крой, долговечность.</p>
-      <div class="service-price">от 900 ₽ / изделие</div>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-icon">🍽️</span>
-      <div class="service-name">Форма для HoReCa</div>
-      <p class="service-desc">Кухонные куртки, фартуки, форма официантов. Термостойкие и лёгкие в уходе материалы.</p>
-      <div class="service-price">от 1 800 ₽ / изделие</div>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-icon">✏️</span>
-      <div class="service-name">Дизайн и брендинг</div>
-      <p class="service-desc">Разработка фирменного стиля одежды, вышивка и термотрансфер логотипа, разработка технических спецификаций.</p>
-      <div class="service-price">от 5 000 ₽ / проект</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── ABOUT ── -->
-<section id="about">
-  <div class="about-image reveal">
-    <div class="about-img-main">
-      <!-- Workshop SVG -->
-      <svg class="workshop-svg" viewBox="0 0 280 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Sewing machine -->
-        <rect x="40" y="120" width="200" height="80" rx="6" fill="#2a3548" stroke="rgba(212,146,42,0.4)" stroke-width="1.5"/>
-        <rect x="60" y="100" width="140" height="30" rx="4" fill="#1c2330" stroke="rgba(212,146,42,0.4)" stroke-width="1.5"/>
-        <circle cx="160" cy="115" r="12" fill="#232d3f" stroke="rgba(212,146,42,0.6)" stroke-width="2"/>
-        <circle cx="160" cy="115" r="5" fill="rgba(212,146,42,0.7)"/>
-        <!-- Arm -->
-        <path d="M100 100 L100 40 L200 40 L200 100" stroke="rgba(212,146,42,0.5)" stroke-width="10" stroke-linecap="round" fill="none"/>
-        <!-- Needle -->
-        <line x1="200" y1="60" x2="200" y2="140" stroke="rgba(212,146,42,0.9)" stroke-width="2.5" stroke-linecap="round"/>
-        <!-- Thread spool -->
-        <ellipse cx="90" cy="50" rx="20" ry="26" fill="#2a3548" stroke="rgba(212,146,42,0.5)" stroke-width="1.5"/>
-        <ellipse cx="90" cy="50" rx="12" ry="18" fill="rgba(212,146,42,0.15)" stroke="rgba(212,146,42,0.4)" stroke-width="1"/>
-        <!-- Fabric -->
-        <path d="M40 155 Q70 148 100 155 Q130 162 160 155 Q190 148 240 155" stroke="rgba(212,146,42,0.6)" stroke-width="2.5" fill="none"/>
-        <!-- Controls -->
-        <circle cx="70" cy="150" r="8" fill="#1c2330" stroke="rgba(212,146,42,0.4)" stroke-width="1"/>
-        <circle cx="100" cy="150" r="8" fill="#1c2330" stroke="rgba(212,146,42,0.4)" stroke-width="1"/>
-        <!-- Table legs -->
-        <rect x="55" y="200" width="12" height="40" rx="3" fill="#1c2330"/>
-        <rect x="215" y="200" width="12" height="40" rx="3" fill="#1c2330"/>
-      </svg>
-    </div>
-    <div class="about-badge">
-      <div class="num">12</div>
-      <div class="label">ЛЕТ<br>НА РЫНКЕ</div>
-    </div>
-  </div>
-
-  <div class="about-content reveal">
-    <p class="section-tag">О компании</p>
-    <h2 class="section-title">МЫ ШЬЁМ<br>БУДУЩЕЕ</h2>
-    <p class="about-text">
-      ПрофОдежда — российский производитель спецодежды с собственным цехом площадью 2 400 м². 
-      Работаем с малым бизнесом и крупными корпорациями, исполняем заказы от 10 до 100 000 единиц.
-    </p>
-    <p class="about-text">
-      Наши технологи и конструкторы разрабатывают лекала с нуля под ваши требования. 
-      Все ткани проходят входной контроль качества и имеют сертификаты соответствия.
-    </p>
-
-    <div class="values">
-      <div class="value-item">
-        <div class="value-title">Собственное производство</div>
-        <div class="value-desc">Полный цикл: от раскроя до контроля качества — всё под одной крышей</div>
-      </div>
-      <div class="value-item">
-        <div class="value-title">Сертифицированные ткани</div>
-        <div class="value-desc">Только проверенные поставщики, ГОСТ и европейские стандарты</div>
-      </div>
-      <div class="value-item">
-        <div class="value-title">Гарантия 12 месяцев</div>
-        <div class="value-desc">На каждое изделие распространяется полная гарантийная поддержка</div>
-      </div>
-      <div class="value-item">
-        <div class="value-title">Точно в срок</div>
-        <div class="value-desc">98% заказов сдаётся в оговорённые сроки без переплат</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── PORTFOLIO ── -->
-<section id="portfolio">
-  <div class="portfolio-header reveal">
     <div>
-      <p class="section-tag">Портфолио</p>
-      <h2 class="section-title">НАШИ<br>РАБОТЫ</h2>
-    </div>
-    <a href="#contacts" class="btn-ghost" style="margin-bottom: 10px;">
-      <span class="arrow">→</span> Все проекты
-    </a>
-  </div>
-
-  <div class="portfolio-grid">
-    <div class="port-item reveal">
-      <div class="port-bg" style="background: linear-gradient(135deg,#1c2f3f,#0f1a25);"></div>
-      <div class="port-inner"><div class="port-emoji">🏗️</div></div>
-      <div class="port-overlay">
-        <div class="port-name">СтройГрупп</div>
-        <div class="port-meta">1 200 ед. · Строительная отрасль</div>
-      </div>
-    </div>
-    <div class="port-item reveal">
-      <div class="port-bg" style="background: linear-gradient(135deg,#2f1c3f,#1a0f25);"></div>
-      <div class="port-inner"><div class="port-emoji">🍕</div></div>
-      <div class="port-overlay">
-        <div class="port-name">FoodChain</div>
-        <div class="port-meta">350 ед. · Ресторанная сеть</div>
-      </div>
-    </div>
-    <div class="port-item reveal">
-      <div class="port-bg" style="background: linear-gradient(135deg,#1c3f2a,#0f2515);"></div>
-      <div class="port-inner"><div class="port-emoji">⚙️</div></div>
-      <div class="port-overlay">
-        <div class="port-name">МашПром</div>
-        <div class="port-meta">5 400 ед. · Машиностроение</div>
-      </div>
-    </div>
-    <div class="port-item reveal">
-      <div class="port-bg" style="background: linear-gradient(135deg,#3f2a1c,#251a0f);"></div>
-      <div class="port-inner"><div class="port-emoji">🏥</div></div>
-      <div class="port-overlay">
-        <div class="port-name">Медклиника</div>
-        <div class="port-meta">800 ед. · Здравоохранение</div>
-      </div>
-    </div>
-    <div class="port-item reveal">
-      <div class="port-bg" style="background: linear-gradient(135deg,#1c2a3f,#0f1525);"></div>
-      <div class="port-inner"><div class="port-emoji">✈️</div></div>
-      <div class="port-overlay">
-        <div class="port-name">АвиаСервис</div>
-        <div class="port-meta">2 100 ед. · Авиация</div>
+      <div class="hero-card">
+        <h3>Узнай, свободен ли твой город</h3>
+        <div class="fg"><input type="text" placeholder="Ваше имя"></div>
+        <div class="fg"><input type="tel" placeholder="Ваш телефон"></div>
+        <div class="fg"><input type="text" placeholder="Ваш город"></div>
+        <div class="fg">
+          <select>
+            <option>Есть ли опыт в бизнесе?</option>
+            <option>Да, есть</option>
+            <option>Нет, первый раз</option>
+          </select>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="showModal()">Отправить заявку →</button>
+        <p class="form-note">Данные не передаются третьим лицам. Перезвоним за 30 мин.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── PRICING ── -->
-<section id="pricing">
-  <div class="pricing-intro reveal">
-    <p class="section-tag">Условия и сроки</p>
-    <h2 class="section-title">ПРОЗРАЧНЫЕ<br>ЦЕНЫ</h2>
-    <p>Мы работаем по трём форматам сотрудничества. Выберите подходящий или свяжитесь с нами для индивидуального предложения.</p>
+<!-- ========== MARQUEE ========== -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">ЁбиСан — Франшиза из Перми</span>
+    <span class="marquee-item">150+ позиций в меню</span>
+    <span class="marquee-item">От 350 000 ₽ чистыми в месяц</span>
+    <span class="marquee-item">Окупаемость от 4 месяцев</span>
+    <span class="marquee-item">Еда — это эмоция счастья</span>
+    <span class="marquee-item">Поддержка 24/7</span>
+    <span class="marquee-item">ЁбиСан — Франшиза из Перми</span>
+    <span class="marquee-item">150+ позиций в меню</span>
+    <span class="marquee-item">От 350 000 ₽ чистыми в месяц</span>
+    <span class="marquee-item">Окупаемость от 4 месяцев</span>
+    <span class="marquee-item">Еда — это эмоция счастья</span>
+    <span class="marquee-item">Поддержка 24/7</span>
   </div>
+</div>
 
-  <div class="pricing-grid">
-    <div class="pricing-card reveal">
-      <div class="pricing-tier">Старт</div>
-      <div class="pricing-price">от 1 500 ₽</div>
-      <div class="pricing-unit">за изделие · партия от 50 ед.</div>
-      <ul class="pricing-features">
-        <li>Стандартный крой из готовых лекал</li>
-        <li>1 цветовое исполнение</li>
-        <li>Нанесение логотипа (термотрансфер)</li>
-        <li>Сдача партии: 14–21 рабочий день</li>
-        <li>Гарантия 6 месяцев</li>
+<!-- ========== COUNTER BAR ========== -->
+<div class="counter-bar">
+  <div class="counter-grid">
+    <div class="counter-item"><div class="cv" data-target="15">0</div><div class="cl">Точек по России</div></div>
+    <div class="counter-item"><div class="cv" data-target="150">0</div><div class="cl">Позиций в меню</div></div>
+    <div class="counter-item"><div class="cv" data-target="350">0</div><div class="cl">Клиентов на старте</div></div>
+    <div class="counter-item"><div class="cv" data-target="54">0</div><div class="cl">% возвращаемость</div></div>
+    <div class="counter-item"><div class="cv" data-target="98">0</div><div class="cl">% довольных гостей</div></div>
+  </div>
+</div>
+
+<!-- ========== VIDEO SECTION ========== -->
+<div class="video-section">
+  <div class="video-content">
+    <div class="video-placeholder">
+      <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="ЁбиСан">
+      <div class="play-btn">▶</div>
+    </div>
+    <div class="video-text">
+      <div class="section-tag">Посмотри видео</div>
+      <h2 class="heading-lg">Узнай, как мы выросли до сети за&nbsp;3&nbsp;года</h2>
+      <p>Оставь заявку и получи подробную презентацию франшизы, финансовую модель и доступ к закрытому видео от основателя ЁбиСан.</p>
+      <p>Мы расскажем, как начать бизнес в доставке японской кухни с нуля, даже без опыта в общепите.</p>
+      <a href="#cta" class="btn-primary" style="margin-top:1.5rem;">Получить презентацию →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PRODUCT SHOWCASE ========== -->
+<div class="products-section">
+  <div class="products-header">
+    <div class="section-tag">Наше меню</div>
+    <h2 class="heading-lg">150+ позиций — от роллов до десертов</h2>
+    <p style="color:rgba(255,255,255,0.5);margin-top:0.8rem;max-width:600px;">Запечённые, жареные, авторские роллы, футомаки, гёдза, гунканы, поке, боулы, супы, лапша, десерты. Рентабельность меню — 75%. Списания = 0.</p>
+  </div>
+  <div class="products-scroll">
+    <div class="product-card">
+      <img src="https://ebisan.ru/upload/iblock/354/20tukiabep0o6i22dzuybshl0k3pvhha.jpg" alt="Запечённый черри">
+      <div class="product-card-body">
+        <h4>Запечённый черри</h4>
+        <div class="price">399 ₽</div>
+        <div class="desc">Рис, нори, творожный сыр, курица, салат, помидоры черри</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://ebisan.ru/upload/iblock/481/a6h137ppjz1mn2083jc3joxlp1swyjzn.jpg" alt="Запечённый с курицей">
+      <div class="product-card-body">
+        <h4>Запечённый с курицей</h4>
+        <div class="price">449 ₽</div>
+        <div class="desc">Рис, нори, творожный сыр, копчёная курица, сырный замес</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://ebisan.ru/upload/iblock/751/v04egl29w41gzf8vkdzkzfk6ihl10tqk.jpg" alt="Запечённый табаско">
+      <div class="product-card-body">
+        <h4>Запечённый табаско</h4>
+        <div class="price">449 ₽</div>
+        <div class="desc">Рис, нори, курица, сыр, огурец, соус табаско, чили</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://ebisan.ru/upload/iblock/801/q6pfjhowcpet3pov523kp00oq8309g5h.jpg" alt="Запечённый в чесноке">
+      <div class="product-card-body">
+        <h4>Запечённый в чесноке</h4>
+        <div class="price">449 ₽</div>
+        <div class="desc">Рис, нори, копчёный лосось, сыр, огурец, чеснок</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://ebisan.ru/upload/iblock/87a/1bzjkhgmo00gxng2vj68699qapat4vjd.jpg" alt="Опалённый лосось">
+      <div class="product-card-body">
+        <h4>Запечённый опалённый лосось</h4>
+        <div class="price">629 ₽</div>
+        <div class="desc">Рис, лосось, сыр, огурец, краб, икра лососевая</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://ebisan.ru/upload/iblock/240/76acn0j8ussvg6t31wwsgft2duitptaq.jpg" alt="Тамаго блин">
+      <div class="product-card-body">
+        <h4>Запечённый тамаго блин</h4>
+        <div class="price">749 ₽</div>
+        <div class="desc">Рис, нори, копчёный лосось, сыр, огурец, блин тамаго</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://ebisan.ru/upload/iblock/2cb/gl4ozriqx10dh6yun9hxpdskz1yb2fxb.jpg" alt="Запечённый с креветкой">
+      <div class="product-card-body">
+        <h4>Запечённый с креветкой</h4>
+        <div class="price">849 ₽</div>
+        <div class="desc">Рис, нори, авокадо, лосось, омлет, креветка</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://ebisan.ru/upload/iblock/784/n4un0sfno2q7p1q3zvne3rwreblxtk0e.jpg" alt="Жареный с курицей">
+      <div class="product-card-body">
+        <h4>Жареный ролл с курицей</h4>
+        <div class="price">379 ₽</div>
+        <div class="desc">Рис, нори, курица, сыр, огурец, кляр, панко</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://ebisan.ru/upload/iblock/017/3aml9lhzveagu7f645rdivs9zjgxdjkv.jpg" alt="Жареная Филадельфия">
+      <div class="product-card-body">
+        <h4>Жареная Филадельфия</h4>
+        <div class="price">589 ₽</div>
+        <div class="desc">Рис, нори, сыр, авокадо, лосось, краб, тобико</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://ebisan.ru/upload/iblock/3e4/8cv1esqmcwp2jwaym71h0gvzbrk3yt0o.jpg" alt="Запечённый 4на4 с креветкой">
+      <div class="product-card-body">
+        <h4>Запечённый 4на4 с креветкой</h4>
+        <div class="price">849 ₽</div>
+        <div class="desc">Рис, нори, авокадо, лосось, омлет, креветка, спайси</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://ebisan.ru/upload/iblock/cb0/sp6lnydqjd3t41q2o6vhk1zd193p55w3.jpg" alt="Ролл с гребешком">
+      <div class="product-card-body">
+        <h4>Запечённый с гребешком</h4>
+        <div class="price">449 ₽</div>
+        <div class="desc">Рис, нори, сыр, омлет, огурец, шарики том ям, гребешок</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://ebisan.ru/upload/iblock/206/ihpad36dbf4gbap3kjmrcol098378h4l.jpg" alt="Нежный угорь">
+      <div class="product-card-body">
+        <h4>Запечённый нежный угорь</h4>
+        <div class="price">449 ₽</div>
+        <div class="desc">Рис, нори, сыр, омлет, кунжут, угорь, яки соус</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== WHY SECTION ========== -->
+<div class="why-section" id="why">
+  <div class="wrap">
+    <div class="section-tag">Почему ЁбиСан</div>
+    <h2 class="heading-lg">Франшиза ЁбиСан — это</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card fade-in"><h3>150+ позиций в меню</h3><p>Запечённые, жареные, авторские роллы, футомаки, гёдза, боулы, супы, десерты и многое другое. Каждый клиент найдёт любимое. Рентабельность меню — 75%.</p></div>
+    <div class="why-card fade-in"><h3>Запуск за 30 дней</h3><p>Первая продажа через 30 дней после заключения договора. Помогаем с каждым этапом — от помещения до первого заказа.</p></div>
+    <div class="why-card fade-in"><h3>Возвращаемость клиентов</h3><p>Больше половины клиентов возвращаются за повторным заказом. 30% новых клиентов приходят по рекомендации. Продукт продаёт сам себя.</p></div>
+    <div class="why-card fade-in"><h3>Рост рынка 23% в год</h3><p>Рынок доставки еды стабильно растёт. ЁбиСан растёт вместе с рынком в любое время года.</p></div>
+    <div class="why-card fade-in"><h3>Стандарт ХАССП</h3><p>Соблюдаем все нормы безопасности и качества. Ни одного партнёра не закрыли за всё время работы.</p></div>
+    <div class="why-card fade-in">h3>Нулевое списание</h3><p>Благодаря точно проработанному меню и технологии приготовления, списания продуктов = 0.</p></div>
+  </div>
+</div>
+
+<!-- ========== BANNERS GALLERY ========== -->
+<div class="banners-section">
+  <div class="banners-grid">
+    <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="ЁбиСан баннер">
+    <img src="data:image/jpeg;base64,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" alt="ЁбиСан меню">
+    <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="ЁбиСан доставка">
+  </div>
+</div>
+
+<!-- ========== FOUNDER ========== -->
+<div class="founder-section">
+  <div class="founder-content">
+    <div class="slide-l">
+      <div class="section-tag">О компании</div>
+      <h2 class="heading-lg">Еда — это эмоция счастья, а счастье должно быть у каждого</h2>
+      <div class="founder-quote" style="margin-top:2rem;">
+        «Компания ЁбиСан начала своё существование в 2021 году в Перми. Мы стремимся делать качественный сервис и занять лидирующую позицию на рынке роллов и суши. У нас молодая, но очень амбициозная команда. Мы влюбляем в наши роллы качеством продукта, скоростью доставки и доступной ценой.»
+      </div>
+      <div class="founder-name">Основатель сети ЁбиСан</div>
+      <div class="founder-title">г. Пермь • с 2021 года</div>
+      <a href="#cta" class="btn-primary" style="margin-top:2rem;">Получить финансовую модель →</a>
+    </div>
+    <div class="founder-img-wrap">
+      <img src="https://avatars.mds.yandex.net/get-altay/9831711/2a0000018e8379bb2cec8551d7bc7a58145c/XXXL" alt="ЁбиСан бренд">
+      <div class="founder-img-decor"></div>
+      <div class="founder-kanji">鮨</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== ADVANTAGES ========== -->
+<div class="advantages-section" id="adv">
+  <div class="wrap">
+    <div class="section-tag">Преимущества</div>
+    <h2 class="heading-lg">В чём преимущества ЁбиСан</h2>
+  </div>
+  <div class="adv-grid">
+    <div class="adv-card fade-in"><div class="adv-num">01</div><div><h3>Уникальное меню</h3><p>Более 150 позиций: от классики до авторских роллов. Огромные куски рыбы, сбалансированный вкус. 98% положительных отзывов. Средний чек — 1 500 ₽. Foodcost 25-31%.</p></div></div>
+    <div class="adv-card fade-in"><div class="adv-num">02</div><div><h3>IT-система и приложение</h3><p>Собственный сайт заказов, мобильная версия, система лояльности с кэшбеком 5%, бонусная программа. Push-уведомления удерживают клиентов в 2 раза дольше.</p></div></div>
+    <div class="adv-card fade-in"><div class="adv-num">03</div><div><h3>Маркетинг и PR</h3><p>Яркий фирменный стиль. PR-кампания перед открытием — вирусные механики, блогеры, медиахолдинги. Заявки от 96 ₽. Полтысячи подписок с первого дня и поток заказов.</p></div></div>
+    <div class="adv-card fade-in"><div class="adv-num">04</div><div><h3>Федеральные поставщики</h3><p>Работаем с крупными поставщиками. Сетевые скидки на ключевые ингредиенты: сыр Cremette −12%, эквайринг −40%, реклама ВК −5% и ещё 12+ партнёрских программ.</p></div></div>
+    <div class="adv-card fade-in"><div class="adv-num">05</div><div><h3>Обучение и наставник</h3><p>За каждым партнёром — опытный наставник. 2-дневное офлайн-обучение в Перми. 20 сотрудников УК сопровождают каждого франчайзи: маркетинг, IT, юристы, качество.</p></div></div>
+    <div class="adv-card fade-in"><div class="adv-num">06</div><div><h3>Формат «Самовывоз»</h3><p>Стильная точка с открытой кухней. Современный дизайн. 90% гостей, забравших заказ с точки, становятся постоянными. Честность — наш стиль.</p></div></div>
+    <div class="adv-card fade-in"><div class="adv-num">07</div><div><h3>Акции и лояльность</h3><p>Скидка на самовывоз 13%, бизнес-ланчи, скидки пенсионерам, подарки к заказам от 2000 ₽, промокоды. Гибкая система для привлечения и удержания клиентов.</p></div></div>
+    <div class="adv-card fade-in"><div class="adv-num">08</div><div><h3>Корпоративные заказы</h3><p>Дополнительный канал продаж. Банкеты, офисные обеды, праздники — отдельное направление с высоким средним чеком и лояльными клиентами.</p></div></div>
+  </div>
+</div>
+
+<!-- ========== PAYBACK ========== -->
+<div class="payback-section">
+  <div class="section-tag" style="justify-content:center;">Финансы</div>
+  <h2 class="heading-lg">Точка самоокупаемости — 10 заказов в день</h2>
+  <div class="payback-visual">
+    <div class="pb-block"><div class="v">1 500 ₽</div><div class="l">Средний чек</div></div>
+    <div class="pb-op">×</div>
+    <div class="pb-block"><div class="v">10</div><div class="l">Заказов / день</div></div>
+    <div class="pb-op">×</div>
+    <div class="pb-block"><div class="v">30</div><div class="l">Дней / месяц</div></div>
+  </div>
+  <div class="pb-result">
+    <div class="v">450 000 ₽</div>
+    <div class="l">Выручка в месяц на старте</div>
+  </div>
+  <div class="payback-expenses">
+    <div class="expense-item"><div class="v">40 000</div><div class="l">Аренда</div></div>
+    <div class="expense-item"><div class="v">170 000</div><div class="l">ФОТ</div></div>
+    <div class="expense-item"><div class="v">30 000</div><div class="l">Реклама</div></div>
+    <div class="expense-item"><div class="v">10 000</div><div class="l">Роялти</div></div>
+    <div class="expense-item"><div class="v">25-31%</div><div class="l">Продукты</div></div>
+    <div class="expense-item"><div class="v">5 000</div><div class="l">Прочее</div></div>
+  </div>
+  <div style="margin-top:2rem;text-align:center;">
+    <p style="color:rgba(255,255,255,0.5);max-width:600px;margin:0 auto 1.5rem;font-size:0.85rem;">Чистая прибыль — от 350 000 ₽/мес при выходе на плановые показатели. Получи полные финансовые отчёты реальных точек.</p>
+    <a href="#cta" class="btn-gold">Получить финансовые отчёты →</a>
+  </div>
+</div>
+
+<!-- ========== WHAT YOU GET ========== -->
+<div class="get-section">
+  <div class="wrap">
+    <div class="section-tag">Поддержка</div>
+    <h2 class="heading-lg">Что ты получаешь</h2>
+  </div>
+  <div class="get-grid">
+    <div class="get-item fade-in"><h4>Бизнес-план и финмодель</h4><p>БДР, БДДС, ОПИУ. Помощь экономиста.</p></div>
+    <div class="get-item fade-in"><h4>IT-система</h4><p>Сайт, приложение, CRM, аналитика.</p></div>
+    <div class="get-item fade-in"><h4>Маркетинг</h4><p>Федеральный + локальный. PR-запуск.</p></div>
+    <div class="get-item fade-in"><h4>Меню 150+ позиций</h4><p>Сезонные новинки. Обновления.</p></div>
+    <div class="get-item fade-in"><h4>Юридическая помощь</h4><p>Бухгалтерия и юристы на каждом этапе.</p></div>
+    <div class="get-item fade-in"><h4>Контроль качества</h4><p>Тайные покупатели, проверки, стандарты.</p></div>
+    <div class="get-item fade-in"><h4>Запуск под ключ</h4><p>Поиск локации, ремонт, оснащение.</p></div>
+    <div class="get-item fade-in"><h4>Наставник 24/7</h4><p>Персональная поддержка от опытных партнёров.</p></div>
+    <div class="get-item fade-in"><h4>Учёт продуктов</h4><p>Система учёта. Инвентаризация. Нулевые списания.</p></div>
+    <div class="get-item fade-in"><h4>Система лояльности</h4><p>Кэшбек 5%, бонусы, акции, промокоды.</p></div>
+    <div class="get-item fade-in"><h4>Анализ конкурентов</h4><p>Конкурентное преимущество под ваш город.</p></div>
+    <div class="get-item fade-in"><h4>Работа с отзывами</h4><p>Гео-сервисы, репутация, обратная связь.</p></div>
+    <div class="get-item fade-in"><h4>База знаний</h4><p>Корпоративный портал. Единая база.</p></div>
+    <div class="get-item fade-in"><h4>Фирменный стиль</h4><p>Дизайн, упаковка, брендинг.</p></div>
+    <div class="get-item fade-in"><h4>Сетевые скидки</h4><p>Скидки от 12+ федеральных партнёров.</p></div>
+    <div class="get-item fade-in"><h4>Управление финансами</h4><p>Контроль показателей. Отчёты. Рост.</p></div>
+  </div>
+</div>
+
+<!-- ========== PACKAGES ========== -->
+<div class="packages-section" id="packages">
+  <div class="wrap">
+    <div class="section-tag">Варианты сотрудничества</div>
+    <h2 class="heading-lg">Выбери свой формат</h2>
+  </div>
+  <div class="packages-grid">
+    <div class="pkg fade-in">
+      <div class="pkg-name">Быстрый старт</div>
+      <div class="pkg-desc">Dark Kitchen — только доставка</div>
+      <div class="pkg-price">350 000 ₽ <span>взнос</span></div>
+      <ul class="pkg-features">
+        <li>1 точка на 100 000 населения</li>
+        <li>Формат: только доставка</li>
+        <li>Инвестиции от 1 200 000 ₽</li>
+        <li>Срок открытия от 30 дней</li>
+        <li>Роялти 4%</li>
+        <li>Полное обучение</li>
+        <li>Наставник 24/7</li>
       </ul>
-      <div class="pricing-deadline">⏱ Срок: 14–21 рабочих дней</div>
-      <a href="#contacts" class="pricing-cta">Заказать</a>
+      <a href="#cta" class="btn-outline" style="width:100%;text-align:center;display:block;">Подробнее</a>
     </div>
-
-    <div class="pricing-card featured reveal">
-      <div class="featured-badge">Популярное</div>
-      <div class="pricing-tier">Бизнес</div>
-      <div class="pricing-price">от 2 900 ₽</div>
-      <div class="pricing-unit">за изделие · партия от 100 ед.</div>
-      <ul class="pricing-features">
-        <li>Разработка индивидуальных лекал</li>
-        <li>До 3 цветов и фасонов</li>
-        <li>Вышивка логотипа + нашивки</li>
-        <li>Образец за 48 часов</li>
-        <li>Гарантия 12 месяцев</li>
-        <li>Личный менеджер</li>
+    <div class="pkg feat fade-in">
+      <div class="pkg-name">Доставка + Самовывоз</div>
+      <div class="pkg-desc">Полный формат со стильной точкой</div>
+      <div class="pkg-price">450 000 ₽ <span>взнос</span></div>
+      <ul class="pkg-features">
+        <li>1 точка на 150 000 населения</li>
+        <li>Формат: доставка + самовывоз</li>
+        <li>Инвестиции от 1 550 000 ₽</li>
+        <li>Срок открытия от 30 дней</li>
+        <li>Роялти 4%</li>
+        <li>Стильный дизайн точки</li>
+        <li>Открытая кухня</li>
+        <li>Скидка 13% на самовывоз</li>
       </ul>
-      <div class="pricing-deadline">⏱ Срок: 10–14 рабочих дней</div>
-      <a href="#contacts" class="pricing-cta">Заказать</a>
+      <a href="#cta" class="btn-primary" style="width:100%;text-align:center;display:block;justify-content:center;">Получить КП →</a>
     </div>
-
-    <div class="pricing-card reveal">
-      <div class="pricing-tier">Корпорация</div>
-      <div class="pricing-price">Запрос</div>
-      <div class="pricing-unit">партия от 500 ед. · договорная цена</div>
-      <ul class="pricing-features">
-        <li>Полная разработка коллекции</li>
-        <li>Неограниченные варианты фасонов</li>
-        <li>Любые методы нанесения</li>
-        <li>Приоритетное производство</li>
-        <li>Гарантия 18 месяцев</li>
-        <li>Выезд технолога на объект</li>
+    <div class="pkg fade-in">
+      <div class="pkg-name">Смена бренда</div>
+      <div class="pkg-desc">Для действующих доставок</div>
+      <div class="pkg-price">По запросу</div>
+      <ul class="pkg-features">
+        <li>Эксклюзив на город</li>
+        <li>Любой формат</li>
+        <li>Инвестиции от 800 000 ₽</li>
+        <li>Запуск от 10 дней</li>
+        <li>Роялти 4%</li>
+        <li>Ребрендинг под ключ</li>
+        <li>Переобучение команды</li>
       </ul>
-      <div class="pricing-deadline">⏱ Срок: 7–10 рабочих дней</div>
-      <a href="#contacts" class="pricing-cta">Получить КП</a>
+      <a href="#cta" class="btn-outline" style="width:100%;text-align:center;display:block;">Подробнее</a>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ── CONTACTS ── -->
-<section id="contacts">
-  <div class="reveal">
-    <p class="section-tag">Связаться с нами</p>
-    <h2 class="section-title">НАЧНЁМ<br>ВМЕСТЕ</h2>
-  </div>
-
-  <div class="contacts-wrap">
-    <div class="contact-info reveal">
-      <div class="contact-block">
-        <div class="contact-label">Телефон</div>
-        <a href="tel:+74951234567" class="contact-value">+7 (495) 123-45-67</a>
-        <div class="contact-sub">Бесплатный звонок по России</div>
-      </div>
-      <div class="contact-block">
-        <div class="contact-label">Email</div>
-        <a href="mailto:zakaz@profordejda.ru" class="contact-value">zakaz@profordejda.ru</a>
-        <div class="contact-sub">Отвечаем в течение 2 часов</div>
-      </div>
-      <div class="contact-block">
-        <div class="contact-label">Адрес производства</div>
-        <span class="contact-value" style="font-size: 20px;">г. Москва, ул. Производственная, 14, стр. 3</span>
-        <div class="contact-sub">Показываем цех по предварительной записи</div>
-      </div>
-
-      <div class="working-hours">
-        <div class="wh-row"><span class="wh-day">Понедельник – Пятница</span><span class="wh-time open">09:00 – 19:00</span></div>
-        <div class="wh-row"><span class="wh-day">Суббота</span><span class="wh-time open">10:00 – 16:00</span></div>
-        <div class="wh-row"><span class="wh-day">Воскресенье</span><span class="wh-time">Выходной</span></div>
+<!-- ========== PICKUP FORMAT ========== -->
+<div class="pickup-section">
+  <div class="pickup-content">
+    <div class="pickup-images">
+      <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="ЁбиСан точка">
+      <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="ЁбиСан самовывоз">
+      <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="ЁбиСан доставка">
+      <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="ЁбиСан бренд">
+    </div>
+    <div class="pickup-text">
+      <div class="section-tag">Формат самовывоза</div>
+      <h2 class="heading-lg">Стильная точка с открытой кухней</h2>
+      <p>Это не унылая точка выдачи. Это свежий, яркий дизайн, который привлекает внимание. Открытая кухня — нам нечего прятать от гостей. Честность — наш стиль.</p>
+      <p>Гости, забирая заказ с такой точки, с огромной вероятностью становятся постоянными клиентами.</p>
+      <div class="pickup-stat">
+        <div class="v">90%</div>
+        <div class="l">гостей становятся постоянными</div>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="contact-form reveal">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Ваше имя</label>
-          <input type="text" placeholder="Иван Иванов" id="f-name">
-        </div>
-        <div class="form-group">
-          <label>Компания</label>
-          <input type="text" placeholder="ООО «Пример»" id="f-company">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Телефон</label>
-          <input type="tel" placeholder="+7 (___) ___-__-__" id="f-phone">
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" placeholder="email@company.ru" id="f-email">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Тип одежды</label>
-        <select id="f-type">
-          <option value="">Выберите категорию...</option>
-          <option>Рабочая / защитная одежда</option>
-          <option>Корпоративная форма</option>
-          <option>Медицинская одежда</option>
-          <option>Форма для HoReCa</option>
-          <option>Другое</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Количество (ед.)</label>
-          <input type="number" placeholder="100" id="f-qty">
-        </div>
-        <div class="form-group">
-          <label>Желаемый срок</label>
-          <input type="text" placeholder="например, 3 недели" id="f-deadline">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Комментарий</label>
-        <textarea placeholder="Опишите ваши требования, прикрепите ТЗ или ссылку на референс..." id="f-comment"></textarea>
-      </div>
-      <button class="form-submit" onclick="submitForm()">Отправить заявку →</button>
-      <p class="form-note">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Отвечаем в течение 2 рабочих часов.</p>
+<!-- ========== MENTORS ========== -->
+<div class="mentors-section">
+  <div class="wrap">
+    <div class="section-tag">Наставники</div>
+    <h2 class="heading-lg">За каждым партнёром — наставник</h2>
+    <p style="color:rgba(255,255,255,0.5);margin-top:0.8rem;">За каждым новичком закрепляются опытные партнёры и помогают по любым вопросам. 20 сотрудников управляющей компании сопровождают каждого франчайзи.</p>
+  </div>
+  <div class="mentors-grid">
+    <div class="mentor-card fade-in"><h4>Отдел маркетинга</h4><div class="role">SMM, таргет, инфлюенсеры</div><p>Федеральный и локальный маркетинг. Работа с блогерами. Вирусные PR-кампании.</p></div>
+    <div class="mentor-card fade-in"><h4>Отдел IT</h4><div class="role">Разработка, поддержка</div><p>Сайт, приложение, CRM-система. Техническая поддержка 24/7. Обновления и новые фичи.</p></div>
+    <div class="mentor-card fade-in"><h4>Отдел развития</h4><div class="role">Сопровождение партнёров</div><p>Персональный менеджер. Помощь в управлении финансами и достижении целей.</p></div>
+    <div class="mentor-card fade-in"><h4>Контроль качества</h4><div class="role">Стандарты, проверки</div><p>Тайные покупатели. Проверка продукции. Соблюдение стандарта ХАССП.</p></div>
+    <div class="mentor-card fade-in"><h4>R&D и шеф-повара</h4><div class="role">Меню и рецептуры</div><p>Разработка новых позиций. Сезонные обновления. Обучение поваров.</p></div>
+    <div class="mentor-card fade-in"><h4>Бухгалтерия и юристы</h4><div class="role">Финансы и право</div><p>Полная юридическая и бухгалтерская поддержка на каждом этапе работы.</p></div>
+  </div>
+</div>
+
+<!-- ========== REVIEWS ========== -->
+<div class="reviews-section" id="reviews">
+  <div class="wrap">
+    <div class="section-tag">Отзывы</div>
+    <h2 class="heading-lg">Что говорят о ЁбиСан</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card fade-in"><div class="review-qm">引</div><p class="text">Это лучшие роллы! Большие, не разваливаются, уксус не чувствуется. Лучшее, что есть в Перми! Заказываем каждую неделю всей семьёй.</p><div class="author">Постоянный клиент</div><div class="city">г. Пермь</div></div>
+    <div class="review-card fade-in"><div class="review-qm">引</div><p class="text">Я думала, не осталось бюджетных доставок с большим количеством начинки. Но ЁбиСан нашлись! Теперь это моя самая любимая доставка роллов.</p><div class="author">Постоянный клиент</div><div class="city">г. Пермь</div></div>
+    <div class="review-card fade-in"><div class="review-qm">引</div><p class="text">Классные и вкусные роллы с огромными кусками лосося. Хорошая доставка, быстро привозят. Цены адекватные. Однозначно рекомендую!</p><div class="author">Постоянный клиент</div><div class="city">г. Пермь</div></div>
+    <div class="review-card fade-in"><div class="review-qm">引</div><p class="text">Открылись быстро, компания реально помогает на каждом этапе. До этого ничего не понимал в общепите. Прошёл обучение — и поехало! Окупились за 4 месяца.</p><div class="author">Алексей К.</div><div class="city">Франчайзи, г. Екатеринбург</div></div>
+    <div class="review-card fade-in"><div class="review-qm">引</div><p class="text">Качество продукта — это главное. Клиенты сами рекомендуют друзьям. За полгода окупили инвестиции и задумываемся о второй точке.</p><div class="author">Мария В.</div><div class="city">Франчайзи, г. Тюмень</div></div>
+    <div class="review-card fade-in"><div class="review-qm">引</div><p class="text">150+ позиций в меню — конкуренты близко не стоят. Маркетинговая поддержка: PR-кампания дала 500+ подписчиков за неделю до открытия. Мощный старт.</p><div class="author">Дмитрий С.</div><div class="city">Франчайзи, г. Челябинск</div></div>
+  </div>
+  <div style="text-align:center;margin-top:3rem;">
+    <a href="#cta" class="btn-primary">Стать партнёром →</a>
+  </div>
+</div>
+
+<!-- ========== GUARANTEE ========== -->
+<div class="guarantee-section">
+  <div style="max-width:700px;margin:0 auto;">
+    <div class="guarantee-badge"><div class="pct">100</div><div class="txt">Гарантия</div></div>
+    <h2 class="heading-lg">Гарантия возврата инвестиций</h2>
+    <p style="color:rgba(255,255,255,0.65);margin-top:1rem;line-height:1.7;">Мы уверены в своём продукте. Если точка не выйдет на окупаемость при соблюдении технологии — вернём паушальный взнос. Это наша ответственность перед каждым партнёром.</p>
+    <a href="#cta" class="btn-gold" style="margin-top:2rem;">Получить условия гарантии →</a>
+  </div>
+</div>
+
+<!-- ========== STEPS ========== -->
+<div class="steps-section" id="steps">
+  <div class="wrap">
+    <div class="section-tag">Как начать</div>
+    <h2 class="heading-lg">5 шагов до своей доставки</h2>
+  </div>
+  <div class="steps-grid">
+    <div class="step fade-in"><div class="step-num">01</div><h4>Заявка</h4><p>Оставляешь заявку. Получаешь бизнес-план и финмодель</p></div>
+    <div class="step fade-in"><div class="step-num">02</div><h4>Обучение</h4><p>2-дневное офлайн-обучение в Перми на реальном производстве</p></div>
+    <div class="step fade-in"><div class="step-num">03</div><h4>Подготовка</h4><p>Помогаем найти помещение, закупить оборудование, нанять персонал</p></div>
+    <div class="step fade-in"><div class="step-num">04</div><h4>PR + Запуск</h4><p>Запускаем вирусную PR-кампанию. Первый заказ через 30 дней</p></div>
+    <div class="step fade-in"><div class="step-num">05</div><h4>Рост</h4><p>Сопровождение 24/7. Помогаем масштабировать до 2-й и 3-й точки</p></div>
+  </div>
+</div>
+
+<!-- ========== TRAINING ========== -->
+<div class="training-section" id="training">
+  <div class="wrap" style="margin-bottom:3rem;">
+    <div class="section-tag">Обучение</div>
+    <h2 class="heading-lg">Бесплатное 2-дневное офлайн обучение в Перми</h2>
+    <p style="color:rgba(255,255,255,0.5);margin-top:0.8rem;max-width:600px;">Два продуктивных дня изучения бизнеса ЁбиСан изнутри. Посмотришь на действующее производство. Узнаешь, как открыть и эффективно управлять доставкой.</p>
+  </div>
+  <div class="training-content">
+    <div class="training-day fade-in">
+      <h3>День 1</h3>
+      <div class="schedule-item"><div class="time">10:00 — 12:00</div><div class="topic">История компании, принципы и цели ЁбиСан</div></div>
+      <div class="schedule-item"><div class="time">12:30 — 14:00</div><div class="topic">Путь открытия точки: конкурентный анализ и выбор локации</div></div>
+      <div class="schedule-item"><div class="time">14:15 — 16:00</div><div class="topic">Каналы продаж, IT-система, приложение и CRM</div></div>
+      <div class="schedule-item"><div class="time">16:15 — 18:00</div><div class="topic">Маркетинг, продвижение, ценообразование, продукт</div></div>
+    </div>
+    <div class="training-day fade-in">
+      <h3>День 2</h3>
+      <div class="schedule-item"><div class="time">11:00 — 12:30</div><div class="topic">Посещение действующего производства и офиса</div></div>
+      <div class="schedule-item"><div class="time">13:00 — 14:00</div><div class="topic">Найм, адаптация и управление персоналом</div></div>
+      <div class="schedule-item"><div class="time">14:15 — 15:45</div><div class="topic">Бизнес-план, финансовая модель, кейсы партнёров</div></div>
+      <div class="schedule-item"><div class="time">16:00 — 18:00</div><div class="topic">Инвестиции, договор, зоны ответственности</div></div>
     </div>
   </div>
-</section>
+  <div style="text-align:center;margin-top:3rem;">
+    <p style="color:rgba(255,255,255,0.5);margin-bottom:1.5rem;font-size:0.85rem;">Поездка в Пермь — это время и деньги. Мы возместим часть затрат скидкой <b style="color:var(--gold);">15 000 ₽</b> на паушальный взнос</p>
+    <a href="#cta" class="btn-primary">Записаться на обучение →</a>
+  </div>
+</div>
 
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-logo">ПРОФ<span>ОДЕЖДА</span></div>
-  <div class="footer-copy">© 2025 ПрофОдежда. Все права защищены.</div>
-  <div class="footer-links">
-    <a href="#home">Главная</a>
-    <a href="#about">О нас</a>
-    <a href="#portfolio">Портфолио</a>
-    <a href="#contacts">Контакты</a>
+<!-- ========== SMALL CITIES ========== -->
+<div class="small-cities">
+  <div class="section-tag" style="justify-content:center;">Малые города</div>
+  <h2 class="heading-md">Специальные условия для малых городов</h2>
+  <p>В городах с населением до 50 000 человек инвестиции ниже на 20%, а окупаемость быстрее в 2 раза. В России 789 таких городов. Оставь заявку, чтобы узнать подробности.</p>
+  <a href="#cta" class="btn-primary" style="margin-top:1.5rem;">Узнать условия →</a>
+</div>
+
+<!-- ========== HARD WORK ========== -->
+<div class="hardwork-section">
+  <div class="hardwork-content">
+    <div>
+      <div class="section-tag">Честно о работе</div>
+      <h2 class="heading-lg">Да, придётся пахать</h2>
+      <p style="color:rgba(255,255,255,0.55);margin-top:1rem;line-height:1.7;">Мы не верим, что бизнес может развиваться без участия предпринимателя. Если вы надеетесь вложить деньги и больше никогда не появляться на кухне — эта франшиза не для вас.</p>
+      <p style="color:rgba(255,255,255,0.55);margin-top:0.8rem;line-height:1.7;">Халявы не будет. Но с нами вы будете не одни. 20 специалистов УК сопровождают каждого партнёра.</p>
+    </div>
+    <div>
+      <div class="hw-block"><h4>Ищем единомышленников, а не капитал</h4><p>Мы зарабатываем не на вступительном взносе, а на успехе партнёров. Нам важно, чтобы вы были нашим человеком.</p></div>
+      <div class="hw-block"><h4>Клиенты — смысл нашей работы</h4><p>Мы делаем всё ради клиентов. Позитивно реагируем на критику и всегда готовы исправлять ошибки.</p></div>
+      <div class="hw-block"><h4>Открытость</h4><p>Мы уверены: открытость делает нас лучше. Открыты перед сотрудниками, клиентами и партнерами.</p></div>
+      <div class="hw-block"><h4>Стремление к совершенству</h4><p>Всё можно сделать лучше. Мы любим всё новое и необычное, любим удивлять и баловать гостей.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== NO EXPERIENCE ========== -->
+<div style="background:var(--dark-bg);padding:5rem 3rem;">
+  <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
+    <div class="fade-in" style="background:var(--card-bg);border:1px solid rgba(255,255,255,0.05);padding:2.5rem;text-align:center;">
+      <div style="font-size:3rem;margin-bottom:1rem;"></div>
+      <div style="font-family:'Unbounded',sans-serif;font-weight:900;font-size:2rem;color:var(--gold);">67%</div>
+      <p style="color:rgba(255,255,255,0.5);margin-top:0.5rem;font-size:0.85rem;">партнёров впервые в бизнесе — и они уже успешно управляют доставкой</p>
+    </div>
+    <div class="fade-in" style="background:var(--card-bg);border:1px solid rgba(255,255,255,0.05);padding:2.5rem;text-align:center;">
+      <div style="font-size:3rem;margin-bottom:1rem;"></div>
+      <div style="font-family:'Unbounded',sans-serif;font-weight:900;font-size:2rem;color:var(--gold);">93%</div>
+      <p style="color:rgba(255,255,255,0.5);margin-top:0.5rem;font-size:0.85rem;">партнёров впервые работают с общественным питанием</p>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PARTNERS BAR ========== -->
+<div class="partners-bar">
+  <div style="text-align:center;margin-bottom:2rem;">
+    <div class="section-tag" style="justify-content:center;">Федеральные партнёры</div>
+    <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;">Специальные скидки и условия для сети ЁбиСан</p>
+  </div>
+  <div class="partners-logos">
+    <span class="partner-logo">ВКонтакте</span>
+    <span class="partner-logo">Яндекс</span>
+    <span class="partner-logo">Сбербанк</span>
+    <span class="partner-logo">2ГИС</span>
+    <span class="partner-logo">Cremette</span>
+    <span class="partner-logo">Чиббис</span>
+  </div>
+</div>
+
+<!-- ========== CTA ========== -->
+<div class="cta-section" id="cta">
+  <div class="cta-content">
+    <div class="section-tag" style="justify-content:center;">Начни сейчас</div>
+    <h2 class="heading-lg">Готов стать партнёром ЁбиСан?</h2>
+    <p>Оставь заявку — получи бизнес-план, финансовую модель и презентацию франшизы. Проверим, свободен ли твой город.</p>
+    <div class="cta-form">
+      <input type="text" placeholder="Ваше имя">
+      <input type="tel" placeholder="Телефон">
+      <input type="text" placeholder="Город" class="full">
+      <select class="full" style="width:100%;padding:0.9rem 1rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--white);font-family:'Noto Sans JP',sans-serif;font-size:0.88rem;appearance:none;cursor:pointer;">
+        <option>Есть ли опыт в бизнесе?</option>
+        <option>Да</option>
+        <option>Нет</option>
+      </select>
+      <button class="btn-primary full" style="justify-content:center;" onclick="showModal()">Получить бизнес-план →</button>
+    </div>
+    <p class="form-note" style="margin-top:1rem;">Перезвоним в течение 30 минут в рабочее время. Данные не передаются третьим лицам.</p>
+  </div>
+</div>
+
+<!-- ========== BLOG LINK ========== -->
+<div style="padding:4rem 3rem;text-align:center;border-top:1px solid rgba(255,255,255,0.05);">
+  <div class="section-tag" style="justify-content:center;">Следи за нами</div>
+  <h2 class="heading-md">Читай наш блог и будь в курсе</h2>
+  <p style="color:rgba(255,255,255,0.5);margin:1rem auto 2rem;max-width:500px;">Советы, кейсы, новости и инсайты о бизнесе доставки суши и роллов.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="https://ebisan.ru/" class="btn-outline" target="_blank">ebisan.ru</a>
+    <a href="#cta" class="btn-primary">Связаться с нами →</a>
+  </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">ЁБИ<span>САН</span></div>
+      <div class="footer-motto">Еда — это эмоция счастья</div>
+    </div>
+    <div class="footer-links">
+      <a href="#why">О франшизе</a>
+      <a href="#adv">Преимущества</a>
+      <a href="#packages">Пакеты</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#steps">Как начать</a>
+      <a href="#training">Обучение</a>
+      <a href="https://ebisan.ru/" target="_blank">Меню</a>
+    </div>
+    <div class="footer-contact">
+      <a href="tel:+73422600300" class="phone">+7 342 2 600 300</a>
+      <div class="email">franchise@ebisan.ru</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 ЁбиСан. Все права защищены. г. Пермь</span>
+    <span>Политика конфиденциальности</span>
   </div>
 </footer>
 
-<!-- Toast -->
-<div class="toast" id="toast">✓ Заявка отправлена! Свяжемся с вами в течение 2 часов.</div>
+<!-- ========== MODAL ========== -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="hideModal()">×</button>
+    <h3>Спасибо за заявку! 🎉</h3>
+    <p style="color:rgba(255,255,255,0.65);line-height:1.7;">Наш менеджер свяжется с вами в ближайшее рабочее время. Подготовим персональное коммерческое предложение и финансовую модель.</p>
+    <div style="margin-top:1.5rem;padding:1.2rem;background:rgba(230,57,70,0.1);border:1px solid rgba(230,57,70,0.2);">
+      <p style="font-size:1rem;color:var(--gold);font-family:'Unbounded',sans-serif;font-weight:700;">+7 342 2 600 300</p>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-top:0.3rem;">franchise@ebisan.ru</p>
+    </div>
+  </div>
+</div>
 
+<!-- ========== SCRIPTS ========== -->
 <script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  reveals.forEach(el => io.observe(el));
+function showModal() { document.getElementById('modal').classList.add('active'); }
+function hideModal() { document.getElementById('modal').classList.remove('active'); }
+document.getElementById('modal').addEventListener('click', function(e) { if (e.target === this) hideModal(); });
 
-  // Form submit
-  function submitForm() {
-    const name = document.getElementById('f-name').value.trim();
-    const phone = document.getElementById('f-phone').value.trim();
-    if (!name || !phone) {
-      alert('Пожалуйста, заполните имя и телефон.');
-      return;
+// Scroll animations
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('vis'), i * 80);
+      obs.unobserve(entry.target);
     }
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 4000);
-    // Reset fields
-    ['f-name','f-company','f-phone','f-email','f-qty','f-deadline','f-comment'].forEach(id => {
-      document.getElementById(id).value = '';
-    });
-    document.getElementById('f-type').selectedIndex = 0;
-  }
-
-  // Mobile menu toggle
-  function toggleMenu() {
-    const links = document.querySelector('.nav-links');
-    if (links.style.display === 'flex') {
-      links.style.display = 'none';
-    } else {
-      links.style.cssText = 'display:flex; flex-direction:column; position:fixed; top:70px; left:0; right:0; background:rgba(15,19,24,0.98); padding:30px; gap:20px; z-index:99;';
-    }
-  }
-
-  // Close mobile menu on link click
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => {
-      const links = document.querySelector('.nav-links');
-      if (window.innerWidth < 768) links.style.display = 'none';
-    });
   });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in,.slide-l').forEach(el => obs.observe(el));
+
+// Counter
+const cObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('[data-target]').forEach(c => {
+        const t = +c.dataset.target;
+        let cur = 0;
+        const inc = t / 50;
+        const timer = setInterval(() => {
+          cur += inc;
+          if (cur >= t) { cur = t; clearInterval(timer); }
+          c.textContent = Math.floor(cur) + '+';
+        }, 30);
+      });
+      cObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+cObs.observe(document.querySelector('.counter-grid'));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    const t = document.querySelector(this.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Nav shrink
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+});
 </script>
 </body>
 </html>

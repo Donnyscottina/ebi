@@ -7,36 +7,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Unbounded:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --black: #0a0a0a;
-  --white: #f5f0eb;
+  --black: #1a1a1a;
+  --white: #ffffff;
+  --text: #2d2d2d;
+  --text-light: #666666;
+  --text-lighter: #999999;
   --red: #e63946;
   --red-dark: #c1121f;
-  --gold: #f4a261;
-  --cream: #fdf6ec;
-  --dark-bg: #111111;
-  --card-bg: #1a1a1a;
-  --card-bg2: #141414;
-  --accent-glow: rgba(230, 57, 70, 0.3);
+  --red-soft: #fff0f1;
+  --gold: #d4740e;
+  --gold-soft: #fff8f0;
+  --cream: #faf8f5;
+  --light-bg: #f5f3f0;
+  --card-bg: #ffffff;
+  --card-bg2: #fafafa;
+  --border: #e8e5e1;
+  --border-light: #f0eeeb;
+  --accent-glow: rgba(230, 57, 70, 0.15);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
   font-family: 'Noto Sans JP', sans-serif;
-  background: var(--black);
-  color: var(--white);
+  background: var(--white);
+  color: var(--text);
   overflow-x: hidden;
   line-height: 1.6;
 }
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-}
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-track { background: var(--light-bg); }
 ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
 img { max-width: 100%; display: block; }
 
@@ -61,7 +63,7 @@ img { max-width: 100%; display: block; }
 }
 .jp-text {
   font-family: 'Dela Gothic One', sans-serif;
-  color: rgba(255,255,255,0.04);
+  color: rgba(0,0,0,0.03);
   font-size: clamp(4rem, 12vw, 10rem);
   position: absolute;
   white-space: nowrap;
@@ -103,10 +105,11 @@ img { max-width: 100%; display: block; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(10,10,10,0.9);
+  background: rgba(255,255,255,0.95);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
   transition: padding 0.4s;
+  box-shadow: 0 1px 10px rgba(0,0,0,0.04);
 }
 .nav.scrolled { padding: 0.6rem 3rem; }
 .nav-logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
@@ -115,12 +118,12 @@ img { max-width: 100%; display: block; }
   font-family: 'Unbounded', sans-serif;
   font-weight: 900;
   font-size: 1.4rem;
-  color: var(--white);
+  color: var(--text);
 }
 .nav-logo-text span { color: var(--red); }
 .nav-links { display: flex; gap: 1.8rem; list-style: none; }
 .nav-links a {
-  color: rgba(255,255,255,0.65);
+  color: rgba(0,0,0,0.6);
   text-decoration: none;
   font-size: 0.8rem;
   font-weight: 500;
@@ -174,7 +177,7 @@ img { max-width: 100%; display: block; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  background: linear-gradient(135deg, rgba(0,0,0,0.06), transparent);
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -182,8 +185,8 @@ img { max-width: 100%; display: block; }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px var(--accent-glow); }
 .btn-outline {
   background: transparent;
-  color: var(--white);
-  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--text);
+  border: 1px solid rgba(0,0,0,0.12);
   padding: 1rem 2.5rem;
   font-family: 'Unbounded', sans-serif;
   font-weight: 700;
@@ -195,7 +198,7 @@ img { max-width: 100%; display: block; }
 .btn-outline:hover { border-color: var(--red); color: var(--red); }
 .btn-gold {
   background: var(--gold);
-  color: var(--black);
+  color: var(--text);
   border: none;
   padding: 1rem 2.5rem;
   font-family: 'Unbounded', sans-serif;
@@ -225,14 +228,14 @@ img { max-width: 100%; display: block; }
   background:
     radial-gradient(ellipse at 75% 20%, rgba(230,57,70,0.18) 0%, transparent 50%),
     radial-gradient(ellipse at 25% 80%, rgba(244,162,97,0.08) 0%, transparent 50%),
-    var(--black);
+    var(--white);
 }
 .hero-grid {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 .hero-content {
@@ -249,7 +252,7 @@ img { max-width: 100%; display: block; }
 .hero-left h1 .hl { color: var(--red); }
 .hero-subtitle {
   font-size: 1.1rem;
-  color: rgba(255,255,255,0.65);
+  color: rgba(0,0,0,0.6);
   margin-top: 1.5rem;
   max-width: 520px;
   line-height: 1.7;
@@ -264,7 +267,7 @@ img { max-width: 100%; display: block; }
 }
 .hero-stat-lbl {
   font-size: 0.75rem;
-  color: rgba(255,255,255,0.45);
+  color: rgba(0,0,0,0.45);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -273,7 +276,7 @@ img { max-width: 100%; display: block; }
 /* Hero form card */
 .hero-card {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(0,0,0,0.08);
   padding: 2.2rem;
   position: relative;
   overflow: hidden;
@@ -295,21 +298,21 @@ img { max-width: 100%; display: block; }
 .fg input, .fg select {
   width: 100%;
   padding: 0.85rem 1rem;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: var(--white);
+  background: rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.08);
+  color: var(--text);
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 0.88rem;
   outline: none;
   transition: border-color 0.3s;
 }
-.fg input::placeholder { color: rgba(255,255,255,0.3); }
+.fg input::placeholder { color: rgba(0,0,0,0.25); }
 .fg input:focus, .fg select:focus { border-color: var(--red); }
 .fg select { appearance: none; cursor: pointer; }
 .fg select option { background: var(--card-bg); }
 .form-note {
   font-size: 0.68rem;
-  color: rgba(255,255,255,0.25);
+  color: rgba(0,0,0,0.15);
   margin-top: 0.6rem;
   text-align: center;
 }
@@ -352,8 +355,8 @@ img { max-width: 100%; display: block; }
 
 /* ===== COUNTER BAR ===== */
 .counter-bar {
-  background: var(--dark-bg);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  background: var(--light-bg);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
   padding: 3rem;
 }
 .counter-grid {
@@ -372,7 +375,7 @@ img { max-width: 100%; display: block; }
 }
 .counter-item .cl {
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(0,0,0,0.5);
   margin-top: 0.2rem;
 }
 
@@ -392,7 +395,7 @@ img { max-width: 100%; display: block; }
 }
 .video-placeholder {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(0,0,0,0.08);
   aspect-ratio: 16/9;
   display: flex;
   align-items: center;
@@ -423,14 +426,14 @@ img { max-width: 100%; display: block; }
 .video-placeholder:hover .play-btn { transform: scale(1.15); }
 .video-text p {
   font-size: 1rem;
-  color: rgba(255,255,255,0.65);
+  color: rgba(0,0,0,0.6);
   line-height: 1.8;
   margin-top: 1rem;
 }
 
 /* ===== PRODUCT SHOWCASE ===== */
 .products-section {
-  background: var(--dark-bg);
+  background: var(--light-bg);
   padding: 6rem 0;
   overflow: hidden;
 }
@@ -453,7 +456,7 @@ img { max-width: 100%; display: block; }
   min-width: 260px;
   max-width: 260px;
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
   scroll-snap-align: start;
   transition: all 0.4s;
   flex-shrink: 0;
@@ -480,23 +483,23 @@ img { max-width: 100%; display: block; }
 }
 .product-card-body .desc {
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.4);
+  color: rgba(0,0,0,0.4);
   margin-top: 0.3rem;
   line-height: 1.4;
 }
 
 /* ===== WHY SECTION ===== */
-.why-section { background: var(--black); padding: 6rem 3rem; }
+.why-section { background: var(--white); padding: 6rem 3rem; }
 .why-grid {
   max-width: 1400px;
   margin: 3rem auto 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 .why-card {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 2rem;
   transition: all 0.4s;
   position: relative;
@@ -514,22 +517,24 @@ img { max-width: 100%; display: block; }
 .why-card:hover::after { transform: scaleX(1); }
 .why-card:hover { transform: translateY(-4px); border-color: rgba(230,57,70,0.2); }
 .why-icon {
-  width: 48px;
-  height: 48px;
-  background: rgba(230,57,70,0.1);
+  width: 52px;
+  height: 52px;
+  background: var(--red-soft);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
   margin-bottom: 1rem;
+  color: var(--red);
 }
+.why-icon i { width: 24px; height: 24px; }
 .why-card h3 {
   font-family: 'Unbounded', sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
   margin-bottom: 0.7rem;
 }
-.why-card p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+.why-card p { font-size: 0.82rem; color: rgba(0,0,0,0.55); line-height: 1.7; }
 .why-card .big-num {
   font-family: 'Unbounded', sans-serif;
   font-weight: 900;
@@ -543,7 +548,7 @@ img { max-width: 100%; display: block; }
   padding: 6rem 3rem;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(ellipse at 80% 50%, rgba(244,162,97,0.06) 0%, transparent 50%), var(--dark-bg);
+  background: radial-gradient(ellipse at 80% 50%, rgba(244,162,97,0.06) 0%, transparent 50%), var(--light-bg);
 }
 .founder-content {
   max-width: 1400px;
@@ -558,7 +563,7 @@ img { max-width: 100%; display: block; }
   font-weight: 300;
   line-height: 1.8;
   font-style: italic;
-  color: rgba(255,255,255,0.8);
+  color: rgba(0,0,0,0.75);
   padding-left: 2rem;
   border-left: 3px solid var(--red);
 }
@@ -571,7 +576,7 @@ img { max-width: 100%; display: block; }
 }
 .founder-title {
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.45);
+  color: rgba(0,0,0,0.45);
   margin-top: 0.2rem;
 }
 .founder-img-wrap {
@@ -583,7 +588,7 @@ img { max-width: 100%; display: block; }
 .founder-img-wrap img {
   width: 100%;
   max-width: 500px;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
 }
 .founder-img-decor {
   position: absolute;
@@ -606,7 +611,7 @@ img { max-width: 100%; display: block; }
 /* ===== ADVANTAGES ===== */
 .advantages-section {
   padding: 6rem 3rem;
-  background: radial-gradient(ellipse at 0% 50%, rgba(230,57,70,0.06) 0%, transparent 50%), var(--black);
+  background: radial-gradient(ellipse at 0% 50%, rgba(230,57,70,0.06) 0%, transparent 50%), var(--white);
 }
 .adv-grid {
   max-width: 1400px;
@@ -617,7 +622,7 @@ img { max-width: 100%; display: block; }
 }
 .adv-card {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 2.2rem;
   display: grid;
   grid-template-columns: auto 1fr;
@@ -639,12 +644,12 @@ img { max-width: 100%; display: block; }
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
 }
-.adv-card p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+.adv-card p { font-size: 0.82rem; color: rgba(0,0,0,0.55); line-height: 1.7; }
 
 /* ===== BANNERS GALLERY ===== */
 .banners-section {
   padding: 0;
-  background: var(--dark-bg);
+  background: var(--light-bg);
 }
 .banners-grid {
   display: grid;
@@ -672,7 +677,7 @@ img { max-width: 100%; display: block; }
 }
 .pb-block {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 2rem 2.5rem;
   text-align: center;
   min-width: 180px;
@@ -685,7 +690,7 @@ img { max-width: 100%; display: block; }
 }
 .pb-block .l {
   font-size: 0.75rem;
-  color: rgba(255,255,255,0.45);
+  color: rgba(0,0,0,0.45);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-top: 0.2rem;
@@ -709,7 +714,7 @@ img { max-width: 100%; display: block; }
   font-size: 2.8rem;
   color: var(--red);
 }
-.pb-result .l { font-size: 0.85rem; color: rgba(255,255,255,0.65); margin-top: 0.3rem; }
+.pb-result .l { font-size: 0.85rem; color: rgba(0,0,0,0.6); margin-top: 0.3rem; }
 .payback-expenses {
   max-width: 700px;
   margin: 2.5rem auto 0;
@@ -719,7 +724,7 @@ img { max-width: 100%; display: block; }
 }
 .expense-item {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 1.2rem;
   text-align: center;
 }
@@ -731,13 +736,13 @@ img { max-width: 100%; display: block; }
 }
 .expense-item .l {
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.4);
+  color: rgba(0,0,0,0.4);
   margin-top: 0.2rem;
 }
 
 /* ===== WHAT YOU GET ===== */
 .get-section {
-  background: var(--dark-bg);
+  background: var(--light-bg);
   padding: 6rem 3rem;
 }
 .get-grid {
@@ -749,19 +754,30 @@ img { max-width: 100%; display: block; }
 }
 .get-item {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 1.5rem;
   transition: all 0.4s;
 }
 .get-item:hover { border-color: rgba(230,57,70,0.2); transform: translateY(-3px); }
-.get-icon { font-size: 1.8rem; margin-bottom: 0.7rem; }
+.get-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--red-soft);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.7rem;
+  color: var(--red);
+}
+.get-icon i { width: 20px; height: 20px; }
 .get-item h4 {
   font-family: 'Unbounded', sans-serif;
   font-weight: 700;
   font-size: 0.75rem;
   margin-bottom: 0.3rem;
 }
-.get-item p { font-size: 0.72rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+.get-item p { font-size: 0.72rem; color: rgba(0,0,0,0.45); line-height: 1.5; }
 
 /* ===== PACKAGES ===== */
 .packages-section { padding: 6rem 3rem; }
@@ -774,7 +790,7 @@ img { max-width: 100%; display: block; }
 }
 .pkg {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 2.5rem;
   position: relative;
   transition: all 0.4s;
@@ -800,7 +816,7 @@ img { max-width: 100%; display: block; }
   font-size: 1.1rem;
   margin-bottom: 0.3rem;
 }
-.pkg-desc { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+.pkg-desc { font-size: 0.78rem; color: rgba(0,0,0,0.4); }
 .pkg-price {
   font-family: 'Unbounded', sans-serif;
   font-weight: 900;
@@ -808,13 +824,13 @@ img { max-width: 100%; display: block; }
   color: var(--gold);
   margin: 1rem 0;
 }
-.pkg-price span { font-size: 0.85rem; color: rgba(255,255,255,0.35); font-weight: 400; }
+.pkg-price span { font-size: 0.85rem; color: rgba(0,0,0,0.35); font-weight: 400; }
 .pkg-features { list-style: none; margin: 1.2rem 0; }
 .pkg-features li {
   padding: 0.45rem 0;
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.65);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: rgba(0,0,0,0.6);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -823,7 +839,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== PICKUP FORMAT ===== */
 .pickup-section {
-  background: var(--dark-bg);
+  background: var(--light-bg);
   padding: 6rem 3rem;
   overflow: hidden;
 }
@@ -844,13 +860,13 @@ img { max-width: 100%; display: block; }
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
   transition: all 0.4s;
 }
 .pickup-images img:hover { border-color: var(--red); }
 .pickup-text p {
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.6);
+  color: rgba(0,0,0,0.55);
   line-height: 1.8;
   margin-top: 1rem;
 }
@@ -867,7 +883,7 @@ img { max-width: 100%; display: block; }
   font-size: 2.5rem;
   color: var(--red);
 }
-.pickup-stat .l { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+.pickup-stat .l { font-size: 0.8rem; color: rgba(0,0,0,0.5); }
 
 /* ===== NASTAVNIK ===== */
 .mentors-section { padding: 6rem 3rem; }
@@ -880,23 +896,24 @@ img { max-width: 100%; display: block; }
 }
 .mentor-card {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 2rem;
   text-align: center;
   transition: all 0.4s;
 }
 .mentor-card:hover { border-color: rgba(230,57,70,0.2); }
 .mentor-avatar {
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--red), var(--gold));
+  background: var(--red-soft);
   margin: 0 auto 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  color: var(--red);
 }
+.mentor-avatar i { width: 28px; height: 28px; }
 .mentor-card h4 {
   font-family: 'Unbounded', sans-serif;
   font-weight: 700;
@@ -904,11 +921,11 @@ img { max-width: 100%; display: block; }
   margin-bottom: 0.3rem;
 }
 .mentor-card .role { font-size: 0.75rem; color: var(--gold); margin-bottom: 0.7rem; }
-.mentor-card p { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.mentor-card p { font-size: 0.78rem; color: rgba(0,0,0,0.5); line-height: 1.6; }
 
 /* ===== REVIEWS ===== */
 .reviews-section {
-  background: var(--dark-bg);
+  background: var(--light-bg);
   padding: 6rem 3rem;
 }
 .reviews-grid {
@@ -920,7 +937,7 @@ img { max-width: 100%; display: block; }
 }
 .review-card {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 2rem;
   transition: all 0.4s;
 }
@@ -935,7 +952,7 @@ img { max-width: 100%; display: block; }
 }
 .review-card .text {
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.7);
+  color: rgba(0,0,0,0.65);
   line-height: 1.7;
   margin-bottom: 1.2rem;
 }
@@ -944,7 +961,7 @@ img { max-width: 100%; display: block; }
   font-weight: 700;
   font-size: 0.78rem;
 }
-.review-card .city { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-top: 0.15rem; }
+.review-card .city { font-size: 0.72rem; color: rgba(0,0,0,0.4); margin-top: 0.15rem; }
 
 /* ===== GUARANTEE ===== */
 .guarantee-section {
@@ -952,7 +969,7 @@ img { max-width: 100%; display: block; }
   text-align: center;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(ellipse at 50% 50%, rgba(244,162,97,0.08) 0%, transparent 50%), var(--black);
+  background: radial-gradient(ellipse at 50% 50%, rgba(244,162,97,0.08) 0%, transparent 50%), var(--white);
 }
 .guarantee-badge {
   width: 130px;
@@ -981,7 +998,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== TEAM ===== */
 .team-section {
-  background: var(--dark-bg);
+  background: var(--light-bg);
   padding: 6rem 3rem;
 }
 .team-grid {
@@ -993,7 +1010,7 @@ img { max-width: 100%; display: block; }
 }
 .team-card {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 1.5rem 1rem;
   text-align: center;
   transition: all 0.3s;
@@ -1006,7 +1023,7 @@ img { max-width: 100%; display: block; }
   font-size: 0.65rem;
   line-height: 1.3;
 }
-.team-card p { font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-top: 0.2rem; }
+.team-card p { font-size: 0.65rem; color: rgba(0,0,0,0.4); margin-top: 0.2rem; }
 
 /* ===== STEPS ===== */
 .steps-section { padding: 6rem 3rem; }
@@ -1051,11 +1068,11 @@ img { max-width: 100%; display: block; }
   font-size: 0.72rem;
   margin-bottom: 0.3rem;
 }
-.step p { font-size: 0.72rem; color: rgba(255,255,255,0.45); line-height: 1.4; }
+.step p { font-size: 0.72rem; color: rgba(0,0,0,0.45); line-height: 1.4; }
 
 /* ===== TRAINING ===== */
 .training-section {
-  background: var(--dark-bg);
+  background: var(--light-bg);
   padding: 6rem 3rem;
 }
 .training-content {
@@ -1068,7 +1085,7 @@ img { max-width: 100%; display: block; }
 }
 .training-day {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 2rem;
 }
 .training-day h3 {
@@ -1083,7 +1100,7 @@ img { max-width: 100%; display: block; }
   grid-template-columns: auto 1fr;
   gap: 1rem;
   padding: 0.8rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
   align-items: start;
 }
 .schedule-item .time {
@@ -1095,7 +1112,7 @@ img { max-width: 100%; display: block; }
 }
 .schedule-item .topic {
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.65);
+  color: rgba(0,0,0,0.6);
 }
 
 /* ===== SMALL CITIES ===== */
@@ -1103,14 +1120,14 @@ img { max-width: 100%; display: block; }
   padding: 5rem 3rem;
   text-align: center;
   background: linear-gradient(135deg, rgba(230,57,70,0.08), rgba(244,162,97,0.05));
-  border-top: 1px solid rgba(255,255,255,0.05);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 .small-cities p {
   max-width: 600px;
   margin: 1rem auto 0;
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.6);
+  color: rgba(0,0,0,0.55);
   line-height: 1.7;
 }
 
@@ -1129,7 +1146,7 @@ img { max-width: 100%; display: block; }
 }
 .hw-block {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 2rem;
   margin-bottom: 1.5rem;
 }
@@ -1140,7 +1157,7 @@ img { max-width: 100%; display: block; }
   margin-bottom: 0.6rem;
   color: var(--gold);
 }
-.hw-block p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+.hw-block p { font-size: 0.82rem; color: rgba(0,0,0,0.55); line-height: 1.7; }
 
 /* ===== CTA ===== */
 .cta-section {
@@ -1150,10 +1167,10 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
   background:
     radial-gradient(ellipse at 50% 50%, rgba(230,57,70,0.2) 0%, transparent 60%),
-    var(--black);
+    var(--white);
 }
 .cta-content { max-width: 650px; margin: 0 auto; position: relative; z-index: 2; }
-.cta-section p { color: rgba(255,255,255,0.55); margin-bottom: 2.5rem; }
+.cta-section p { color: rgba(0,0,0,0.55); margin-bottom: 2.5rem; }
 .cta-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1164,23 +1181,23 @@ img { max-width: 100%; display: block; }
 .cta-form input {
   width: 100%;
   padding: 0.9rem 1rem;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: var(--white);
+  background: rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.08);
+  color: var(--text);
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 0.88rem;
   outline: none;
   transition: border-color 0.3s;
 }
-.cta-form input::placeholder { color: rgba(255,255,255,0.25); }
+.cta-form input::placeholder { color: rgba(0,0,0,0.15); }
 .cta-form input:focus { border-color: var(--red); }
 .cta-form .full { grid-column: 1 / -1; }
 
 /* ===== PARTNERS BAR ===== */
 .partners-bar {
-  background: var(--dark-bg);
+  background: var(--light-bg);
   padding: 4rem 3rem;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(0,0,0,0.06);
 }
 .partners-logos {
   max-width: 1400px;
@@ -1195,13 +1212,13 @@ img { max-width: 100%; display: block; }
   font-family: 'Unbounded', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
-  color: rgba(255,255,255,0.15);
+  color: rgba(0,0,0,0.06);
   letter-spacing: 0.05em;
 }
 
 /* ===== FOOTER ===== */
 .footer {
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(0,0,0,0.06);
   padding: 3rem;
 }
 .footer-inner {
@@ -1218,10 +1235,10 @@ img { max-width: 100%; display: block; }
   font-size: 1.4rem;
 }
 .footer-logo span { color: var(--red); }
-.footer-motto { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-top: 0.3rem; }
+.footer-motto { font-size: 0.75rem; color: rgba(0,0,0,0.35); margin-top: 0.3rem; }
 .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
 .footer-links a {
-  color: rgba(255,255,255,0.4);
+  color: rgba(0,0,0,0.4);
   text-decoration: none;
   font-size: 0.78rem;
   transition: color 0.3s;
@@ -1236,25 +1253,25 @@ img { max-width: 100%; display: block; }
 }
 .footer-contact .email {
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(0,0,0,0.5);
   margin-top: 0.3rem;
 }
 .footer-bottom {
   max-width: 1400px;
   margin: 2rem auto 0;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(0,0,0,0.06);
   display: flex;
   justify-content: space-between;
   font-size: 0.7rem;
-  color: rgba(255,255,255,0.25);
+  color: rgba(0,0,0,0.15);
 }
 
 /* ===== MODAL ===== */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.88);
+  background: rgba(0,0,0,0.5);
   backdrop-filter: blur(10px);
   z-index: 10000;
   display: flex;
@@ -1267,7 +1284,7 @@ img { max-width: 100%; display: block; }
 .modal-overlay.active { opacity: 1; pointer-events: all; }
 .modal {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(0,0,0,0.08);
   padding: 3rem;
   max-width: 450px;
   width: 90%;
@@ -1281,7 +1298,7 @@ img { max-width: 100%; display: block; }
   top: 1rem; right: 1rem;
   background: none;
   border: none;
-  color: rgba(255,255,255,0.5);
+  color: rgba(0,0,0,0.5);
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -1310,8 +1327,8 @@ img { max-width: 100%; display: block; }
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .hero-content { grid-template-columns: 1fr; }
-  .why-grid, .mentors-grid, .reviews-grid, .packages-grid { grid-template-columns: repeat(2, 1fr); }
-  .get-grid, .team-grid { grid-template-columns: repeat(3, 1fr); }
+  .why-grid, .get-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .mentors-grid, .reviews-grid, .packages-grid { grid-template-columns: repeat(2, 1fr); }
   .counter-grid { grid-template-columns: repeat(3, 1fr); }
   .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .steps-grid::before { display: none; }
@@ -1339,6 +1356,312 @@ img { max-width: 100%; display: block; }
   .payback-expenses { grid-template-columns: 1fr; }
   .pickup-images { grid-template-columns: 1fr; }
 }
+/* ===== LIGHT THEME OVERRIDES ===== */
+/* Nav */
+.nav-logo-text { color: var(--text); }
+.nav-logo-text span { color: var(--red); }
+.nav-links a { color: rgba(0,0,0,0.55); }
+.nav-links a:hover { color: var(--red); }
+
+/* Hero */
+.hero-bg {
+  background:
+    radial-gradient(ellipse at 75% 20%, rgba(230,57,70,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 25% 80%, rgba(212,116,14,0.05) 0%, transparent 50%),
+    var(--cream) !important;
+}
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px) !important;
+  background-size: 60px 60px;
+}
+.hero-left h1 { color: var(--text); }
+.hero-stat { border-left: 2px solid var(--red); }
+
+/* Cards on white/cream bg need shadow */
+.hero-card {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-lg);
+}
+.hero-card h3 { color: var(--text); }
+.fg input, .fg select {
+  background: var(--light-bg) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+.fg input::placeholder { color: rgba(0,0,0,0.35) !important; }
+.fg select option { background: var(--white); }
+
+/* Buttons */
+.btn-primary { color: white !important; }
+.btn-outline { color: var(--text); border-color: var(--border); }
+.btn-outline:hover { border-color: var(--red); color: var(--red); }
+.btn-gold { color: white !important; background: var(--gold) !important; }
+
+/* Counter bar */
+.counter-bar { background: var(--cream) !important; border-bottom: 1px solid var(--border); }
+.counter-item .cv { color: var(--red); }
+.counter-item .cl { color: rgba(0,0,0,0.5); }
+
+/* Why cards */
+.why-section { background: var(--white) !important; }
+.why-card {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-sm);
+}
+.why-card:hover { box-shadow: var(--shadow-md); border-color: rgba(230,57,70,0.3) !important; }
+.why-card h3 { color: var(--text); }
+.why-card p { color: rgba(0,0,0,0.55); }
+.why-card .big-num { color: var(--red); }
+
+/* Video */
+.video-section { background: var(--cream); }
+.video-placeholder { box-shadow: var(--shadow-lg); border: 1px solid var(--border) !important; }
+.video-placeholder img { opacity: 0.85; }
+
+/* Products */
+.products-section { background: var(--light-bg) !important; }
+.product-card {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-sm);
+}
+.product-card:hover { box-shadow: var(--shadow-md); }
+.product-card-body h4 { color: var(--text); }
+.product-card-body .price { color: var(--red); }
+.product-card-body .desc { color: rgba(0,0,0,0.45); }
+.products-scroll::-webkit-scrollbar-thumb { background: var(--red); }
+
+/* Banners */
+.banners-section { background: var(--white) !important; }
+.banners-grid img { filter: brightness(0.95); }
+.banners-grid img:hover { filter: brightness(1); }
+
+/* Founder */
+.founder-section {
+  background: radial-gradient(ellipse at 80% 50%, rgba(212,116,14,0.04) 0%, transparent 50%), var(--white) !important;
+}
+.founder-quote { color: rgba(0,0,0,0.7); }
+.founder-name { color: var(--red); }
+.founder-title { color: rgba(0,0,0,0.45); }
+.founder-img-decor { border-color: var(--red); }
+.founder-kanji { color: rgba(230,57,70,0.08); }
+
+/* Advantages */
+.advantages-section {
+  background: radial-gradient(ellipse at 0% 50%, rgba(230,57,70,0.04) 0%, transparent 50%), var(--cream) !important;
+}
+.adv-card {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-sm);
+}
+.adv-card:hover { box-shadow: var(--shadow-md); border-color: rgba(230,57,70,0.3) !important; }
+.adv-card h3 { color: var(--text); }
+.adv-card p { color: rgba(0,0,0,0.55); }
+.adv-num { color: rgba(230,57,70,0.15); }
+
+/* Payback */
+.payback-section { background: var(--white); }
+.pb-block {
+  background: var(--cream) !important;
+  border: 1px solid var(--border) !important;
+}
+.pb-block .v { color: var(--red); }
+.pb-block .l { color: rgba(0,0,0,0.5); }
+.pb-result {
+  background: var(--red-soft) !important;
+  border: 1px solid rgba(230,57,70,0.15) !important;
+}
+.pb-result .v { color: var(--red); }
+.pb-result .l { color: rgba(0,0,0,0.6); }
+.expense-item {
+  background: var(--cream) !important;
+  border: 1px solid var(--border) !important;
+}
+.expense-item .v { color: var(--gold); }
+.expense-item .l { color: rgba(0,0,0,0.45); }
+
+/* What you get */
+.get-section { background: var(--light-bg) !important; }
+.get-item {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-sm);
+}
+.get-item:hover { box-shadow: var(--shadow-md); }
+.get-item h4 { color: var(--text); }
+.get-item p { color: rgba(0,0,0,0.5); }
+
+/* Packages */
+.packages-section { background: var(--white); }
+.pkg {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-sm);
+}
+.pkg:hover { box-shadow: var(--shadow-md); }
+.pkg.feat { border-color: var(--red) !important; box-shadow: var(--shadow-lg); }
+.pkg-name { color: var(--text); }
+.pkg-desc { color: rgba(0,0,0,0.4); }
+.pkg-price { color: var(--red); }
+.pkg-price span { color: rgba(0,0,0,0.35); }
+.pkg-features li { color: rgba(0,0,0,0.6); border-bottom: 1px solid var(--border-light); }
+
+/* Pickup */
+.pickup-section { background: var(--cream) !important; }
+.pickup-images img { border: 1px solid var(--border) !important; }
+.pickup-images img:hover { border-color: var(--red) !important; }
+.pickup-stat { background: var(--red-soft); border: 1px solid rgba(230,57,70,0.15); }
+.pickup-stat .v { color: var(--red); }
+.pickup-stat .l { color: rgba(0,0,0,0.5); }
+
+/* Mentors */
+.mentors-section { background: var(--white); }
+.mentor-card {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-sm);
+}
+.mentor-card:hover { box-shadow: var(--shadow-md); }
+.mentor-card h4 { color: var(--text); }
+.mentor-card .role { color: var(--red); }
+.mentor-card p { color: rgba(0,0,0,0.5); }
+
+/* Reviews */
+.reviews-section { background: var(--light-bg) !important; }
+.review-card {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-sm);
+}
+.review-card:hover { box-shadow: var(--shadow-md); }
+.review-qm { color: var(--red); opacity: 0.25; }
+.review-card .text { color: rgba(0,0,0,0.65); }
+.review-card .author { color: var(--text); }
+.review-card .city { color: rgba(0,0,0,0.4); }
+
+/* Guarantee */
+.guarantee-section {
+  background: radial-gradient(ellipse at 50% 50%, rgba(230,57,70,0.05) 0%, transparent 50%), var(--white) !important;
+}
+.guarantee-badge { border-color: var(--red); }
+.guarantee-badge .pct { color: var(--red); }
+.guarantee-badge .txt { color: var(--red); }
+
+/* Steps */
+.steps-section { background: var(--cream); }
+.step-num {
+  background: var(--white) !important;
+  border: 2px solid var(--red);
+  box-shadow: var(--shadow-sm);
+}
+.step h4 { color: var(--text); }
+.step p { color: rgba(0,0,0,0.5); }
+
+/* Training */
+.training-section { background: var(--light-bg) !important; }
+.training-day {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-sm);
+}
+.training-day h3 { color: var(--red); }
+.schedule-item { border-bottom-color: var(--border-light); }
+.schedule-item .time { color: var(--red); }
+.schedule-item .topic { color: rgba(0,0,0,0.6); }
+
+/* Small cities */
+.small-cities {
+  background: linear-gradient(135deg, rgba(230,57,70,0.04), rgba(212,116,14,0.03)) !important;
+  border-color: var(--border) !important;
+}
+
+/* Hardwork */
+.hardwork-section { background: var(--white); }
+.hw-block {
+  background: var(--cream) !important;
+  border: 1px solid var(--border) !important;
+}
+.hw-block h4 { color: var(--red); }
+.hw-block p { color: rgba(0,0,0,0.55); }
+
+/* No experience blocks */
+.hardwork-section + div { background: var(--light-bg) !important; }
+
+/* Team */
+.team-section { background: var(--light-bg) !important; }
+.team-card {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+}
+.team-card h5 { color: var(--text); }
+.team-card p { color: rgba(0,0,0,0.45); }
+
+/* Partners bar */
+.partners-bar { background: var(--cream) !important; border-color: var(--border); }
+.partner-logo { color: rgba(0,0,0,0.12); }
+
+/* CTA */
+.cta-section {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(230,57,70,0.08) 0%, transparent 60%),
+    var(--cream) !important;
+}
+.cta-form input {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+.cta-form input::placeholder { color: rgba(0,0,0,0.3) !important; }
+.cta-form select {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+
+/* Blog link section */
+.cta-section + div + div { border-color: var(--border) !important; }
+
+/* Footer */
+.footer { border-color: var(--border); background: var(--white); }
+.footer-logo { color: var(--text); }
+.footer-logo span { color: var(--red); }
+.footer-motto { color: rgba(0,0,0,0.4); }
+.footer-links a { color: rgba(0,0,0,0.45); }
+.footer-links a:hover { color: var(--red); }
+.footer-contact .phone { color: var(--red); }
+.footer-contact .email { color: rgba(0,0,0,0.5); }
+.footer-bottom { border-color: var(--border); color: rgba(0,0,0,0.3); }
+
+/* Modal */
+.modal-overlay { background: rgba(0,0,0,0.5); }
+.modal {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-lg);
+}
+.modal-close { color: rgba(0,0,0,0.4); }
+.modal-close:hover { color: var(--red); }
+.modal h3 { color: var(--text); }
+
+/* Marquee stays red - text must be white */
+.marquee { background: var(--red); }
+.marquee-item { color: white !important; }
+
+/* Counter bar stays red */
+.counter-bar .counter-grid .counter-item .cv { color: var(--red); }
+
+/* Form note */
+.form-note { color: rgba(0,0,0,0.35) !important; }
+
+/* Hero subtitle */
+.hero-subtitle { color: rgba(0,0,0,0.55); }
+.hero-stat-val { color: var(--red); }
+.hero-stat-lbl { color: rgba(0,0,0,0.45); }
 </style>
 </head>
 <body>
@@ -1371,11 +1694,13 @@ img { max-width: 100%; display: block; }
     <div class="hero-left">
       <div class="section-tag">Франшиза доставки суши и роллов из Перми</div>
       <h1 class="heading-xl">
-        Зарабатывай<br><span class="hl">от 350 000 ₽</span><br>в месяц вместе<br>с ЁбиСан
+        Зарабатывайте<br><span class="hl">от 350 000 ₽</span><br>в месяц с франшизой<br>«ЁбиСан»!
       </h1>
       <p class="hero-subtitle">
-        150+ позиций в меню. Огромные порции из премиальных ингредиентов по доступной цене.
-        Суммарные инвестиции от 1,2 млн рублей. Окупаемость от 4 месяцев.
+        150+ позиций в меню — каждый найдёт что‑то своё. Огромные порции из премиальных ингредиентов — гости возвращаются снова и снова. Доступная цена — привлекаем широкую аудиторию. Суммарные инвестиции от 1,2 млн рублей. Окупаемость от 4 месяцев — быстрый старт и доход.
+      </p>
+      <p class="hero-subtitle" style="margin-top:0.8rem;font-weight:500;color:var(--red);">
+        Начните свой путь в успешном бизнесе прямо сейчас!
       </p>
       <div class="hero-stats">
         <div class="hero-stat">
@@ -1383,12 +1708,12 @@ img { max-width: 100%; display: block; }
           <div class="hero-stat-lbl">Позиций в меню</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-val">30 дней</div>
+          <div class="hero-stat-val">45 дней</div>
           <div class="hero-stat-lbl">До первого заказа</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-val">98%</div>
-          <div class="hero-stat-lbl">Позитивных отзывов</div>
+          <div class="hero-stat-val">4.9</div>
+          <div class="hero-stat-lbl">Оценка в 2ГИС и Яндекс</div>
         </div>
       </div>
       <div class="hero-cta">
@@ -1423,14 +1748,14 @@ img { max-width: 100%; display: block; }
     <span class="marquee-item">150+ позиций в меню</span>
     <span class="marquee-item">От 350 000 ₽ чистыми в месяц</span>
     <span class="marquee-item">Окупаемость от 4 месяцев</span>
-    <span class="marquee-item">Еда — это эмоция счастья</span>
-    <span class="marquee-item">Поддержка 24/7</span>
+    <span class="marquee-item">Лучшее заведение 2025–2026 по версии Яндекса</span>
+    <span class="marquee-item">4.9 в 2ГИС и Яндекс Картах</span>
     <span class="marquee-item">ЁбиСан — Франшиза из Перми</span>
     <span class="marquee-item">150+ позиций в меню</span>
     <span class="marquee-item">От 350 000 ₽ чистыми в месяц</span>
     <span class="marquee-item">Окупаемость от 4 месяцев</span>
-    <span class="marquee-item">Еда — это эмоция счастья</span>
-    <span class="marquee-item">Поддержка 24/7</span>
+    <span class="marquee-item">Лучшее заведение 2025–2026 по версии Яндекса</span>
+    <span class="marquee-item">4.9 в 2ГИС и Яндекс Картах</span>
   </div>
 </div>
 
@@ -1439,9 +1764,9 @@ img { max-width: 100%; display: block; }
   <div class="counter-grid">
     <div class="counter-item"><div class="cv" data-target="15">0</div><div class="cl">Точек по России</div></div>
     <div class="counter-item"><div class="cv" data-target="150">0</div><div class="cl">Позиций в меню</div></div>
-    <div class="counter-item"><div class="cv" data-target="350">0</div><div class="cl">Клиентов на старте</div></div>
-    <div class="counter-item"><div class="cv" data-target="54">0</div><div class="cl">% возвращаемость</div></div>
-    <div class="counter-item"><div class="cv" data-target="98">0</div><div class="cl">% довольных гостей</div></div>
+    <div class="counter-item"><div class="cv" data-target="1000">0</div><div class="cl">Клиентов на старте</div></div>
+    <div class="counter-item"><div class="cv" data-target="93">0</div><div class="cl">% возвращаемость</div></div>
+    <div class="counter-item"><div class="cv" data-static="4.9">4.9</div><div class="cl">Оценка 2ГИС и Яндекс</div></div>
   </div>
 </div>
 
@@ -1449,14 +1774,20 @@ img { max-width: 100%; display: block; }
 <div class="video-section">
   <div class="video-content">
     <div class="video-placeholder">
-      <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="ЁбиСан">
-      <div class="play-btn">▶</div>
+      <img src="https://ebisan.ru/upload/iblock/5f3/bpw8j0k33d035h53ttf2qlcc35x2fuas.jpg" alt="ЁбиСан">
+      <div class="play-btn"><svg width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
     </div>
     <div class="video-text">
       <div class="section-tag">Посмотри видео</div>
-      <h2 class="heading-lg">Узнай, как мы выросли до сети за&nbsp;3&nbsp;года</h2>
-      <p>Оставь заявку и получи подробную презентацию франшизы, финансовую модель и доступ к закрытому видео от основателя ЁбиСан.</p>
-      <p>Мы расскажем, как начать бизнес в доставке японской кухни с нуля, даже без опыта в общепите.</p>
+      <h2 class="heading-lg">Узнай, как мы выросли до сети за&nbsp;5&nbsp;лет!</h2>
+      <p>От первой доставки — к успешной сети японской кухни. Мы прошли этот путь и готовы поделиться своим опытом с вами!</p>
+      <p style="margin-top:1rem;">Оставьте заявку прямо сейчас и получите:</p>
+      <p style="margin-top:0.5rem;padding-left:1rem;border-left:2px solid var(--red);">
+        — подробную презентацию франшизы;<br>
+        — финансовую модель бизнеса;<br>
+        — доступ к закрытому видео от основателя «ЁбиСан».
+      </p>
+      <p style="margin-top:1rem;">Мы покажем, как начать бизнес в доставке японской кухни с нуля — даже если у вас нет опыта в общепите.</p>
       <a href="#cta" class="btn-primary" style="margin-top:1.5rem;">Получить презентацию →</a>
     </div>
   </div>
@@ -1466,8 +1797,8 @@ img { max-width: 100%; display: block; }
 <div class="products-section">
   <div class="products-header">
     <div class="section-tag">Наше меню</div>
-    <h2 class="heading-lg">150+ позиций — от роллов до десертов</h2>
-    <p style="color:rgba(255,255,255,0.5);margin-top:0.8rem;max-width:600px;">Запечённые, жареные, авторские роллы, футомаки, гёдза, гунканы, поке, боулы, супы, лапша, десерты. Рентабельность меню — 75%. Списания = 0.</p>
+    <h2 class="heading-lg">Более 150 позиций — от классических роллов до изысканных десертов</h2>
+    <p style="color:rgba(0,0,0,0.55);margin-top:0.8rem;max-width:700px;">В ассортименте: запечённые и жареные роллы, авторские роллы и футомаки, гёдза и гунканы, поке и боулы, супы и лапша, десерты. Рентабельность меню — до 600%. Продуманная логистика и управление запасами исключают потери.</p>
   </div>
   <div class="products-scroll">
     <div class="product-card">
@@ -1572,25 +1903,28 @@ img { max-width: 100%; display: block; }
 <!-- ========== WHY SECTION ========== -->
 <div class="why-section" id="why">
   <div class="wrap">
-    <div class="section-tag">Почему ЁбиСан</div>
-    <h2 class="heading-lg">Франшиза ЁбиСан — это</h2>
+    <div class="section-tag">Почему ЁбиСан?</div>
+    <h2 class="heading-lg">Проверенная бизнес‑модель с гарантированными показателями</h2>
+    <p style="color:rgba(0,0,0,0.55);margin-top:0.8rem;max-width:700px;">Выбирая франшизу «ЁбиСан», вы получаете проверенную бизнес‑модель с гарантированными показателями. Доверьтесь опыту лидера рынка и начните прибыльный бизнес уже сегодня!</p>
   </div>
   <div class="why-grid">
-    <div class="why-card fade-in"><h3>150+ позиций в меню</h3><p>Запечённые, жареные, авторские роллы, футомаки, гёдза, боулы, супы, десерты и многое другое. Каждый клиент найдёт любимое. Рентабельность меню — 75%.</p></div>
-    <div class="why-card fade-in"><h3>Запуск за 30 дней</h3><p>Первая продажа через 30 дней после заключения договора. Помогаем с каждым этапом — от помещения до первого заказа.</p></div>
-    <div class="why-card fade-in"><h3>Возвращаемость клиентов</h3><p>Больше половины клиентов возвращаются за повторным заказом. 30% новых клиентов приходят по рекомендации. Продукт продаёт сам себя.</p></div>
-    <div class="why-card fade-in"><h3>Рост рынка 23% в год</h3><p>Рынок доставки еды стабильно растёт. ЁбиСан растёт вместе с рынком в любое время года.</p></div>
-    <div class="why-card fade-in"><h3>Стандарт ХАССП</h3><p>Соблюдаем все нормы безопасности и качества. Ни одного партнёра не закрыли за всё время работы.</p></div>
-    <div class="why-card fade-in">h3>Нулевое списание</h3><p>Благодаря точно проработанному меню и технологии приготовления, списания продуктов = 0.</p></div>
+    <div class="why-card fade-in"><div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div><h3>Разнообразное меню</h3><p>Более 150 позиций: запечённые и жареные роллы, авторские рецепты, футомаки, гёдза, боулы, супы, десерты и многое другое. Каждый клиент найдёт блюдо по вкусу.</p></div>
+    <div class="why-card fade-in"><div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div><h3>Быстрый запуск</h3><p>Первая продажа — через 45 дней после заключения договора. Мы поможем на каждом этапе: от подбора помещения до первого заказа.</p></div>
+    <div class="why-card fade-in"><div class="big-num">93%</div><h3>Высокая возвращаемость</h3><p>Больше 93% клиентов возвращаются за повторным заказом. 74% новых клиентов приходят по рекомендации — продукт продаёт сам себя.</p></div>
+    <div class="why-card fade-in"><div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><h3>Рост вместе с рынком</h3><p>Рынок доставки еды растёт на 23% в год — «ЁбиСан» уверенно развивается в любое время года.</p></div>
+    <div class="why-card fade-in"><div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Гарантия качества</h3><p>Соблюдаем стандарт ХАССП: все нормы безопасности и качества строго контролируются. Ни одного партнёра не закрыли за всё время работы.</p></div>
+    <div class="why-card fade-in"><div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2m-7.07-3.93 1.41-1.41M18.36 5.64l1.41-1.41M1 12h2m18 0h2M4.93 4.93l1.41 1.41m12.02 12.02 1.41 1.41"/></svg></div><h3>Оптимизация затрат</h3><p>Минимальные списания продуктов благодаря продуманному меню и отлаженным технологиям приготовления.</p></div>
+    <div class="why-card fade-in"><div class="big-num">600%</div><h3>Рентабельность меню</h3><p>Меню с рентабельностью до 600% — стабильный доход с каждой продажи.</p></div>
+    <div class="why-card fade-in"><div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div><h3>Номинация Яндекса</h3><p>Лучшее заведение 2025 и 2026 года по версии Яндекса. Оценка 4.9 в 2ГИС и Яндекс Картах — клиенты нас любят.</p></div>
   </div>
 </div>
 
 <!-- ========== BANNERS GALLERY ========== -->
 <div class="banners-section">
   <div class="banners-grid">
-    <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="ЁбиСан баннер">
-    <img src="data:image/jpeg;base64,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" alt="ЁбиСан меню">
-    <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="ЁбиСан доставка">
+    <img src="https://ebisan.ru/upload/iblock/5aa/xxg4n65geiywri1v414znw3hmlo6lgiq.png" alt="ЁбиСан баннер">
+    <img src="https://ebisan.ru/upload/iblock/48a/gpnbe8oy4v1oap0fzye8t2643ilhl80a.png" alt="ЁбиСан меню">
+    <img src="https://ebisan.ru/upload/iblock/6f2/r582o8gwm33xhmde55eqmmui3te7p29o.png" alt="ЁбиСан доставка">
   </div>
 </div>
 
@@ -1601,16 +1935,40 @@ img { max-width: 100%; display: block; }
       <div class="section-tag">О компании</div>
       <h2 class="heading-lg">Еда — это эмоция счастья, а счастье должно быть у каждого</h2>
       <div class="founder-quote" style="margin-top:2rem;">
-        «Компания ЁбиСан начала своё существование в 2021 году в Перми. Мы стремимся делать качественный сервис и занять лидирующую позицию на рынке роллов и суши. У нас молодая, но очень амбициозная команда. Мы влюбляем в наши роллы качеством продукта, скоростью доставки и доступной ценой.»
+        «Компания «ЁбиСан» начала свою историю в 2021 году в Перми. Наша миссия — создавать современный, качественный сервис и занимать лидирующие позиции на рынке роллов и суши.»
       </div>
-      <div class="founder-name">Основатель сети ЁбиСан</div>
-      <div class="founder-title">г. Пермь • с 2021 года</div>
+      <p style="color:rgba(0,0,0,0.6);margin-top:1.5rem;line-height:1.8;">Мы гордимся: высоким качеством продукта — тщательно отбираем ингредиенты и строго контролируем процесс приготовления; скоростью доставки — ценим время наших гостей и доставляем заказы оперативно; доступными ценами — делаем вкусную еду доступной для каждого; молодой и амбициозной командой — мы увлечены своим делом и постоянно совершенствуемся.</p>
+      <div class="founder-name">Выбирая «ЁбиСан», вы выбираете вкус, качество и заботу</div>
+      <div class="founder-title">Пермь • с 2021 года</div>
       <a href="#cta" class="btn-primary" style="margin-top:2rem;">Получить финансовую модель →</a>
     </div>
     <div class="founder-img-wrap">
-      <img src="https://avatars.mds.yandex.net/get-altay/9831711/2a0000018e8379bb2cec8551d7bc7a58145c/XXXL" alt="ЁбиСан бренд">
+      <img src="https://ebisan.ru/upload/iblock/92b/6fb6wy4xwci1cvqnbiimuxi10y0vb0ba.png" alt="ЁбиСан бренд">
       <div class="founder-img-decor"></div>
       <div class="founder-kanji">鮨</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== FOOD QUALITY ========== -->
+<div style="padding:6rem 3rem;background:var(--cream);">
+  <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+    <div class="fade-in">
+      <div class="section-tag">Наша философия</div>
+      <h2 class="heading-lg">Мы хотим, чтобы вы наслаждались едой</h2>
+      <p style="color:rgba(0,0,0,0.6);margin-top:1.2rem;line-height:1.8;">При изучении рынка франшиз вы наверняка замечали: многие проекты делают ставку на красивую упаковку. Да, выглядит эффектно, но зачастую за этим скрывается экономия на самом главном — качестве продуктов.</p>
+      <p style="color:rgba(0,0,0,0.6);margin-top:1rem;line-height:1.8;">Мы выбрали другой путь. В «ЁбиСан» в приоритете — вкус и свежесть блюда, а не внешний антураж.</p>
+    </div>
+    <div class="fade-in">
+      <div style="background:var(--white);border:1px solid var(--border);padding:2.2rem;box-shadow:var(--shadow-md);margin-bottom:1rem;">
+        <p style="color:rgba(0,0,0,0.6);line-height:1.8;font-size:0.92rem;">Клиент заказывает доставку, чтобы <strong style="color:var(--red);">вкусно поесть</strong> — накрыть стол, позвать гостей, получить удовольствие от еды.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);padding:2.2rem;box-shadow:var(--shadow-md);margin-bottom:1rem;">
+        <p style="color:rgba(0,0,0,0.6);line-height:1.8;font-size:0.92rem;">Упаковка же после этого отправляется в мусорное ведро. Картон или пластик — неважно: её судьба одна.</p>
+      </div>
+      <div style="background:var(--red-soft);border:1px solid rgba(230,57,70,0.15);padding:2.2rem;box-shadow:var(--shadow-md);">
+        <p style="color:var(--text);line-height:1.8;font-size:0.92rem;font-weight:500;">Помните: клиент ест не упаковку — клиент ест <strong style="color:var(--red);">вкусный продукт</strong>. Выбирайте подлинное качество вместо мишуры. Наслаждайтесь каждой ложкой, каждым кусочком — вот что действительно важно.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -1657,7 +2015,7 @@ img { max-width: 100%; display: block; }
     <div class="expense-item"><div class="v">5 000</div><div class="l">Прочее</div></div>
   </div>
   <div style="margin-top:2rem;text-align:center;">
-    <p style="color:rgba(255,255,255,0.5);max-width:600px;margin:0 auto 1.5rem;font-size:0.85rem;">Чистая прибыль — от 350 000 ₽/мес при выходе на плановые показатели. Получи полные финансовые отчёты реальных точек.</p>
+    <p style="color:rgba(0,0,0,0.5);max-width:600px;margin:0 auto 1.5rem;font-size:0.85rem;">Чистая прибыль — от 350 000 ₽/мес при выходе на плановые показатели. Получи полные финансовые отчёты реальных точек.</p>
     <a href="#cta" class="btn-gold">Получить финансовые отчёты →</a>
   </div>
 </div>
@@ -1669,22 +2027,22 @@ img { max-width: 100%; display: block; }
     <h2 class="heading-lg">Что ты получаешь</h2>
   </div>
   <div class="get-grid">
-    <div class="get-item fade-in"><h4>Бизнес-план и финмодель</h4><p>БДР, БДДС, ОПИУ. Помощь экономиста.</p></div>
-    <div class="get-item fade-in"><h4>IT-система</h4><p>Сайт, приложение, CRM, аналитика.</p></div>
-    <div class="get-item fade-in"><h4>Маркетинг</h4><p>Федеральный + локальный. PR-запуск.</p></div>
-    <div class="get-item fade-in"><h4>Меню 150+ позиций</h4><p>Сезонные новинки. Обновления.</p></div>
-    <div class="get-item fade-in"><h4>Юридическая помощь</h4><p>Бухгалтерия и юристы на каждом этапе.</p></div>
-    <div class="get-item fade-in"><h4>Контроль качества</h4><p>Тайные покупатели, проверки, стандарты.</p></div>
-    <div class="get-item fade-in"><h4>Запуск под ключ</h4><p>Поиск локации, ремонт, оснащение.</p></div>
-    <div class="get-item fade-in"><h4>Наставник 24/7</h4><p>Персональная поддержка от опытных партнёров.</p></div>
-    <div class="get-item fade-in"><h4>Учёт продуктов</h4><p>Система учёта. Инвентаризация. Нулевые списания.</p></div>
-    <div class="get-item fade-in"><h4>Система лояльности</h4><p>Кэшбек 5%, бонусы, акции, промокоды.</p></div>
-    <div class="get-item fade-in"><h4>Анализ конкурентов</h4><p>Конкурентное преимущество под ваш город.</p></div>
-    <div class="get-item fade-in"><h4>Работа с отзывами</h4><p>Гео-сервисы, репутация, обратная связь.</p></div>
-    <div class="get-item fade-in"><h4>База знаний</h4><p>Корпоративный портал. Единая база.</p></div>
-    <div class="get-item fade-in"><h4>Фирменный стиль</h4><p>Дизайн, упаковка, брендинг.</p></div>
-    <div class="get-item fade-in"><h4>Сетевые скидки</h4><p>Скидки от 12+ федеральных партнёров.</p></div>
-    <div class="get-item fade-in"><h4>Управление финансами</h4><p>Контроль показателей. Отчёты. Рост.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div><h4>Бизнес-план и финмодель</h4><p>БДР, БДДС, ОПИУ. Помощь экономиста.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div><h4>IT-система</h4><p>Сайт, приложение, CRM, аналитика.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div><h4>Маркетинг</h4><p>Федеральный + локальный. PR-запуск.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg></div><h4>Меню 150+ позиций</h4><p>Сезонные новинки. Обновления.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div><h4>Юридическая помощь</h4><p>Бухгалтерия и юристы на каждом этапе.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h4>Контроль качества</h4><p>Тайные покупатели, проверки, стандарты.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0a2.12 2.12 0 0 1 0-3L12 9"/><path d="M17.64 15 22 10.64"/><path d="m20.91 11.7-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 4.6a5.56 5.56 0 0 0-3.94-1.64H9l.92.82A6.18 6.18 0 0 1 12 8.4v1.56l2 2h2.47l2.26 1.91"/></svg></div><h4>Запуск под ключ</h4><p>Поиск локации, ремонт, оснащение.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h4>Наставник 24/7</h4><p>Персональная поддержка от опытных партнёров.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div><h4>Учёт продуктов</h4><p>Система учёта. Инвентаризация. Нулевые списания.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h4>Система лояльности</h4><p>Кэшбек 5%, бонусы, акции, промокоды.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div><h4>Анализ конкурентов</h4><p>Конкурентное преимущество под ваш город.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg></div><h4>Работа с отзывами</h4><p>Гео-сервисы, репутация, обратная связь.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><h4>База знаний</h4><p>Корпоративный портал. Единая база.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div><h4>Фирменный стиль</h4><p>Дизайн, упаковка, брендинг.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg></div><h4>Сетевые скидки</h4><p>Скидки от 12+ федеральных партнёров.</p></div>
+    <div class="get-item fade-in"><div class="get-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div><h4>Управление финансами</h4><p>Контроль показателей. Отчёты. Рост.</p></div>
   </div>
 </div>
 
@@ -1703,7 +2061,7 @@ img { max-width: 100%; display: block; }
         <li>1 точка на 100 000 населения</li>
         <li>Формат: только доставка</li>
         <li>Инвестиции от 1 200 000 ₽</li>
-        <li>Срок открытия от 30 дней</li>
+        <li>Срок открытия от 45 дней</li>
         <li>Роялти 4%</li>
         <li>Полное обучение</li>
         <li>Наставник 24/7</li>
@@ -1718,7 +2076,7 @@ img { max-width: 100%; display: block; }
         <li>1 точка на 150 000 населения</li>
         <li>Формат: доставка + самовывоз</li>
         <li>Инвестиции от 1 550 000 ₽</li>
-        <li>Срок открытия от 30 дней</li>
+        <li>Срок открытия от 45 дней</li>
         <li>Роялти 4%</li>
         <li>Стильный дизайн точки</li>
         <li>Открытая кухня</li>
@@ -1748,10 +2106,10 @@ img { max-width: 100%; display: block; }
 <div class="pickup-section">
   <div class="pickup-content">
     <div class="pickup-images">
-      <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="ЁбиСан точка">
-      <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="ЁбиСан самовывоз">
-      <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="ЁбиСан доставка">
-      <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="ЁбиСан бренд">
+      <img src="https://ebisan.ru/upload/iblock/d98/8rff2ztrl1rd45euymi3csk7gqwvsg5d.png" alt="ЁбиСан точка">
+      <img src="https://ebisan.ru/upload/iblock/77f/rqnp0hc291ob1j7tpr6avwwuc13uq5v0.png" alt="ЁбиСан самовывоз">
+      <img src="https://ebisan.ru/upload/iblock/bcb/aqi1bt39geg16chyyarocnbblnl2grns.png" alt="ЁбиСан доставка">
+      <img src="https://ebisan.ru/upload/iblock/59d/5n59rw052mbyo5nmu9xf700kn4x4d0wf.png" alt="ЁбиСан бренд">
     </div>
     <div class="pickup-text">
       <div class="section-tag">Формат самовывоза</div>
@@ -1771,15 +2129,15 @@ img { max-width: 100%; display: block; }
   <div class="wrap">
     <div class="section-tag">Наставники</div>
     <h2 class="heading-lg">За каждым партнёром — наставник</h2>
-    <p style="color:rgba(255,255,255,0.5);margin-top:0.8rem;">За каждым новичком закрепляются опытные партнёры и помогают по любым вопросам. 20 сотрудников управляющей компании сопровождают каждого франчайзи.</p>
+    <p style="color:rgba(0,0,0,0.55);margin-top:0.8rem;">За каждым новичком закрепляются опытные партнёры и помогают по любым вопросам. 20 сотрудников управляющей компании сопровождают каждого франчайзи.</p>
   </div>
   <div class="mentors-grid">
-    <div class="mentor-card fade-in"><h4>Отдел маркетинга</h4><div class="role">SMM, таргет, инфлюенсеры</div><p>Федеральный и локальный маркетинг. Работа с блогерами. Вирусные PR-кампании.</p></div>
-    <div class="mentor-card fade-in"><h4>Отдел IT</h4><div class="role">Разработка, поддержка</div><p>Сайт, приложение, CRM-система. Техническая поддержка 24/7. Обновления и новые фичи.</p></div>
-    <div class="mentor-card fade-in"><h4>Отдел развития</h4><div class="role">Сопровождение партнёров</div><p>Персональный менеджер. Помощь в управлении финансами и достижении целей.</p></div>
-    <div class="mentor-card fade-in"><h4>Контроль качества</h4><div class="role">Стандарты, проверки</div><p>Тайные покупатели. Проверка продукции. Соблюдение стандарта ХАССП.</p></div>
-    <div class="mentor-card fade-in"><h4>R&D и шеф-повара</h4><div class="role">Меню и рецептуры</div><p>Разработка новых позиций. Сезонные обновления. Обучение поваров.</p></div>
-    <div class="mentor-card fade-in"><h4>Бухгалтерия и юристы</h4><div class="role">Финансы и право</div><p>Полная юридическая и бухгалтерская поддержка на каждом этапе работы.</p></div>
+    <div class="mentor-card fade-in"><div class="mentor-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h4>Отдел маркетинга</h4><div class="role">SMM, таргет, инфлюенсеры</div><p>Федеральный и локальный маркетинг. Работа с блогерами. Вирусные PR-кампании.</p></div>
+    <div class="mentor-card fade-in"><div class="mentor-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h4>Отдел IT</h4><div class="role">Разработка, поддержка</div><p>Сайт, приложение, CRM-система. Техническая поддержка 24/7. Обновления и новые фичи.</p></div>
+    <div class="mentor-card fade-in"><div class="mentor-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h4>Отдел развития</h4><div class="role">Сопровождение партнёров</div><p>Персональный менеджер. Помощь в управлении финансами и достижении целей.</p></div>
+    <div class="mentor-card fade-in"><div class="mentor-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div><h4>Контроль качества</h4><div class="role">Стандарты, проверки</div><p>Тайные покупатели. Проверка продукции. Соблюдение стандарта ХАССП.</p></div>
+    <div class="mentor-card fade-in"><div class="mentor-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div><h4>R&D и шеф-повара</h4><div class="role">Меню и рецептуры</div><p>Разработка новых позиций. Сезонные обновления. Обучение поваров.</p></div>
+    <div class="mentor-card fade-in"><div class="mentor-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div><h4>Бухгалтерия и юристы</h4><div class="role">Финансы и право</div><p>Полная юридическая и бухгалтерская поддержка на каждом этапе работы.</p></div>
   </div>
 </div>
 
@@ -1807,7 +2165,7 @@ img { max-width: 100%; display: block; }
   <div style="max-width:700px;margin:0 auto;">
     <div class="guarantee-badge"><div class="pct">100</div><div class="txt">Гарантия</div></div>
     <h2 class="heading-lg">Гарантия возврата инвестиций</h2>
-    <p style="color:rgba(255,255,255,0.65);margin-top:1rem;line-height:1.7;">Мы уверены в своём продукте. Если точка не выйдет на окупаемость при соблюдении технологии — вернём паушальный взнос. Это наша ответственность перед каждым партнёром.</p>
+    <p style="color:rgba(0,0,0,0.6);margin-top:1rem;line-height:1.7;">Мы уверены в своём продукте. Если точка не выйдет на окупаемость при соблюдении технологии — вернём паушальный взнос. Это наша ответственность перед каждым партнёром.</p>
     <a href="#cta" class="btn-gold" style="margin-top:2rem;">Получить условия гарантии →</a>
   </div>
 </div>
@@ -1822,7 +2180,7 @@ img { max-width: 100%; display: block; }
     <div class="step fade-in"><div class="step-num">01</div><h4>Заявка</h4><p>Оставляешь заявку. Получаешь бизнес-план и финмодель</p></div>
     <div class="step fade-in"><div class="step-num">02</div><h4>Обучение</h4><p>2-дневное офлайн-обучение в Перми на реальном производстве</p></div>
     <div class="step fade-in"><div class="step-num">03</div><h4>Подготовка</h4><p>Помогаем найти помещение, закупить оборудование, нанять персонал</p></div>
-    <div class="step fade-in"><div class="step-num">04</div><h4>PR + Запуск</h4><p>Запускаем вирусную PR-кампанию. Первый заказ через 30 дней</p></div>
+    <div class="step fade-in"><div class="step-num">04</div><h4>PR + Запуск</h4><p>Запускаем вирусную PR-кампанию. Первый заказ через 45 дней</p></div>
     <div class="step fade-in"><div class="step-num">05</div><h4>Рост</h4><p>Сопровождение 24/7. Помогаем масштабировать до 2-й и 3-й точки</p></div>
   </div>
 </div>
@@ -1832,7 +2190,7 @@ img { max-width: 100%; display: block; }
   <div class="wrap" style="margin-bottom:3rem;">
     <div class="section-tag">Обучение</div>
     <h2 class="heading-lg">Бесплатное 2-дневное офлайн обучение в Перми</h2>
-    <p style="color:rgba(255,255,255,0.5);margin-top:0.8rem;max-width:600px;">Два продуктивных дня изучения бизнеса ЁбиСан изнутри. Посмотришь на действующее производство. Узнаешь, как открыть и эффективно управлять доставкой.</p>
+    <p style="color:rgba(0,0,0,0.55);margin-top:0.8rem;max-width:600px;">Два продуктивных дня изучения бизнеса ЁбиСан изнутри. Посмотришь на действующее производство. Узнаешь, как открыть и эффективно управлять доставкой.</p>
   </div>
   <div class="training-content">
     <div class="training-day fade-in">
@@ -1851,7 +2209,7 @@ img { max-width: 100%; display: block; }
     </div>
   </div>
   <div style="text-align:center;margin-top:3rem;">
-    <p style="color:rgba(255,255,255,0.5);margin-bottom:1.5rem;font-size:0.85rem;">Поездка в Пермь — это время и деньги. Мы возместим часть затрат скидкой <b style="color:var(--gold);">15 000 ₽</b> на паушальный взнос</p>
+    <p style="color:rgba(0,0,0,0.5);margin-bottom:1.5rem;font-size:0.85rem;">Поездка в Пермь — это время и деньги. Мы возместим часть затрат скидкой <b style="color:var(--red);">15 000 ₽</b> на паушальный взнос</p>
     <a href="#cta" class="btn-primary">Записаться на обучение →</a>
   </div>
 </div>
@@ -1870,8 +2228,8 @@ img { max-width: 100%; display: block; }
     <div>
       <div class="section-tag">Честно о работе</div>
       <h2 class="heading-lg">Да, придётся пахать</h2>
-      <p style="color:rgba(255,255,255,0.55);margin-top:1rem;line-height:1.7;">Мы не верим, что бизнес может развиваться без участия предпринимателя. Если вы надеетесь вложить деньги и больше никогда не появляться на кухне — эта франшиза не для вас.</p>
-      <p style="color:rgba(255,255,255,0.55);margin-top:0.8rem;line-height:1.7;">Халявы не будет. Но с нами вы будете не одни. 20 специалистов УК сопровождают каждого партнёра.</p>
+      <p style="color:rgba(0,0,0,0.55);margin-top:1rem;line-height:1.7;">Мы не верим, что бизнес может развиваться без участия предпринимателя. Если вы надеетесь вложить деньги и больше никогда не появляться на кухне — эта франшиза не для вас.</p>
+      <p style="color:rgba(0,0,0,0.55);margin-top:0.8rem;line-height:1.7;">Халявы не будет. Но с нами вы будете не одни. 20 специалистов УК сопровождают каждого партнёра.</p>
     </div>
     <div>
       <div class="hw-block"><h4>Ищем единомышленников, а не капитал</h4><p>Мы зарабатываем не на вступительном взносе, а на успехе партнёров. Нам важно, чтобы вы были нашим человеком.</p></div>
@@ -1883,17 +2241,17 @@ img { max-width: 100%; display: block; }
 </div>
 
 <!-- ========== NO EXPERIENCE ========== -->
-<div style="background:var(--dark-bg);padding:5rem 3rem;">
+<div style="background:var(--light-bg);padding:5rem 3rem;">
   <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
-    <div class="fade-in" style="background:var(--card-bg);border:1px solid rgba(255,255,255,0.05);padding:2.5rem;text-align:center;">
-      <div style="font-size:3rem;margin-bottom:1rem;"></div>
-      <div style="font-family:'Unbounded',sans-serif;font-weight:900;font-size:2rem;color:var(--gold);">67%</div>
-      <p style="color:rgba(255,255,255,0.5);margin-top:0.5rem;font-size:0.85rem;">партнёров впервые в бизнесе — и они уже успешно управляют доставкой</p>
+    <div class="fade-in" style="background:var(--white);border:1px solid var(--border);border:1px solid rgba(0,0,0,0.06);padding:2.5rem;text-align:center;">
+      <div style="color:var(--red);margin-bottom:1rem;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+      <div style="font-family:'Unbounded',sans-serif;font-weight:900;font-size:2rem;color:var(--red);">67%</div>
+      <p style="color:rgba(0,0,0,0.55);margin-top:0.5rem;font-size:0.85rem;">партнёров впервые в бизнесе — и они уже успешно управляют доставкой</p>
     </div>
-    <div class="fade-in" style="background:var(--card-bg);border:1px solid rgba(255,255,255,0.05);padding:2.5rem;text-align:center;">
-      <div style="font-size:3rem;margin-bottom:1rem;"></div>
-      <div style="font-family:'Unbounded',sans-serif;font-weight:900;font-size:2rem;color:var(--gold);">93%</div>
-      <p style="color:rgba(255,255,255,0.5);margin-top:0.5rem;font-size:0.85rem;">партнёров впервые работают с общественным питанием</p>
+    <div class="fade-in" style="background:var(--white);border:1px solid var(--border);border:1px solid rgba(0,0,0,0.06);padding:2.5rem;text-align:center;">
+      <div style="color:var(--red);margin-bottom:1rem;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg></div>
+      <div style="font-family:'Unbounded',sans-serif;font-weight:900;font-size:2rem;color:var(--red);">93%</div>
+      <p style="color:rgba(0,0,0,0.55);margin-top:0.5rem;font-size:0.85rem;">партнёров впервые работают с общественным питанием</p>
     </div>
   </div>
 </div>
@@ -1902,7 +2260,7 @@ img { max-width: 100%; display: block; }
 <div class="partners-bar">
   <div style="text-align:center;margin-bottom:2rem;">
     <div class="section-tag" style="justify-content:center;">Федеральные партнёры</div>
-    <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;">Специальные скидки и условия для сети ЁбиСан</p>
+    <p style="color:rgba(0,0,0,0.4);font-size:0.85rem;">Специальные скидки и условия для сети ЁбиСан</p>
   </div>
   <div class="partners-logos">
     <span class="partner-logo">ВКонтакте</span>
@@ -1924,7 +2282,7 @@ img { max-width: 100%; display: block; }
       <input type="text" placeholder="Ваше имя">
       <input type="tel" placeholder="Телефон">
       <input type="text" placeholder="Город" class="full">
-      <select class="full" style="width:100%;padding:0.9rem 1rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--white);font-family:'Noto Sans JP',sans-serif;font-size:0.88rem;appearance:none;cursor:pointer;">
+      <select class="full" style="width:100%;padding:0.9rem 1rem;background:rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.08);color:var(--white);font-family:'Noto Sans JP',sans-serif;font-size:0.88rem;appearance:none;cursor:pointer;">
         <option>Есть ли опыт в бизнесе?</option>
         <option>Да</option>
         <option>Нет</option>
@@ -1936,10 +2294,10 @@ img { max-width: 100%; display: block; }
 </div>
 
 <!-- ========== BLOG LINK ========== -->
-<div style="padding:4rem 3rem;text-align:center;border-top:1px solid rgba(255,255,255,0.05);">
+<div style="padding:4rem 3rem;text-align:center;border-top:1px solid rgba(0,0,0,0.06);">
   <div class="section-tag" style="justify-content:center;">Следи за нами</div>
   <h2 class="heading-md">Читай наш блог и будь в курсе</h2>
-  <p style="color:rgba(255,255,255,0.5);margin:1rem auto 2rem;max-width:500px;">Советы, кейсы, новости и инсайты о бизнесе доставки суши и роллов.</p>
+  <p style="color:rgba(0,0,0,0.5);margin:1rem auto 2rem;max-width:500px;">Советы, кейсы, новости и инсайты о бизнесе доставки суши и роллов.</p>
   <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
     <a href="https://ebisan.ru/" class="btn-outline" target="_blank">ebisan.ru</a>
     <a href="#cta" class="btn-primary">Связаться с нами →</a>
@@ -1977,11 +2335,11 @@ img { max-width: 100%; display: block; }
 <div class="modal-overlay" id="modal">
   <div class="modal">
     <button class="modal-close" onclick="hideModal()">×</button>
-    <h3>Спасибо за заявку! 🎉</h3>
-    <p style="color:rgba(255,255,255,0.65);line-height:1.7;">Наш менеджер свяжется с вами в ближайшее рабочее время. Подготовим персональное коммерческое предложение и финансовую модель.</p>
+    <h3>Спасибо за заявку!</h3>
+    <p style="color:rgba(0,0,0,0.6);line-height:1.7;">Наш менеджер свяжется с вами в ближайшее рабочее время. Подготовим персональное коммерческое предложение и финансовую модель.</p>
     <div style="margin-top:1.5rem;padding:1.2rem;background:rgba(230,57,70,0.1);border:1px solid rgba(230,57,70,0.2);">
-      <p style="font-size:1rem;color:var(--gold);font-family:'Unbounded',sans-serif;font-weight:700;">+7 342 2 600 300</p>
-      <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-top:0.3rem;">franchise@ebisan.ru</p>
+      <p style="font-size:1rem;color:var(--red);font-family:'Unbounded',sans-serif;font-weight:700;">+7 342 2 600 300</p>
+      <p style="font-size:0.82rem;color:rgba(0,0,0,0.55);margin-top:0.3rem;">franchise@ebisan.ru</p>
     </div>
   </div>
 </div>

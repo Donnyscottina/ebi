@@ -3,1674 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Франшиза ЁбиСан — Доставка суши и роллов | Открой свой бизнес</title>
-<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Unbounded:wght@400;700;900&display=swap" rel="stylesheet">
-<style>
-:root {
-  --black: #1a1a1a;
-  --white: #ffffff;
-  --text: #2d2d2d;
-  --text-light: #666666;
-  --text-lighter: #999999;
-  --red: #e63946;
-  --red-dark: #c1121f;
-  --red-soft: #fff0f1;
-  --gold: #d4740e;
-  --gold-soft: #fff8f0;
-  --cream: #faf8f5;
-  --light-bg: #f5f3f0;
-  --card-bg: #ffffff;
-  --card-bg2: #fafafa;
-  --border: #e8e5e1;
-  --border-light: #f0eeeb;
-  --accent-glow: rgba(230, 57, 70, 0.15);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
-  --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; font-size: 16px; }
-body {
-  font-family: 'Noto Sans JP', sans-serif;
-  background: var(--white);
-  color: var(--text);
-  overflow-x: hidden;
-  line-height: 1.6;
-}
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--light-bg); }
-::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
-img { max-width: 100%; display: block; }
-
-.heading-xl {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-}
-.heading-lg {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  line-height: 1.15;
-}
-.heading-md {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.3rem, 2.5vw, 2rem);
-  line-height: 1.2;
-}
-.jp-text {
-  font-family: 'Dela Gothic One', sans-serif;
-  color: rgba(0,0,0,0.03);
-  font-size: clamp(4rem, 12vw, 10rem);
-  position: absolute;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 0;
-}
-.section-tag {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.section-tag::before {
-  content: '';
-  width: 2rem;
-  height: 2px;
-  background: var(--red);
-}
-.wrap {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 3rem;
-}
-
-/* ===== NAV ===== */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 1rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  transition: padding 0.4s;
-  box-shadow: 0 1px 10px rgba(0,0,0,0.04);
-}
-.nav.scrolled { padding: 0.6rem 3rem; }
-.nav-logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
-.nav-logo img { height: 40px; }
-.nav-logo-text {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 1.4rem;
-  color: var(--text);
-}
-.nav-logo-text span { color: var(--red); }
-.nav-links { display: flex; gap: 1.8rem; list-style: none; }
-.nav-links a {
-  color: rgba(0,0,0,0.6);
-  text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  transition: color 0.3s;
-}
-.nav-links a:hover { color: var(--red); }
-.nav-cta {
-  background: var(--red);
-  color: white;
-  border: none;
-  padding: 0.65rem 1.6rem;
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-}
-.nav-cta:hover { background: var(--red-dark); transform: scale(1.05); }
-.nav-phone {
-  color: var(--gold);
-  text-decoration: none;
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.85rem;
-}
-
-/* ===== BUTTONS ===== */
-.btn-primary {
-  background: var(--red);
-  color: white;
-  border: none;
-  padding: 1rem 2.5rem;
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.82rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  position: relative;
-  overflow: hidden;
-}
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.06), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.btn-primary:hover::before { opacity: 1; }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px var(--accent-glow); }
-.btn-outline {
-  background: transparent;
-  color: var(--text);
-  border: 1px solid rgba(0,0,0,0.12);
-  padding: 1rem 2.5rem;
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.82rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-}
-.btn-outline:hover { border-color: var(--red); color: var(--red); }
-.btn-gold {
-  background: var(--gold);
-  color: var(--text);
-  border: none;
-  padding: 1rem 2.5rem;
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.82rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.btn-gold:hover { transform: translateY(-2px); filter: brightness(1.1); }
-
-/* ===== HERO ===== */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 7rem 3rem 4rem;
-  position: relative;
-  overflow: hidden;
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 75% 20%, rgba(230,57,70,0.18) 0%, transparent 50%),
-    radial-gradient(ellipse at 25% 80%, rgba(244,162,97,0.08) 0%, transparent 50%),
-    var(--white);
-}
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 3rem;
-  align-items: center;
-}
-.hero-left h1 .hl { color: var(--red); }
-.hero-subtitle {
-  font-size: 1.1rem;
-  color: rgba(0,0,0,0.6);
-  margin-top: 1.5rem;
-  max-width: 520px;
-  line-height: 1.7;
-}
-.hero-stats { display: flex; gap: 2.5rem; margin-top: 2rem; }
-.hero-stat { border-left: 2px solid var(--red); padding-left: 1rem; }
-.hero-stat-val {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 1.8rem;
-  color: var(--gold);
-}
-.hero-stat-lbl {
-  font-size: 0.75rem;
-  color: rgba(0,0,0,0.45);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-.hero-cta { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; }
-
-/* Hero form card */
-.hero-card {
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.08);
-  padding: 2.2rem;
-  position: relative;
-  overflow: hidden;
-}
-.hero-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--red), var(--gold));
-}
-.hero-card h3 {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  margin-bottom: 1.2rem;
-}
-.fg { margin-bottom: 0.8rem; }
-.fg input, .fg select {
-  width: 100%;
-  padding: 0.85rem 1rem;
-  background: rgba(0,0,0,0.06);
-  border: 1px solid rgba(0,0,0,0.08);
-  color: var(--text);
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 0.88rem;
-  outline: none;
-  transition: border-color 0.3s;
-}
-.fg input::placeholder { color: rgba(0,0,0,0.25); }
-.fg input:focus, .fg select:focus { border-color: var(--red); }
-.fg select { appearance: none; cursor: pointer; }
-.fg select option { background: var(--card-bg); }
-.form-note {
-  font-size: 0.68rem;
-  color: rgba(0,0,0,0.15);
-  margin-top: 0.6rem;
-  text-align: center;
-}
-
-/* ===== MARQUEE ===== */
-.marquee {
-  overflow: hidden;
-  padding: 1.2rem 0;
-  background: var(--red);
-  position: relative;
-  z-index: 5;
-}
-.marquee-track {
-  display: flex;
-  animation: marquee 30s linear infinite;
-  width: max-content;
-}
-.marquee-item {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  padding: 0 2rem;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-.marquee-item::after {
-  content: '寿司';
-  font-family: 'Dela Gothic One', sans-serif;
-  font-size: 0.85rem;
-  opacity: 0.5;
-}
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* ===== COUNTER BAR ===== */
-.counter-bar {
-  background: var(--light-bg);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  padding: 3rem;
-}
-.counter-grid {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2rem;
-  text-align: center;
-}
-.counter-item .cv {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: var(--gold);
-}
-.counter-item .cl {
-  font-size: 0.78rem;
-  color: rgba(0,0,0,0.5);
-  margin-top: 0.2rem;
-}
-
-/* ===== VIDEO SECTION ===== */
-.video-section {
-  padding: 6rem 3rem;
-  position: relative;
-  overflow: hidden;
-}
-.video-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-.video-placeholder {
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.08);
-  aspect-ratio: 16/9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-}
-.video-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.7;
-}
-.play-btn {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  background: var(--red);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  transition: transform 0.3s;
-  z-index: 2;
-}
-.video-placeholder:hover .play-btn { transform: scale(1.15); }
-.video-text p {
-  font-size: 1rem;
-  color: rgba(0,0,0,0.6);
-  line-height: 1.8;
-  margin-top: 1rem;
-}
-
-/* ===== PRODUCT SHOWCASE ===== */
-.products-section {
-  background: var(--light-bg);
-  padding: 6rem 0;
-  overflow: hidden;
-}
-.products-header {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 3rem 3rem;
-}
-.products-scroll {
-  display: flex;
-  gap: 1.2rem;
-  overflow-x: auto;
-  padding: 0 3rem 2rem;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-.products-scroll::-webkit-scrollbar { height: 4px; }
-.products-scroll::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
-.product-card {
-  min-width: 260px;
-  max-width: 260px;
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.06);
-  scroll-snap-align: start;
-  transition: all 0.4s;
-  flex-shrink: 0;
-}
-.product-card:hover { border-color: rgba(230,57,70,0.3); transform: translateY(-4px); }
-.product-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-.product-card-body { padding: 1.2rem; }
-.product-card-body h4 {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.78rem;
-  margin-bottom: 0.3rem;
-  line-height: 1.3;
-}
-.product-card-body .price {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 1.1rem;
-  color: var(--gold);
-}
-.product-card-body .desc {
-  font-size: 0.72rem;
-  color: rgba(0,0,0,0.4);
-  margin-top: 0.3rem;
-  line-height: 1.4;
-}
-
-/* ===== WHY SECTION ===== */
-.why-section { background: var(--white); padding: 6rem 3rem; }
-.why-grid {
-  max-width: 1400px;
-  margin: 3rem auto 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-}
-.why-card {
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 2rem;
-  transition: all 0.4s;
-  position: relative;
-  overflow: hidden;
-}
-.why-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--red);
-  transform: scaleX(0);
-  transition: transform 0.4s;
-}
-.why-card:hover::after { transform: scaleX(1); }
-.why-card:hover { transform: translateY(-4px); border-color: rgba(230,57,70,0.2); }
-.why-icon {
-  width: 52px;
-  height: 52px;
-  background: var(--red-soft);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  color: var(--red);
-}
-.why-icon i { width: 24px; height: 24px; }
-.why-card h3 {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.9rem;
-  margin-bottom: 0.7rem;
-}
-.why-card p { font-size: 0.82rem; color: rgba(0,0,0,0.55); line-height: 1.7; }
-.why-card .big-num {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: var(--gold);
-  margin-bottom: 0.3rem;
-}
-
-/* ===== FOUNDER ===== */
-.founder-section {
-  padding: 6rem 3rem;
-  position: relative;
-  overflow: hidden;
-  background: radial-gradient(ellipse at 80% 50%, rgba(244,162,97,0.06) 0%, transparent 50%), var(--light-bg);
-}
-.founder-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-.founder-quote {
-  font-size: 1.3rem;
-  font-weight: 300;
-  line-height: 1.8;
-  font-style: italic;
-  color: rgba(0,0,0,0.75);
-  padding-left: 2rem;
-  border-left: 3px solid var(--red);
-}
-.founder-name {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin-top: 1.5rem;
-  color: var(--gold);
-}
-.founder-title {
-  font-size: 0.82rem;
-  color: rgba(0,0,0,0.45);
-  margin-top: 0.2rem;
-}
-.founder-img-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.founder-img-wrap img {
-  width: 100%;
-  max-width: 500px;
-  border: 1px solid rgba(0,0,0,0.06);
-}
-.founder-img-decor {
-  position: absolute;
-  top: -30px;
-  right: -30px;
-  width: 120px;
-  height: 120px;
-  border: 2px solid var(--red);
-  opacity: 0.3;
-}
-.founder-kanji {
-  position: absolute;
-  bottom: -20px;
-  left: -20px;
-  font-family: 'Dela Gothic One', sans-serif;
-  font-size: 6rem;
-  color: rgba(230,57,70,0.1);
-}
-
-/* ===== ADVANTAGES ===== */
-.advantages-section {
-  padding: 6rem 3rem;
-  background: radial-gradient(ellipse at 0% 50%, rgba(230,57,70,0.06) 0%, transparent 50%), var(--white);
-}
-.adv-grid {
-  max-width: 1400px;
-  margin: 3rem auto 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-.adv-card {
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 2.2rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1.5rem;
-  align-items: start;
-  transition: all 0.4s;
-}
-.adv-card:hover { border-color: rgba(230,57,70,0.3); transform: translateX(4px); }
-.adv-num {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: rgba(230,57,70,0.2);
-  line-height: 1;
-}
-.adv-card h3 {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-}
-.adv-card p { font-size: 0.82rem; color: rgba(0,0,0,0.55); line-height: 1.7; }
-
-/* ===== BANNERS GALLERY ===== */
-.banners-section {
-  padding: 0;
-  background: var(--light-bg);
-}
-.banners-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-}
-.banners-grid img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  transition: all 0.5s;
-  filter: brightness(0.7);
-}
-.banners-grid img:hover { filter: brightness(1); transform: scale(1.02); }
-
-/* ===== PAYBACK ===== */
-.payback-section { padding: 6rem 3rem; text-align: center; }
-.payback-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  margin-top: 3rem;
-  flex-wrap: wrap;
-}
-.pb-block {
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 2rem 2.5rem;
-  text-align: center;
-  min-width: 180px;
-}
-.pb-block .v {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 1.8rem;
-  color: var(--gold);
-}
-.pb-block .l {
-  font-size: 0.75rem;
-  color: rgba(0,0,0,0.45);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-top: 0.2rem;
-}
-.pb-op {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 2rem;
-  color: var(--red);
-}
-.pb-result {
-  margin-top: 3rem;
-  padding: 2.5rem 4rem;
-  background: linear-gradient(135deg, rgba(230,57,70,0.15), rgba(244,162,97,0.1));
-  border: 1px solid rgba(230,57,70,0.2);
-  display: inline-block;
-}
-.pb-result .v {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 2.8rem;
-  color: var(--red);
-}
-.pb-result .l { font-size: 0.85rem; color: rgba(0,0,0,0.6); margin-top: 0.3rem; }
-.payback-expenses {
-  max-width: 700px;
-  margin: 2.5rem auto 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-.expense-item {
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 1.2rem;
-  text-align: center;
-}
-.expense-item .v {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--gold);
-}
-.expense-item .l {
-  font-size: 0.72rem;
-  color: rgba(0,0,0,0.4);
-  margin-top: 0.2rem;
-}
-
-/* ===== WHAT YOU GET ===== */
-.get-section {
-  background: var(--light-bg);
-  padding: 6rem 3rem;
-}
-.get-grid {
-  max-width: 1400px;
-  margin: 3rem auto 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.2rem;
-}
-.get-item {
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 1.5rem;
-  transition: all 0.4s;
-}
-.get-item:hover { border-color: rgba(230,57,70,0.2); transform: translateY(-3px); }
-.get-icon {
-  width: 44px;
-  height: 44px;
-  background: var(--red-soft);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.7rem;
-  color: var(--red);
-}
-.get-icon i { width: 20px; height: 20px; }
-.get-item h4 {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.75rem;
-  margin-bottom: 0.3rem;
-}
-.get-item p { font-size: 0.72rem; color: rgba(0,0,0,0.45); line-height: 1.5; }
-
-/* ===== PACKAGES ===== */
-.packages-section { padding: 6rem 3rem; }
-.packages-grid {
-  max-width: 1400px;
-  margin: 3rem auto 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.pkg {
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 2.5rem;
-  position: relative;
-  transition: all 0.4s;
-}
-.pkg.feat { border-color: var(--red); transform: scale(1.02); }
-.pkg.feat::before {
-  content: 'ПОПУЛЯРНЫЙ';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  background: var(--red);
-  text-align: center;
-  padding: 0.35rem;
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.6rem;
-  letter-spacing: 0.15em;
-}
-.pkg:hover { border-color: rgba(230,57,70,0.4); transform: translateY(-5px); }
-.pkg.feat:hover { transform: scale(1.02) translateY(-5px); }
-.pkg-name {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
-}
-.pkg-desc { font-size: 0.78rem; color: rgba(0,0,0,0.4); }
-.pkg-price {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 1.8rem;
-  color: var(--gold);
-  margin: 1rem 0;
-}
-.pkg-price span { font-size: 0.85rem; color: rgba(0,0,0,0.35); font-weight: 400; }
-.pkg-features { list-style: none; margin: 1.2rem 0; }
-.pkg-features li {
-  padding: 0.45rem 0;
-  font-size: 0.82rem;
-  color: rgba(0,0,0,0.6);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.pkg-features li::before { content: '✓'; color: var(--red); font-weight: 700; }
-
-/* ===== PICKUP FORMAT ===== */
-.pickup-section {
-  background: var(--light-bg);
-  padding: 6rem 3rem;
-  overflow: hidden;
-}
-.pickup-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-}
-.pickup-images {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
-}
-.pickup-images img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border: 1px solid rgba(0,0,0,0.06);
-  transition: all 0.4s;
-}
-.pickup-images img:hover { border-color: var(--red); }
-.pickup-text p {
-  font-size: 0.9rem;
-  color: rgba(0,0,0,0.55);
-  line-height: 1.8;
-  margin-top: 1rem;
-}
-.pickup-stat {
-  display: inline-block;
-  margin-top: 1.5rem;
-  background: rgba(230,57,70,0.1);
-  border: 1px solid rgba(230,57,70,0.2);
-  padding: 1.2rem 2rem;
-}
-.pickup-stat .v {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: var(--red);
-}
-.pickup-stat .l { font-size: 0.8rem; color: rgba(0,0,0,0.5); }
-
-/* ===== NASTAVNIK ===== */
-.mentors-section { padding: 6rem 3rem; }
-.mentors-grid {
-  max-width: 1400px;
-  margin: 3rem auto 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.mentor-card {
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 2rem;
-  text-align: center;
-  transition: all 0.4s;
-}
-.mentor-card:hover { border-color: rgba(230,57,70,0.2); }
-.mentor-avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: var(--red-soft);
-  margin: 0 auto 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--red);
-}
-.mentor-avatar i { width: 28px; height: 28px; }
-.mentor-card h4 {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.85rem;
-  margin-bottom: 0.3rem;
-}
-.mentor-card .role { font-size: 0.75rem; color: var(--gold); margin-bottom: 0.7rem; }
-.mentor-card p { font-size: 0.78rem; color: rgba(0,0,0,0.5); line-height: 1.6; }
-
-/* ===== REVIEWS ===== */
-.reviews-section {
-  background: var(--light-bg);
-  padding: 6rem 3rem;
-}
-.reviews-grid {
-  max-width: 1400px;
-  margin: 3rem auto 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.review-card {
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 2rem;
-  transition: all 0.4s;
-}
-.review-card:hover { border-color: rgba(230,57,70,0.2); }
-.review-qm {
-  font-family: 'Dela Gothic One', sans-serif;
-  font-size: 3.5rem;
-  color: var(--red);
-  opacity: 0.3;
-  line-height: 1;
-  margin-bottom: 0.3rem;
-}
-.review-card .text {
-  font-size: 0.85rem;
-  color: rgba(0,0,0,0.65);
-  line-height: 1.7;
-  margin-bottom: 1.2rem;
-}
-.review-card .author {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.78rem;
-}
-.review-card .city { font-size: 0.72rem; color: rgba(0,0,0,0.4); margin-top: 0.15rem; }
-
-/* ===== GUARANTEE ===== */
-.guarantee-section {
-  padding: 6rem 3rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  background: radial-gradient(ellipse at 50% 50%, rgba(244,162,97,0.08) 0%, transparent 50%), var(--white);
-}
-.guarantee-badge {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  border: 3px solid var(--gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin: 0 auto 2rem;
-}
-.guarantee-badge .pct {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 2.8rem;
-  color: var(--gold);
-  line-height: 1;
-}
-.guarantee-badge .txt {
-  font-size: 0.55rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--gold);
-}
-
-/* ===== TEAM ===== */
-.team-section {
-  background: var(--light-bg);
-  padding: 6rem 3rem;
-}
-.team-grid {
-  max-width: 1400px;
-  margin: 3rem auto 0;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
-}
-.team-card {
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 1.5rem 1rem;
-  text-align: center;
-  transition: all 0.3s;
-}
-.team-card:hover { border-color: rgba(230,57,70,0.2); }
-.team-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
-.team-card h5 {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.65rem;
-  line-height: 1.3;
-}
-.team-card p { font-size: 0.65rem; color: rgba(0,0,0,0.4); margin-top: 0.2rem; }
-
-/* ===== STEPS ===== */
-.steps-section { padding: 6rem 3rem; }
-.steps-grid {
-  max-width: 1400px;
-  margin: 3rem auto 0;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0;
-  position: relative;
-}
-.steps-grid::before {
-  content: '';
-  position: absolute;
-  top: 35px;
-  left: 8%;
-  right: 8%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--red), var(--gold));
-  opacity: 0.25;
-}
-.step { text-align: center; position: relative; padding: 0 0.8rem; }
-.step-num {
-  width: 70px;
-  height: 70px;
-  background: var(--card-bg);
-  border: 2px solid var(--red);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 1.3rem;
-  color: var(--red);
-  position: relative;
-  z-index: 2;
-}
-.step h4 {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.72rem;
-  margin-bottom: 0.3rem;
-}
-.step p { font-size: 0.72rem; color: rgba(0,0,0,0.45); line-height: 1.4; }
-
-/* ===== TRAINING ===== */
-.training-section {
-  background: var(--light-bg);
-  padding: 6rem 3rem;
-}
-.training-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-.training-day {
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 2rem;
-}
-.training-day h3 {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--red);
-  margin-bottom: 1.5rem;
-}
-.schedule-item {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1rem;
-  padding: 0.8rem 0;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  align-items: start;
-}
-.schedule-item .time {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.75rem;
-  color: var(--gold);
-  white-space: nowrap;
-}
-.schedule-item .topic {
-  font-size: 0.82rem;
-  color: rgba(0,0,0,0.6);
-}
-
-/* ===== SMALL CITIES ===== */
-.small-cities {
-  padding: 5rem 3rem;
-  text-align: center;
-  background: linear-gradient(135deg, rgba(230,57,70,0.08), rgba(244,162,97,0.05));
-  border-top: 1px solid rgba(0,0,0,0.06);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-}
-.small-cities p {
-  max-width: 600px;
-  margin: 1rem auto 0;
-  font-size: 0.9rem;
-  color: rgba(0,0,0,0.55);
-  line-height: 1.7;
-}
-
-/* ===== HARD WORK ===== */
-.hardwork-section {
-  padding: 6rem 3rem;
-  position: relative;
-}
-.hardwork-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-.hw-block {
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 2rem;
-  margin-bottom: 1.5rem;
-}
-.hw-block h4 {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 0.85rem;
-  margin-bottom: 0.6rem;
-  color: var(--gold);
-}
-.hw-block p { font-size: 0.82rem; color: rgba(0,0,0,0.55); line-height: 1.7; }
-
-/* ===== CTA ===== */
-.cta-section {
-  padding: 8rem 3rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse at 50% 50%, rgba(230,57,70,0.2) 0%, transparent 60%),
-    var(--white);
-}
-.cta-content { max-width: 650px; margin: 0 auto; position: relative; z-index: 2; }
-.cta-section p { color: rgba(0,0,0,0.55); margin-bottom: 2.5rem; }
-.cta-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
-  max-width: 500px;
-  margin: 0 auto;
-}
-.cta-form input {
-  width: 100%;
-  padding: 0.9rem 1rem;
-  background: rgba(0,0,0,0.06);
-  border: 1px solid rgba(0,0,0,0.08);
-  color: var(--text);
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 0.88rem;
-  outline: none;
-  transition: border-color 0.3s;
-}
-.cta-form input::placeholder { color: rgba(0,0,0,0.15); }
-.cta-form input:focus { border-color: var(--red); }
-.cta-form .full { grid-column: 1 / -1; }
-
-/* ===== PARTNERS BAR ===== */
-.partners-bar {
-  background: var(--light-bg);
-  padding: 4rem 3rem;
-  border-top: 1px solid rgba(0,0,0,0.06);
-}
-.partners-logos {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
-  flex-wrap: wrap;
-}
-.partner-logo {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: rgba(0,0,0,0.06);
-  letter-spacing: 0.05em;
-}
-
-/* ===== FOOTER ===== */
-.footer {
-  border-top: 1px solid rgba(0,0,0,0.06);
-  padding: 3rem;
-}
-.footer-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 3rem;
-  align-items: start;
-}
-.footer-logo {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: 1.4rem;
-}
-.footer-logo span { color: var(--red); }
-.footer-motto { font-size: 0.75rem; color: rgba(0,0,0,0.35); margin-top: 0.3rem; }
-.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
-.footer-links a {
-  color: rgba(0,0,0,0.4);
-  text-decoration: none;
-  font-size: 0.78rem;
-  transition: color 0.3s;
-}
-.footer-links a:hover { color: var(--red); }
-.footer-contact .phone {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--gold);
-  text-decoration: none;
-}
-.footer-contact .email {
-  font-size: 0.82rem;
-  color: rgba(0,0,0,0.5);
-  margin-top: 0.3rem;
-}
-.footer-bottom {
-  max-width: 1400px;
-  margin: 2rem auto 0;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(0,0,0,0.06);
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.7rem;
-  color: rgba(0,0,0,0.15);
-}
-
-/* ===== MODAL ===== */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(10px);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s;
-}
-.modal-overlay.active { opacity: 1; pointer-events: all; }
-.modal {
-  background: var(--card-bg);
-  border: 1px solid rgba(0,0,0,0.08);
-  padding: 3rem;
-  max-width: 450px;
-  width: 90%;
-  position: relative;
-  transform: translateY(20px);
-  transition: transform 0.4s;
-}
-.modal-overlay.active .modal { transform: translateY(0); }
-.modal-close {
-  position: absolute;
-  top: 1rem; right: 1rem;
-  background: none;
-  border: none;
-  color: rgba(0,0,0,0.5);
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-.modal-close:hover { color: var(--red); }
-.modal h3 {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-}
-
-/* ===== ANIMATIONS ===== */
-.fade-in {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.fade-in.vis { opacity: 1; transform: translateY(0); }
-.slide-l {
-  opacity: 0;
-  transform: translateX(-35px);
-  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.slide-l.vis { opacity: 1; transform: translateX(0); }
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .hero-content { grid-template-columns: 1fr; }
-  .why-grid, .get-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
-  .mentors-grid, .reviews-grid, .packages-grid { grid-template-columns: repeat(2, 1fr); }
-  .counter-grid { grid-template-columns: repeat(3, 1fr); }
-  .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  .steps-grid::before { display: none; }
-  .founder-content, .video-content, .pickup-content, .training-content, .hardwork-content { grid-template-columns: 1fr; }
-  .banners-grid { grid-template-columns: repeat(2, 1fr); }
-  .pkg.feat { transform: none; }
-}
-@media (max-width: 768px) {
-  .nav-links, .nav-phone { display: none; }
-  .nav { padding: 0.8rem 1.5rem; }
-  .hero { padding: 5rem 1.5rem 2rem; }
-  .hero-stats { flex-direction: column; gap: 1rem; }
-  .hero-cta { flex-direction: column; }
-  .wrap, [class*="-section"] { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
-  .why-grid, .adv-grid, .reviews-grid, .packages-grid, .mentors-grid { grid-template-columns: 1fr; }
-  .get-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
-  .counter-grid { grid-template-columns: repeat(2, 1fr); }
-  .steps-grid { grid-template-columns: 1fr; }
-  .banners-grid { grid-template-columns: 1fr; }
-  .banners-grid img { height: 220px; }
-  .cta-form { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr; text-align: center; }
-  .footer-links { justify-content: center; }
-  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
-  .payback-expenses { grid-template-columns: 1fr; }
-  .pickup-images { grid-template-columns: 1fr; }
-}
-/* ===== LIGHT THEME OVERRIDES ===== */
-/* Nav */
-.nav-logo-text { color: var(--text); }
-.nav-logo-text span { color: var(--red); }
-.nav-links a { color: rgba(0,0,0,0.55); }
-.nav-links a:hover { color: var(--red); }
-
-/* Hero */
-.hero-bg {
-  background:
-    radial-gradient(ellipse at 75% 20%, rgba(230,57,70,0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 25% 80%, rgba(212,116,14,0.05) 0%, transparent 50%),
-    var(--cream) !important;
-}
-.hero-grid {
-  background-image:
-    linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px) !important;
-  background-size: 60px 60px;
-}
-.hero-left h1 { color: var(--text); }
-.hero-stat { border-left: 2px solid var(--red); }
-
-/* Cards on white/cream bg need shadow */
-.hero-card {
-  background: var(--white) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: var(--shadow-lg);
-}
-.hero-card h3 { color: var(--text); }
-.fg input, .fg select {
-  background: var(--light-bg) !important;
-  border: 1px solid var(--border) !important;
-  color: var(--text) !important;
-}
-.fg input::placeholder { color: rgba(0,0,0,0.35) !important; }
-.fg select option { background: var(--white); }
-
-/* Buttons */
-.btn-primary { color: white !important; }
-.btn-outline { color: var(--text); border-color: var(--border); }
-.btn-outline:hover { border-color: var(--red); color: var(--red); }
-.btn-gold { color: white !important; background: var(--gold) !important; }
-
-/* Counter bar */
-.counter-bar { background: var(--cream) !important; border-bottom: 1px solid var(--border); }
-.counter-item .cv { color: var(--red); }
-.counter-item .cl { color: rgba(0,0,0,0.5); }
-
-/* Why cards */
-.why-section { background: var(--white) !important; }
-.why-card {
-  background: var(--white) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: var(--shadow-sm);
-}
-.why-card:hover { box-shadow: var(--shadow-md); border-color: rgba(230,57,70,0.3) !important; }
-.why-card h3 { color: var(--text); }
-.why-card p { color: rgba(0,0,0,0.55); }
-.why-card .big-num { color: var(--red); }
-
-/* Video */
-.video-section { background: var(--cream); }
-.video-placeholder { box-shadow: var(--shadow-lg); border: 1px solid var(--border) !important; }
-.video-placeholder img { opacity: 0.85; }
-
-/* Products */
-.products-section { background: var(--light-bg) !important; }
-.product-card {
-  background: var(--white) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: var(--shadow-sm);
-}
-.product-card:hover { box-shadow: var(--shadow-md); }
-.product-card-body h4 { color: var(--text); }
-.product-card-body .price { color: var(--red); }
-.product-card-body .desc { color: rgba(0,0,0,0.45); }
-.products-scroll::-webkit-scrollbar-thumb { background: var(--red); }
-
-/* Banners */
-.banners-section { background: var(--white) !important; }
-.banners-grid img { filter: brightness(0.95); }
-.banners-grid img:hover { filter: brightness(1); }
-
-/* Founder */
-.founder-section {
-  background: radial-gradient(ellipse at 80% 50%, rgba(212,116,14,0.04) 0%, transparent 50%), var(--white) !important;
-}
-.founder-quote { color: rgba(0,0,0,0.7); }
-.founder-name { color: var(--red); }
-.founder-title { color: rgba(0,0,0,0.45); }
-.founder-img-decor { border-color: var(--red); }
-.founder-kanji { color: rgba(230,57,70,0.08); }
-
-/* Advantages */
-.advantages-section {
-  background: radial-gradient(ellipse at 0% 50%, rgba(230,57,70,0.04) 0%, transparent 50%), var(--cream) !important;
-}
-.adv-card {
-  background: var(--white) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: var(--shadow-sm);
-}
-.adv-card:hover { box-shadow: var(--shadow-md); border-color: rgba(230,57,70,0.3) !important; }
-.adv-card h3 { color: var(--text); }
-.adv-card p { color: rgba(0,0,0,0.55); }
-.adv-num { color: rgba(230,57,70,0.15); }
-
-/* Payback */
-.payback-section { background: var(--white); }
-.pb-block {
-  background: var(--cream) !important;
-  border: 1px solid var(--border) !important;
-}
-.pb-block .v { color: var(--red); }
-.pb-block .l { color: rgba(0,0,0,0.5); }
-.pb-result {
-  background: var(--red-soft) !important;
-  border: 1px solid rgba(230,57,70,0.15) !important;
-}
-.pb-result .v { color: var(--red); }
-.pb-result .l { color: rgba(0,0,0,0.6); }
-.expense-item {
-  background: var(--cream) !important;
-  border: 1px solid var(--border) !important;
-}
-.expense-item .v { color: var(--gold); }
-.expense-item .l { color: rgba(0,0,0,0.45); }
-
-/* What you get */
-.get-section { background: var(--light-bg) !important; }
-.get-item {
-  background: var(--white) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: var(--shadow-sm);
-}
-.get-item:hover { box-shadow: var(--shadow-md); }
-.get-item h4 { color: var(--text); }
-.get-item p { color: rgba(0,0,0,0.5); }
-
-/* Packages */
-.packages-section { background: var(--white); }
-.pkg {
-  background: var(--white) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: var(--shadow-sm);
-}
-.pkg:hover { box-shadow: var(--shadow-md); }
-.pkg.feat { border-color: var(--red) !important; box-shadow: var(--shadow-lg); }
-.pkg-name { color: var(--text); }
-.pkg-desc { color: rgba(0,0,0,0.4); }
-.pkg-price { color: var(--red); }
-.pkg-price span { color: rgba(0,0,0,0.35); }
-.pkg-features li { color: rgba(0,0,0,0.6); border-bottom: 1px solid var(--border-light); }
-
-/* Pickup */
-.pickup-section { background: var(--cream) !important; }
-.pickup-images img { border: 1px solid var(--border) !important; }
-.pickup-images img:hover { border-color: var(--red) !important; }
-.pickup-stat { background: var(--red-soft); border: 1px solid rgba(230,57,70,0.15); }
-.pickup-stat .v { color: var(--red); }
-.pickup-stat .l { color: rgba(0,0,0,0.5); }
-
-/* Mentors */
-.mentors-section { background: var(--white); }
-.mentor-card {
-  background: var(--white) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: var(--shadow-sm);
-}
-.mentor-card:hover { box-shadow: var(--shadow-md); }
-.mentor-card h4 { color: var(--text); }
-.mentor-card .role { color: var(--red); }
-.mentor-card p { color: rgba(0,0,0,0.5); }
-
-/* Reviews */
-.reviews-section { background: var(--light-bg) !important; }
-.review-card {
-  background: var(--white) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: var(--shadow-sm);
-}
-.review-card:hover { box-shadow: var(--shadow-md); }
-.review-qm { color: var(--red); opacity: 0.25; }
-.review-card .text { color: rgba(0,0,0,0.65); }
-.review-card .author { color: var(--text); }
-.review-card .city { color: rgba(0,0,0,0.4); }
-
-/* Guarantee */
-.guarantee-section {
-  background: radial-gradient(ellipse at 50% 50%, rgba(230,57,70,0.05) 0%, transparent 50%), var(--white) !important;
-}
-.guarantee-badge { border-color: var(--red); }
-.guarantee-badge .pct { color: var(--red); }
-.guarantee-badge .txt { color: var(--red); }
-
-/* Steps */
-.steps-section { background: var(--cream); }
-.step-num {
-  background: var(--white) !important;
-  border: 2px solid var(--red);
-  box-shadow: var(--shadow-sm);
-}
-.step h4 { color: var(--text); }
-.step p { color: rgba(0,0,0,0.5); }
-
-/* Training */
-.training-section { background: var(--light-bg) !important; }
-.training-day {
-  background: var(--white) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: var(--shadow-sm);
-}
-.training-day h3 { color: var(--red); }
-.schedule-item { border-bottom-color: var(--border-light); }
-.schedule-item .time { color: var(--red); }
-.schedule-item .topic { color: rgba(0,0,0,0.6); }
-
-/* Small cities */
-.small-cities {
-  background: linear-gradient(135deg, rgba(230,57,70,0.04), rgba(212,116,14,0.03)) !important;
-  border-color: var(--border) !important;
-}
-
-/* Hardwork */
-.hardwork-section { background: var(--white); }
-.hw-block {
-  background: var(--cream) !important;
-  border: 1px solid var(--border) !important;
-}
-.hw-block h4 { color: var(--red); }
-.hw-block p { color: rgba(0,0,0,0.55); }
-
-/* No experience blocks */
-.hardwork-section + div { background: var(--light-bg) !important; }
-
-/* Team */
-.team-section { background: var(--light-bg) !important; }
-.team-card {
-  background: var(--white) !important;
-  border: 1px solid var(--border) !important;
-}
-.team-card h5 { color: var(--text); }
-.team-card p { color: rgba(0,0,0,0.45); }
-
-/* Partners bar */
-.partners-bar { background: var(--cream) !important; border-color: var(--border); }
-.partner-logo { color: rgba(0,0,0,0.12); }
-
-/* CTA */
-.cta-section {
-  background:
-    radial-gradient(ellipse at 50% 50%, rgba(230,57,70,0.08) 0%, transparent 60%),
-    var(--cream) !important;
-}
-.cta-form input {
-  background: var(--white) !important;
-  border: 1px solid var(--border) !important;
-  color: var(--text) !important;
-}
-.cta-form input::placeholder { color: rgba(0,0,0,0.3) !important; }
-.cta-form select {
-  background: var(--white) !important;
-  border: 1px solid var(--border) !important;
-  color: var(--text) !important;
-}
-
-/* Blog link section */
-.cta-section + div + div { border-color: var(--border) !important; }
-
-/* Footer */
-.footer { border-color: var(--border); background: var(--white); }
-.footer-logo { color: var(--text); }
-.footer-logo span { color: var(--red); }
-.footer-motto { color: rgba(0,0,0,0.4); }
-.footer-links a { color: rgba(0,0,0,0.45); }
-.footer-links a:hover { color: var(--red); }
-.footer-contact .phone { color: var(--red); }
-.footer-contact .email { color: rgba(0,0,0,0.5); }
-.footer-bottom { border-color: var(--border); color: rgba(0,0,0,0.3); }
-
-/* Modal */
-.modal-overlay { background: rgba(0,0,0,0.5); }
-.modal {
-  background: var(--white) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: var(--shadow-lg);
-}
-.modal-close { color: rgba(0,0,0,0.4); }
-.modal-close:hover { color: var(--red); }
-.modal h3 { color: var(--text); }
-
-/* Marquee stays red - text must be white */
-.marquee { background: var(--red); }
-.marquee-item { color: white !important; }
-
-/* Counter bar stays red */
-.counter-bar .counter-grid .counter-item .cv { color: var(--red); }
-
-/* Form note */
-.form-note { color: rgba(0,0,0,0.35) !important; }
-
-/* Hero subtitle */
-.hero-subtitle { color: rgba(0,0,0,0.55); }
-.hero-stat-val { color: var(--red); }
-.hero-stat-lbl { color: rgba(0,0,0,0.45); }
-</style>
+<title>Франшиза Ёбисан — Доставка суши и роллов | Открой свой бизнес</title>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- ========== NAV ========== -->
 <nav class="nav" id="mainNav">
   <a href="#" class="nav-logo">
-    <img src="https://ebisan.ru/upload/datakit.food/b96/y03dk26ao8otmgiqz90qqldvkv4vt70j.png" alt="ЁбиСан" onerror="this.style.display='none'">
-    <span class="nav-logo-text">ЁБИ<span>САН</span></span>
+    <img src="https://ebisan.ru/upload/datakit.food/b96/y03dk26ao8otmgiqz90qqldvkv4vt70j.png" alt="Ёбисан" onerror="this.style.display='none'">
+    <span class="nav-logo-text">Ёби<span>сан</span></span>
   </a>
   <ul class="nav-links">
     <li><a href="#why">О франшизе</a></li>
@@ -1688,13 +31,11 @@ img { max-width: 100%; display: block; }
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
-  <div class="jp-text" style="top:12%;left:-3%;transform:rotate(-4deg);">寿司配達フランチャイズ</div>
-  <div class="jp-text" style="bottom:8%;right:-5%;transform:rotate(3deg);">ヨビサン美味しい</div>
   <div class="hero-content">
     <div class="hero-left">
       <div class="section-tag">Франшиза доставки суши и роллов из Перми</div>
       <h1 class="heading-xl">
-        Зарабатывайте<br><span class="hl">от 350 000 ₽</span><br>в месяц с франшизой<br>«ЁбиСан»!
+        Зарабатывайте<br><span class="hl">от 350 000 ₽</span><br>в месяц с франшизой<br>«Ёбисан»!
       </h1>
       <p class="hero-subtitle">
         150+ позиций в меню — каждый найдёт что‑то своё. Огромные порции из премиальных ингредиентов — гости возвращаются снова и снова. Доступная цена — привлекаем широкую аудиторию. Суммарные инвестиции от 1,2 млн рублей. Окупаемость от 4 месяцев — быстрый старт и доход.
@@ -1744,13 +85,13 @@ img { max-width: 100%; display: block; }
 <!-- ========== MARQUEE ========== -->
 <div class="marquee">
   <div class="marquee-track">
-    <span class="marquee-item">ЁбиСан — Франшиза из Перми</span>
+    <span class="marquee-item">Ёбисан — Франшиза из Перми</span>
     <span class="marquee-item">150+ позиций в меню</span>
     <span class="marquee-item">От 350 000 ₽ чистыми в месяц</span>
     <span class="marquee-item">Окупаемость от 4 месяцев</span>
     <span class="marquee-item">Лучшее заведение 2025–2026 по версии Яндекса</span>
     <span class="marquee-item">4.9 в 2ГИС и Яндекс Картах</span>
-    <span class="marquee-item">ЁбиСан — Франшиза из Перми</span>
+    <span class="marquee-item">Ёбисан — Франшиза из Перми</span>
     <span class="marquee-item">150+ позиций в меню</span>
     <span class="marquee-item">От 350 000 ₽ чистыми в месяц</span>
     <span class="marquee-item">Окупаемость от 4 месяцев</span>
@@ -1774,7 +115,7 @@ img { max-width: 100%; display: block; }
 <div class="video-section">
   <div class="video-content">
     <div class="video-placeholder">
-      <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="ЁбиСан">
+      <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="Ёбисан">
       <div class="play-btn"><svg width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
     </div>
     <div class="video-text">
@@ -1785,7 +126,7 @@ img { max-width: 100%; display: block; }
       <p style="margin-top:0.5rem;padding-left:1rem;border-left:2px solid var(--red);">
         — подробную презентацию франшизы;<br>
         — финансовую модель бизнеса;<br>
-        — доступ к закрытому видео от основателя «ЁбиСан».
+        — доступ к закрытому видео от основателя «Ёбисан».
       </p>
       <p style="margin-top:1rem;">Мы покажем, как начать бизнес в доставке японской кухни с нуля — даже если у вас нет опыта в общепите.</p>
       <a href="#cta" class="btn-primary" style="margin-top:1.5rem;">Получить презентацию →</a>
@@ -1903,15 +244,15 @@ img { max-width: 100%; display: block; }
 <!-- ========== WHY SECTION ========== -->
 <div class="why-section" id="why">
   <div class="wrap">
-    <div class="section-tag">Почему ЁбиСан?</div>
+    <div class="section-tag">Почему Ёбисан?</div>
     <h2 class="heading-lg">Проверенная бизнес‑модель с гарантированными показателями</h2>
-    <p style="color:rgba(0,0,0,0.55);margin-top:0.8rem;max-width:700px;">Выбирая франшизу «ЁбиСан», вы получаете проверенную бизнес‑модель с гарантированными показателями. Доверьтесь опыту лидера рынка и начните прибыльный бизнес уже сегодня!</p>
+    <p style="color:rgba(0,0,0,0.55);margin-top:0.8rem;max-width:700px;">Выбирая франшизу «Ёбисан», вы получаете проверенную бизнес‑модель с гарантированными показателями. Доверьтесь опыту лидера рынка и начните прибыльный бизнес уже сегодня!</p>
   </div>
   <div class="why-grid">
     <div class="why-card fade-in"><div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div><h3>Разнообразное меню</h3><p>Более 150 позиций: запечённые и жареные роллы, авторские рецепты, футомаки, гёдза, боулы, супы, десерты и многое другое. Каждый клиент найдёт блюдо по вкусу.</p></div>
     <div class="why-card fade-in"><div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div><h3>Быстрый запуск</h3><p>Первая продажа — через 45 дней после заключения договора. Мы поможем на каждом этапе: от подбора помещения до первого заказа.</p></div>
     <div class="why-card fade-in"><div class="big-num">93%</div><h3>Высокая возвращаемость</h3><p>Больше 93% клиентов возвращаются за повторным заказом. 74% новых клиентов приходят по рекомендации — продукт продаёт сам себя.</p></div>
-    <div class="why-card fade-in"><div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><h3>Рост вместе с рынком</h3><p>Рынок доставки еды растёт на 23% в год — «ЁбиСан» уверенно развивается в любое время года.</p></div>
+    <div class="why-card fade-in"><div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><h3>Рост вместе с рынком</h3><p>Рынок доставки еды растёт на 23% в год — «Ёбисан» уверенно развивается в любое время года.</p></div>
     <div class="why-card fade-in"><div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Гарантия качества</h3><p>Соблюдаем стандарт ХАССП: все нормы безопасности и качества строго контролируются. Ни одного партнёра не закрыли за всё время работы.</p></div>
     <div class="why-card fade-in"><div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2m-7.07-3.93 1.41-1.41M18.36 5.64l1.41-1.41M1 12h2m18 0h2M4.93 4.93l1.41 1.41m12.02 12.02 1.41 1.41"/></svg></div><h3>Оптимизация затрат</h3><p>Минимальные списания продуктов благодаря продуманному меню и отлаженным технологиям приготовления.</p></div>
     <div class="why-card fade-in"><div class="big-num">600%</div><h3>Рентабельность меню</h3><p>Меню с рентабельностью до 600% — стабильный доход с каждой продажи.</p></div>
@@ -1922,9 +263,9 @@ img { max-width: 100%; display: block; }
 <!-- ========== BANNERS GALLERY ========== -->
 <div class="banners-section">
   <div class="banners-grid">
-    <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="ЁбиСан баннер">
-    <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="ЁбиСан меню">
-    <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="ЁбиСан доставка">
+    <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="Ёбисан баннер">
+    <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="Ёбисан меню">
+    <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="Ёбисан доставка">
   </div>
 </div>
 
@@ -1935,17 +276,16 @@ img { max-width: 100%; display: block; }
       <div class="section-tag">О компании</div>
       <h2 class="heading-lg">Еда — это эмоция счастья, а счастье должно быть у каждого</h2>
       <div class="founder-quote" style="margin-top:2rem;">
-        «Компания «ЁбиСан» начала свою историю в 2021 году в Перми. Наша миссия — создавать современный, качественный сервис и занимать лидирующие позиции на рынке роллов и суши.»
+        «Компания «Ёбисан» начала свою историю в 2021 году в Перми. Наша миссия — создавать современный, качественный сервис и занимать лидирующие позиции на рынке роллов и суши.»
       </div>
       <p style="color:rgba(0,0,0,0.6);margin-top:1.5rem;line-height:1.8;">Мы гордимся: высоким качеством продукта — тщательно отбираем ингредиенты и строго контролируем процесс приготовления; скоростью доставки — ценим время наших гостей и доставляем заказы оперативно; доступными ценами — делаем вкусную еду доступной для каждого; молодой и амбициозной командой — мы увлечены своим делом и постоянно совершенствуемся.</p>
-      <div class="founder-name">Выбирая «ЁбиСан», вы выбираете вкус, качество и заботу</div>
+      <div class="founder-name">Выбирая «Ёбисан», вы выбираете вкус, качество и заботу</div>
       <div class="founder-title">Пермь • с 2021 года</div>
       <a href="#cta" class="btn-primary" style="margin-top:2rem;">Получить финансовую модель →</a>
     </div>
     <div class="founder-img-wrap">
-      <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="ЁбиСан бренд">
+      <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="Ёбисан бренд">
       <div class="founder-img-decor"></div>
-      <div class="founder-kanji">鮨</div>
     </div>
   </div>
 </div>
@@ -1957,16 +297,16 @@ img { max-width: 100%; display: block; }
       <div class="section-tag">Наша философия</div>
       <h2 class="heading-lg">Мы хотим, чтобы вы наслаждались едой</h2>
       <p style="color:rgba(0,0,0,0.6);margin-top:1.2rem;line-height:1.8;">При изучении рынка франшиз вы наверняка замечали: многие проекты делают ставку на красивую упаковку. Да, выглядит эффектно, но зачастую за этим скрывается экономия на самом главном — качестве продуктов.</p>
-      <p style="color:rgba(0,0,0,0.6);margin-top:1rem;line-height:1.8;">Мы выбрали другой путь. В «ЁбиСан» в приоритете — вкус и свежесть блюда, а не внешний антураж.</p>
+      <p style="color:rgba(0,0,0,0.6);margin-top:1rem;line-height:1.8;">Мы выбрали другой путь. В «Ёбисан» в приоритете — вкус и свежесть блюда, а не внешний антураж.</p>
     </div>
     <div class="fade-in">
-      <div style="background:var(--white);border:1px solid var(--border);padding:2.2rem;box-shadow:var(--shadow-md);margin-bottom:1rem;">
+      <div style="background:var(--white);border:1px solid var(--border);padding:2.2rem;box-shadow:var(--shadow-md);margin-bottom:1rem;border-radius:12px;">
         <p style="color:rgba(0,0,0,0.6);line-height:1.8;font-size:0.92rem;">Клиент заказывает доставку, чтобы <strong style="color:var(--red);">вкусно поесть</strong> — накрыть стол, позвать гостей, получить удовольствие от еды.</p>
       </div>
-      <div style="background:var(--white);border:1px solid var(--border);padding:2.2rem;box-shadow:var(--shadow-md);margin-bottom:1rem;">
+      <div style="background:var(--white);border:1px solid var(--border);padding:2.2rem;box-shadow:var(--shadow-md);margin-bottom:1rem;border-radius:12px;">
         <p style="color:rgba(0,0,0,0.6);line-height:1.8;font-size:0.92rem;">Упаковка же после этого отправляется в мусорное ведро. Картон или пластик — неважно: её судьба одна.</p>
       </div>
-      <div style="background:var(--red-soft);border:1px solid rgba(230,57,70,0.15);padding:2.2rem;box-shadow:var(--shadow-md);">
+      <div style="background:var(--red-soft);border:1px solid rgba(230,57,70,0.15);padding:2.2rem;box-shadow:var(--shadow-md);border-radius:12px;">
         <p style="color:var(--text);line-height:1.8;font-size:0.92rem;font-weight:500;">Помните: клиент ест не упаковку — клиент ест <strong style="color:var(--red);">вкусный продукт</strong>. Выбирайте подлинное качество вместо мишуры. Наслаждайтесь каждой ложкой, каждым кусочком — вот что действительно важно.</p>
       </div>
     </div>
@@ -1977,7 +317,7 @@ img { max-width: 100%; display: block; }
 <div class="advantages-section" id="adv">
   <div class="wrap">
     <div class="section-tag">Преимущества</div>
-    <h2 class="heading-lg">В чём преимущества ЁбиСан</h2>
+    <h2 class="heading-lg">В чём преимущества Ёбисан</h2>
   </div>
   <div class="adv-grid">
     <div class="adv-card fade-in"><div class="adv-num">01</div><div><h3>Уникальное меню</h3><p>Более 150 позиций: от классики до авторских роллов. Огромные куски рыбы, сбалансированный вкус. 98% положительных отзывов. Средний чек — 1 500 ₽. Foodcost 25-31%.</p></div></div>
@@ -2106,10 +446,10 @@ img { max-width: 100%; display: block; }
 <div class="pickup-section">
   <div class="pickup-content">
     <div class="pickup-images">
-      <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="ЁбиСан точка">
-      <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="ЁбиСан самовывоз">
-      <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="ЁбиСан доставка">
-      <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="ЁбиСан бренд">
+      <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="Ёбисан точка">
+      <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="Ёбисан самовывоз">
+      <img src="https://ebisan.ru/about/IMG_0979_1_1.jpg" alt="Ёбисан доставка">
+      <img src="https://ebisan.ru/about/IMG_0992_1_1.jpg" alt="Ёбисан бренд">
     </div>
     <div class="pickup-text">
       <div class="section-tag">Формат самовывоза</div>
@@ -2145,15 +485,15 @@ img { max-width: 100%; display: block; }
 <div class="reviews-section" id="reviews">
   <div class="wrap">
     <div class="section-tag">Отзывы</div>
-    <h2 class="heading-lg">Что говорят о ЁбиСан</h2>
+    <h2 class="heading-lg">Что говорят о Ёбисан</h2>
   </div>
   <div class="reviews-grid">
-    <div class="review-card fade-in"><div class="review-qm">引</div><p class="text">Это лучшие роллы! Большие, не разваливаются, уксус не чувствуется. Лучшее, что есть в Перми! Заказываем каждую неделю всей семьёй.</p><div class="author">Постоянный клиент</div><div class="city">г. Пермь</div></div>
-    <div class="review-card fade-in"><div class="review-qm">引</div><p class="text">Я думала, не осталось бюджетных доставок с большим количеством начинки. Но ЁбиСан нашлись! Теперь это моя самая любимая доставка роллов.</p><div class="author">Постоянный клиент</div><div class="city">г. Пермь</div></div>
-    <div class="review-card fade-in"><div class="review-qm">引</div><p class="text">Классные и вкусные роллы с огромными кусками лосося. Хорошая доставка, быстро привозят. Цены адекватные. Однозначно рекомендую!</p><div class="author">Постоянный клиент</div><div class="city">г. Пермь</div></div>
-    <div class="review-card fade-in"><div class="review-qm">引</div><p class="text">Открылись быстро, компания реально помогает на каждом этапе. До этого ничего не понимал в общепите. Прошёл обучение — и поехало! Окупились за 4 месяца.</p><div class="author">Алексей К.</div><div class="city">Франчайзи, г. Екатеринбург</div></div>
-    <div class="review-card fade-in"><div class="review-qm">引</div><p class="text">Качество продукта — это главное. Клиенты сами рекомендуют друзьям. За полгода окупили инвестиции и задумываемся о второй точке.</p><div class="author">Мария В.</div><div class="city">Франчайзи, г. Тюмень</div></div>
-    <div class="review-card fade-in"><div class="review-qm">引</div><p class="text">150+ позиций в меню — конкуренты близко не стоят. Маркетинговая поддержка: PR-кампания дала 500+ подписчиков за неделю до открытия. Мощный старт.</p><div class="author">Дмитрий С.</div><div class="city">Франчайзи, г. Челябинск</div></div>
+    <div class="review-card fade-in"><div class="review-qm">❝</div><p class="text">Это лучшие роллы! Большие, не разваливаются, уксус не чувствуется. Лучшее, что есть в Перми! Заказываем каждую неделю всей семьёй.</p><div class="author">Постоянный клиент</div><div class="city">г. Пермь</div></div>
+    <div class="review-card fade-in"><div class="review-qm">❝</div><p class="text">Я думала, не осталось бюджетных доставок с большим количеством начинки. Но Ёбисан нашлись! Теперь это моя самая любимая доставка роллов.</p><div class="author">Постоянный клиент</div><div class="city">г. Пермь</div></div>
+    <div class="review-card fade-in"><div class="review-qm">❝</div><p class="text">Классные и вкусные роллы с огромными кусками лосося. Хорошая доставка, быстро привозят. Цены адекватные. Однозначно рекомендую!</p><div class="author">Постоянный клиент</div><div class="city">г. Пермь</div></div>
+    <div class="review-card fade-in"><div class="review-qm">❝</div><p class="text">Открылись быстро, компания реально помогает на каждом этапе. До этого ничего не понимал в общепите. Прошёл обучение — и поехало! Окупились за 4 месяца.</p><div class="author">Алексей К.</div><div class="city">Франчайзи, г. Екатеринбург</div></div>
+    <div class="review-card fade-in"><div class="review-qm">❝</div><p class="text">Качество продукта — это главное. Клиенты сами рекомендуют друзьям. За полгода окупили инвестиции и задумываемся о второй точке.</p><div class="author">Мария В.</div><div class="city">Франчайзи, г. Тюмень</div></div>
+    <div class="review-card fade-in"><div class="review-qm">❝</div><p class="text">150+ позиций в меню — конкуренты близко не стоят. Маркетинговая поддержка: PR-кампания дала 500+ подписчиков за неделю до открытия. Мощный старт.</p><div class="author">Дмитрий С.</div><div class="city">Франчайзи, г. Челябинск</div></div>
   </div>
   <div style="text-align:center;margin-top:3rem;">
     <a href="#cta" class="btn-primary">Стать партнёром →</a>
@@ -2190,12 +530,12 @@ img { max-width: 100%; display: block; }
   <div class="wrap" style="margin-bottom:3rem;">
     <div class="section-tag">Обучение</div>
     <h2 class="heading-lg">Бесплатное 2-дневное офлайн обучение в Перми</h2>
-    <p style="color:rgba(0,0,0,0.55);margin-top:0.8rem;max-width:600px;">Два продуктивных дня изучения бизнеса ЁбиСан изнутри. Посмотришь на действующее производство. Узнаешь, как открыть и эффективно управлять доставкой.</p>
+    <p style="color:rgba(0,0,0,0.55);margin-top:0.8rem;max-width:600px;">Два продуктивных дня изучения бизнеса Ёбисан изнутри. Посмотришь на действующее производство. Узнаешь, как открыть и эффективно управлять доставкой.</p>
   </div>
   <div class="training-content">
     <div class="training-day fade-in">
       <h3>День 1</h3>
-      <div class="schedule-item"><div class="time">10:00 — 12:00</div><div class="topic">История компании, принципы и цели ЁбиСан</div></div>
+      <div class="schedule-item"><div class="time">10:00 — 12:00</div><div class="topic">История компании, принципы и цели Ёбисан</div></div>
       <div class="schedule-item"><div class="time">12:30 — 14:00</div><div class="topic">Путь открытия точки: конкурентный анализ и выбор локации</div></div>
       <div class="schedule-item"><div class="time">14:15 — 16:00</div><div class="topic">Каналы продаж, IT-система, приложение и CRM</div></div>
       <div class="schedule-item"><div class="time">16:15 — 18:00</div><div class="topic">Маркетинг, продвижение, ценообразование, продукт</div></div>
@@ -2243,14 +583,14 @@ img { max-width: 100%; display: block; }
 <!-- ========== NO EXPERIENCE ========== -->
 <div style="background:var(--light-bg);padding:5rem 3rem;">
   <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
-    <div class="fade-in" style="background:var(--white);border:1px solid var(--border);border:1px solid rgba(0,0,0,0.06);padding:2.5rem;text-align:center;">
+    <div class="fade-in" style="background:var(--white);border:1px solid var(--border);border:1px solid rgba(0,0,0,0.06);padding:2.5rem;text-align:center;border-radius:16px;">
       <div style="color:var(--red);margin-bottom:1rem;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
-      <div style="font-family:'Unbounded',sans-serif;font-weight:900;font-size:2rem;color:var(--red);">67%</div>
+      <div style="font-family:'Ubuntu',sans-serif;font-weight:700;font-size:2rem;color:var(--red);">67%</div>
       <p style="color:rgba(0,0,0,0.55);margin-top:0.5rem;font-size:0.85rem;">партнёров впервые в бизнесе — и они уже успешно управляют доставкой</p>
     </div>
-    <div class="fade-in" style="background:var(--white);border:1px solid var(--border);border:1px solid rgba(0,0,0,0.06);padding:2.5rem;text-align:center;">
+    <div class="fade-in" style="background:var(--white);border:1px solid var(--border);border:1px solid rgba(0,0,0,0.06);padding:2.5rem;text-align:center;border-radius:16px;">
       <div style="color:var(--red);margin-bottom:1rem;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg></div>
-      <div style="font-family:'Unbounded',sans-serif;font-weight:900;font-size:2rem;color:var(--red);">93%</div>
+      <div style="font-family:'Ubuntu',sans-serif;font-weight:700;font-size:2rem;color:var(--red);">93%</div>
       <p style="color:rgba(0,0,0,0.55);margin-top:0.5rem;font-size:0.85rem;">партнёров впервые работают с общественным питанием</p>
     </div>
   </div>
@@ -2260,7 +600,7 @@ img { max-width: 100%; display: block; }
 <div class="partners-bar">
   <div style="text-align:center;margin-bottom:2rem;">
     <div class="section-tag" style="justify-content:center;">Федеральные партнёры</div>
-    <p style="color:rgba(0,0,0,0.4);font-size:0.85rem;">Специальные скидки и условия для сети ЁбиСан</p>
+    <p style="color:rgba(0,0,0,0.4);font-size:0.85rem;">Специальные скидки и условия для сети Ёбисан</p>
   </div>
   <div class="partners-logos">
     <span class="partner-logo">ВКонтакте</span>
@@ -2276,13 +616,13 @@ img { max-width: 100%; display: block; }
 <div class="cta-section" id="cta">
   <div class="cta-content">
     <div class="section-tag" style="justify-content:center;">Начни сейчас</div>
-    <h2 class="heading-lg">Готов стать партнёром ЁбиСан?</h2>
+    <h2 class="heading-lg">Готов стать партнёром Ёбисан?</h2>
     <p>Оставь заявку — получи бизнес-план, финансовую модель и презентацию франшизы. Проверим, свободен ли твой город.</p>
     <div class="cta-form">
       <input type="text" placeholder="Ваше имя">
       <input type="tel" placeholder="Телефон">
       <input type="text" placeholder="Город" class="full">
-      <select class="full" style="width:100%;padding:0.9rem 1rem;background:rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.08);color:var(--white);font-family:'Noto Sans JP',sans-serif;font-size:0.88rem;appearance:none;cursor:pointer;">
+      <select class="full" style="width:100%;padding:0.9rem 1rem;background:rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.08);color:var(--white);font-family:'Ubuntu',sans-serif;font-size:0.88rem;appearance:none;cursor:pointer;">
         <option>Есть ли опыт в бизнесе?</option>
         <option>Да</option>
         <option>Нет</option>
@@ -2308,7 +648,7 @@ img { max-width: 100%; display: block; }
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <div class="footer-logo">ЁБИ<span>САН</span></div>
+      <div class="footer-logo">Ёби<span>сан</span></div>
       <div class="footer-motto">Еда — это эмоция счастья</div>
     </div>
     <div class="footer-links">
@@ -2326,7 +666,7 @@ img { max-width: 100%; display: block; }
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2024 ЁбиСан. Все права защищены. г. Пермь</span>
+    <span>© 2024 Ёбисан. Все права защищены. г. Пермь</span>
     <span>Политика конфиденциальности</span>
   </div>
 </footer>
@@ -2337,8 +677,8 @@ img { max-width: 100%; display: block; }
     <button class="modal-close" onclick="hideModal()">×</button>
     <h3>Спасибо за заявку!</h3>
     <p style="color:rgba(0,0,0,0.6);line-height:1.7;">Наш менеджер свяжется с вами в ближайшее рабочее время. Подготовим персональное коммерческое предложение и финансовую модель.</p>
-    <div style="margin-top:1.5rem;padding:1.2rem;background:rgba(230,57,70,0.1);border:1px solid rgba(230,57,70,0.2);">
-      <p style="font-size:1rem;color:var(--red);font-family:'Unbounded',sans-serif;font-weight:700;">+7 342 2 600 300</p>
+    <div style="margin-top:1.5rem;padding:1.2rem;background:rgba(230,57,70,0.1);border:1px solid rgba(230,57,70,0.2);border-radius:10px;">
+      <p style="font-size:1rem;color:var(--red);font-family:'Ubuntu',sans-serif;font-weight:700;">+7 342 2 600 300</p>
       <p style="font-size:0.82rem;color:rgba(0,0,0,0.55);margin-top:0.3rem;">franchise@ebisan.ru</p>
     </div>
   </div>

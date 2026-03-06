@@ -33,6 +33,46 @@ body {
 ::-webkit-scrollbar-track { background: var(--light-bg); }
 ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
 img { max-width: 100%; display: block; }
+.guarantee-section{
+  padding:80px 20px;
+  background:#fafafa;
+  text-align:center;
+}
+
+.guarantee-container{
+  max-width:700px;
+  margin:0 auto;
+}
+
+
+
+
+.heading-lg{
+  font-size:32px;
+  margin-bottom:20px;
+}
+
+.guarantee-text{
+  color:rgba(0,0,0,0.65);
+  line-height:1.7;
+  margin-bottom:16px;
+}
+
+.guarantee-subtitle{
+  font-weight:600;
+  margin-top:25px;
+}
+
+.guarantee-list{
+  list-style:none;
+  padding:0;
+  margin:15px 0 25px;
+}
+
+.guarantee-list li{
+  margin:8px 0;
+}
+
 
 .heading-xl {
   font-family: 'Ubuntu', sans-serif;

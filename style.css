@@ -258,7 +258,7 @@ img { max-width: 100%; display: block; }
   position: relative;
   overflow: hidden;
 }
-.hero-bg {
+/* .hero-bg {
   position: absolute;
   inset: 0;
   background:
@@ -273,7 +273,7 @@ img { max-width: 100%; display: block; }
     linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
   background-size: 60px 60px;
-}
+} */
 .hero-content {
   position: relative;
   z-index: 2;
